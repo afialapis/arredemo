@@ -1,0 +1,20 @@
+{
+  "name": "intre",
+  "version": "1.0.7",
+
+  "type": "module",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afialapis/arredemo.git"
+  },
+  "author": "donato@afialapis.com",
+  "license": "MIT",
+  "homepage": "https://github.com/afialapis/arredemo#readme",
+
+  "scripts": {
+    "reset": "rm -fr arredemo",
+    "build": "node ../bin/arre.mjs build"
+  }
+
+}

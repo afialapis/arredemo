@@ -37,7 +37,7 @@ const script = scriptIndex === -1 ? args[0] : args[scriptIndex]
 
 if (arreActions.includes(script)) {
   const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : []
-  const arreScript = path.resolve(__dirname, '../src/scripts/' + script + '/index.mjs')
+  const arreScript = path.resolve(__dirname, '../src/scripts/' + script + '/run.mjs')
   const arreArgs = args.slice(scriptIndex + 1)
 
   const call = nodeArgs

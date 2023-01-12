@@ -1,9 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {Demo} from './src/Demo'
+import {App} from 'app/App.jsx'
 
-import './assets/scss/index.scss'
+import 'app/assets/scss/index.scss'
 
+const pkgPath = '_PKG_PATH_'
 
-ReactDOM.render(<Demo/>, document.getElementById('arredemo-app'))
+const pkgJson = JSON.parse(`
+  _PKG_JSON_
+`)
+
+const arreConfig = JSON.parse(`
+_ARRE_CONFIG_
+`)
+
+_READMES_
+
+ReactDOM.render(
+  <App 
+    pkgPath = {pkgPath}
+    pkgJson = {pkgJson}
+    arreConfig = {arreConfig}
+    readmes = {readmes}
+  />, 
+  document.getElementById('arredemo-app'))

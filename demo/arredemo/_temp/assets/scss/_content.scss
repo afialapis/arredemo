@@ -1,0 +1,10 @@
+div.content {
+  // Positioning
+  margin-left: var(--menu-width-web);
+
+  @media screen and (max-width: 600px) {
+    margin-left: 0;
+  }
+}
+
+

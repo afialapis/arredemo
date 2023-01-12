@@ -1,0 +1,12 @@
+{
+  "theme": "default",
+  "favicon": "logo/favicon/arredemo.ico",
+  "logo": "logo/arredemo.png",
+  "company": "Arre Demo!",
+  "url": "arredemo.afialapis.com",
+  "doc_versions": [
+    "1.0.7"
+  ],
+  "demo_entry": "demo/index.js",
+  "demo_styles": "demo/index.scss"
+}

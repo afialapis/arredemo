@@ -1,4 +1,4 @@
-module.exports = {
+const _ESLINT = {
   root: true,
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -75,3 +75,5 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn"  
   }
 }
+
+export default _ESLINT

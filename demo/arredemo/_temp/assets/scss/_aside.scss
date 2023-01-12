@@ -1,0 +1,25 @@
+aside {
+  // Positioning
+
+  position: fixed;
+  left: 0;
+  overflow-x: hidden;
+  width: var(--menu-width-web);
+
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 1em;
+  justify-content: center;
+
+  @media screen and (max-width: 600px) {
+    display: none !important;
+  }
+
+
+  // Look and feel
+  // font-weight: 200;
+  border-right: var(--border);
+
+}
+
