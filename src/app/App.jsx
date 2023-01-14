@@ -1,10 +1,18 @@
 import React, {useState, useCallback} from 'react'
-import { Routes, Route } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from "react-router-dom"
 
 import AppContext from 'app/context/AppContext.mjs'
 
-import Demo from 'app/pages/demo/Demo'
-import Docs from 'app/pages/docs/Docs'
+import Demo from 'app/pages/demo/Demo.jsx'
+import Docs from 'app/pages/docs/Docs.jsx'
+
+
+
 
 const App = ({pkgPath, pkgJson, arreConfig, readmes}) => {
 
@@ -19,17 +27,22 @@ const App = ({pkgPath, pkgJson, arreConfig, readmes}) => {
   }, [])
 
 
-  return (
-    <AppContext.Provider value={{pkgPath, pkgJson, arreConfig, versions, selectedVersion, readme, onSwicthVersion}}>
-      <Routes> 
-        {arreConfig.has_demo
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+       /*{arreConfig.has_demo
         ? <Route path={'/demo'} element={<Demo/>}/>
         : null
-        }
+        }*/
         <Route path={'*'} 
                element={<Docs readme = {readme}/>}/>
 
-      </Routes>
+    )
+  );
+
+  
+  return (
+    <AppContext.Provider value={{pkgPath, pkgJson, arreConfig, versions, selectedVersion, readme, onSwicthVersion}}>
+      <RouterProvider router={router} />
     </AppContext.Provider>
   )
 }

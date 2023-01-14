@@ -1,12 +1,12 @@
 import React from 'react'
 import useAppContext from 'app/context/useAppContext.mjs'
-import RepoLink from 'app/layout/components/RepoLink'
-import Logo from 'app/layout/components/Logo'
+import RepoLink from 'app/layout/components/RepoLink.jsx'
+import Logo from 'app/layout/components/Logo.jsx'
 
 
 const Header = ({path, responsiveOpen, onResponsiveToggle}) => {
   const context = useAppContext()
-  const has_demo = context.arreConfig.has_demo
+  const has_demo = context.arreConfig.demo_entry != ''
 
   return (
 

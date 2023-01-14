@@ -1,6 +1,6 @@
-import {red, green, cyan} from 'farrapa-colors'
+import { /*red, green,*/ cyan} from 'farrapa-colors'
 import { loadArreDemoAppData } from "./load.mjs"
-import { renderArreDemoApp } from "./render.mjs"
+import { renderArreDemoApp, cleanArreDemoApp } from "./render.mjs"
 import { rollupArreDemoAppConfig } from "./rollup/prepare.mjs"
 import { rollupBuild } from "./rollup/build.mjs"
 
@@ -25,6 +25,8 @@ async function makeArreDemoBuild (pkgPath, arreConfig) {
       - we get that struct:
     
         package/
+          arredemo.json
+
           arredemo/
             index.html
             docs.html
@@ -32,8 +34,6 @@ async function makeArreDemoBuild (pkgPath, arreConfig) {
             bundle.css
             bundle.js
             favicon.ico
-
-            arredemo.json
 
 
   */
@@ -46,7 +46,10 @@ async function makeArreDemoBuild (pkgPath, arreConfig) {
   
   console.log(`[arredemo] ${cyan('Building app')}...`)
   const [inputOptions, outputOptionsList] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder)
-  const _buildOk = rollupBuild(inputOptions, outputOptionsList)
+  const _buildOk = await rollupBuild(inputOptions, outputOptionsList)
+
+  console.log(`[arredemo] ${cyan('Cleaning')}...`)
+  cleanArreDemoApp(pkgPath)
 
 }
 export {makeArreDemoBuild}

@@ -1,6 +1,6 @@
 import React from 'react'
 import useAppContext from 'app/context/useAppContext.mjs'
-import Badges from 'app/layout/components/Badges'
+import Badges from 'app/layout/components/Badges.jsx'
 
 const Company = ({company, url}) =>
   <a href={url} target="_blank noopener noreferrer">{company}</a>
@@ -11,9 +11,9 @@ const License = ({name}) =>
 
 
 const Footer = () => {
-  
   const context = useAppContext()
   const company= context.arreConfig.company
+  const url= context.arreConfig.url
   const license= context.pkgJson.license
   const pkgName = context.pkgJson.name
   
@@ -27,4 +27,4 @@ const Footer = () => {
   )
 }
 
-export default withContext(Footer)
+export default Footer

@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
+import { copyFolderSync } from '../utils/io/copy.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -66,56 +67,48 @@ const _renderIndexHtml = (source, dest, pkgJson, arreConfig) => {
 }
 
 const _renderIndexJs = (source, dest, pkgPath, pkgJson, arreConfig, readmes) => {
-
   let js= fs.readFileSync(source, {encoding:'utf8', flag:'r'})
 
   js= js.replace(/_PKG_PATH_/g, pkgPath)
   js= js.replace(/_PKG_JSON_/g, JSON.stringify(pkgJson, '\n', 2))
-  js= js.replace(/_ARRE_CONFIG_/g, JSON.stringify(arreConfig, '\n', 2))
+  js= js.replace(/_ARRE_CONFIG_/g, JSON.stringify(arreConfig.config, '\n', 2))
   js= js.replace(/_READMES_/g, _renderReadmes(readmes))
 
   fs.writeFileSync(dest, js, {encoding:'utf8'})
-
 }
-
 
 
 const renderArreDemoApp = (pkgPath, pkgJson, arreConfig, readmes) => {
-  
-  const appFolder = path.join(__dirname, '../../app')
-  const outFolder = path.join(pkgPath, 'arredemo', '_temp')
+  const tmplFolder = path.join(__dirname, '../../app')
+  const arreFolder = path.join(pkgPath, 'arredemo')
+  const outFolder = path.join(arreFolder, '_temp')
 
-  if (!fs.existsSync(outFolder)) {
-    fs.mkdirSync(outFolder)
+  if (!fs.existsSync(arreFolder)) {
+    fs.mkdirSync(arreFolder)
   }
-
-  const _copyFolderSync = (source, dest) => {
-    fs.readdirSync(source).forEach(element => {
-      const sourceEl= path.join(source, element)
-      const destEl = path.join(dest, element)
-      if (fs.lstatSync(sourceEl).isFile()) {
-        if (path.basename(element) == 'index.html') {
-          _renderIndexHtml(sourceEl, destEl, pkgJson, arreConfig)
-        } else if (path.basename(element) == 'index.mjs') {
-          _renderIndexJs(sourceEl, destEl, pkgPath, pkgJson, arreConfig, readmes)
-        } else {
-          fs.copyFileSync(sourceEl, destEl)
-        }
-      } else {
-        if (!fs.existsSync(destEl)){
-          fs.mkdirSync(destEl)
-        }
   
-        _copyFolderSync(sourceEl, destEl)
-      }
-    })
-  }
+  // render template /app to pkg/arredemo/_temp
+  //  except index.html, wich already goes to pkg/arredemo/index.html
+  copyFolderSync(tmplFolder, outFolder, (sourceEl, destEl) => {
+    if (path.basename(destEl) == 'index.html') {
+      return () => _renderIndexHtml(sourceEl, destEl.replace(`${path.sep}_temp`, ''), pkgJson, arreConfig)
+    }
+    if (path.basename(destEl) == 'index.mjs') {
+      return () => _renderIndexJs(sourceEl, destEl, pkgPath, pkgJson, arreConfig, readmes)
+    }
+    return undefined
+  })
 
-
-  _copyFolderSync(appFolder, outFolder) 
-
-    
   return outFolder  
 }
 
-export {renderArreDemoApp}
+const cleanArreDemoApp = (pkgPath) => {
+  
+  const arreFolder = path.join(pkgPath, 'arredemo')
+  const outFolder = path.join(arreFolder, '_temp')
+  
+  fs.rmSync(outFolder, { recursive: true, force: true });
+}
+
+
+export {renderArreDemoApp, cleanArreDemoApp}

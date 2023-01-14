@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import Page from 'app/layout/Page'
-import DocsMd from './DocsMd'
+import Page from 'app/layout/Page.jsx'
+import DocsMd from './DocsMd.jsx'
 import useObservedMenu from './useObservedMenu.mjs'
 
 

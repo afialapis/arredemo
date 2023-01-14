@@ -4,7 +4,7 @@ import os from 'os'
 import path from 'path'
 import prompts from 'prompts'
 
-const arreJsonPath = (pkgPath) => path.join(pkgPath, 'arredemo', 'arredemo.json')
+const arreJsonPath = (pkgPath) => path.join(pkgPath, 'arredemo.json')
 
 async function readJsonFile(jsonPath) {
   try {

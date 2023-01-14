@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-import {App} from 'app/App.jsx'
+import App from 'app/App.jsx'
 
 import 'app/assets/scss/index.scss'
 
@@ -17,6 +16,7 @@ _ARRE_CONFIG_
 
 _READMES_
 
+/*
 ReactDOM.render(
   <App 
     pkgPath = {pkgPath}
@@ -25,3 +25,16 @@ ReactDOM.render(
     readmes = {readmes}
   />, 
   document.getElementById('arredemo-app'))
+  */
+
+ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
+  <React.StrictMode>
+    <App 
+      pkgPath = {pkgPath}
+      pkgJson = {pkgJson}
+      arreConfig = {arreConfig}
+      readmes = {readmes}
+    />
+  </React.StrictMode>
+);
+  

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Page from 'app/layout/Page'
+import Page from 'app/layout/Page.jsx'
 // import parseMenu from './parseMenu.mjs'
 // import useAppContext from 'app/context/useAppContext.mjs'
 

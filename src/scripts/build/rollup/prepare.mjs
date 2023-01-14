@@ -1,6 +1,6 @@
 import path from 'path'
 import alias_plugin from '@rollup/plugin-alias';
-import {externals} from 'rollup-plugin-node-externals'
+//import {externals} from 'rollup-plugin-node-externals'
 import replace from '@rollup/plugin-replace'
 import {babel} from '@rollup/plugin-babel'
 import {nodeResolve} from '@rollup/plugin-node-resolve'
@@ -36,8 +36,8 @@ function toTitleCase(str) {
 
 
 function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
-  const bundleDeps= true
-  const pkgJsonPath= path.join(pkgPath, 'package.json')
+  //const bundleDeps= true
+  //const pkgJsonPath= path.join(pkgPath, 'package.json')
   //const input= arreConfig.demo_entry
 
   const input = path.join(rendFolder, 'index.mjs')
@@ -85,7 +85,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
       }),
       scss()
     ],
-    external: ['react', 'react-dom', 'react-router-dom']
+    //external: ['react', 'react-dom', 'react-router-dom', 'markdown-to-jsx']
   }
   
   const outputs= [
@@ -99,7 +99,8 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
       globals: {
         'react': 'React',
         'react-dom': 'ReactDOM',
-        'react-router-dom': 'ReactRouterDOM'
+        'react-router-dom': 'ReactRouterDOM',
+        'markdown-to-jsx': 'MarkdownToJSX',
       }
     },
     //{

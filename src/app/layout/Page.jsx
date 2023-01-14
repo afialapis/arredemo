@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import {useLocation} from 'react-router-dom'
-import Header from 'app/layout/Header'
-import Menu from 'app/layout/Menu'
-import Footer from 'app/layout/Footer'
+import Header from 'app/layout/Header.jsx'
+import Menu from 'app/layout/Menu.jsx'
+import Footer from 'app/layout/Footer.jsx'
 import useScroll from 'app/layout/hooks/useScroll.mjs'
 
 const MENU_OFFSET = 64
