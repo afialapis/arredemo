@@ -8,7 +8,7 @@ import {
 
 import AppContext from 'app/context/AppContext.mjs'
 
-import Demo from 'app/pages/demo/Demo.jsx'
+//import Demo from 'app/pages/demo/Demo.jsx'
 import Docs from 'app/pages/docs/Docs.jsx'
 
 
@@ -38,8 +38,7 @@ const App = ({pkgPath, pkgJson, arreConfig, readmes}) => {
 
     )
   );
-
-  
+    
   return (
     <AppContext.Provider value={{pkgPath, pkgJson, arreConfig, versions, selectedVersion, readme, onSwicthVersion}}>
       <RouterProvider router={router} />

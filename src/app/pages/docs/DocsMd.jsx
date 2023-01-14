@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Markdown from 'markdown-to-jsx'
 import ObservedHeading from './ObservedHeading.mjs'
 import { slugify } from 'app/util/text.mjs'
@@ -23,6 +23,7 @@ const DocsMd = ({readme, onHeadingObserve}) => {
           className: 'prettyprint'
         },
       },
+      /*
       h1: {
         component: ObservedHeading,
         props: {
@@ -44,6 +45,7 @@ const DocsMd = ({readme, onHeadingObserve}) => {
           onHeadingObserve
         }
       }
+      */
     }, 
     slugify: slugify 
   }

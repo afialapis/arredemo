@@ -6,9 +6,9 @@ const useObservedMenu = () => {
 
   const handleHeadingObserve = useCallback((node) => {
     const oid= node.id
-
     const exists= menu.findIndex(i => i.id==oid)
     if (exists>=0) {
+      console.log('exists.....skipping observe')
       return
     }
 
@@ -28,8 +28,9 @@ const useObservedMenu = () => {
     setMenu(nMenu)
   }, [menu])
 
-  return [menu, handleHeadingObserve]
+  console.log('useObservedMenu.render... menu.length should increment: ' + menu.length)
 
+  return [menu, handleHeadingObserve]
 }
 
 export default useObservedMenu

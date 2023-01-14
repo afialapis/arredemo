@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename)
 const _renderReadmes = (readmes) => {
 
   const _versionName = (v) => 'v_'+v.replace(/\./g, '_')
+  const _toB64 = (s) => Buffer.from(s).toString('base64')
 
   // let escaped= {}
   // Object.entries(readmes).map(([key, value]) => {
@@ -20,12 +21,12 @@ const _renderReadmes = (readmes) => {
   let output= ""
 
   Object.entries(readmes).map(([version, md]) => {
-    const escaped= md
+    const escaped= _toB64(md)
     //.replace(/\n/g, '\n')
-    .replace(/"/g, '\\\"')
-    .replace(/`/g, '\\\`')
+    //.replace(/"/g, '\\\"')
+    //.replace(/`/g, '\\\`')
 
-    output+= `const ${_versionName(version)} = \`${escaped}\`;\n`
+    output+= `const ${_versionName(version)} = decodeURIComponent(escape(window.atob(\`${escaped}\`)));\n`
   })
 
   output+= '\n\nconst readmes = {\n'

@@ -5,8 +5,8 @@
   "company": "Arre Demo!",
   "url": "arredemo.afialapis.com",
   "doc_versions": [
-    "1.0.7"
+    "1.0.5"
   ],
-  "demo_entry": "demo/index.js",
-  "demo_styles": "demo/index.scss"
+  "demo_entry": null,
+  "demo_styles": null
 }
