@@ -4,7 +4,7 @@ import useAppContext from 'app/context/useAppContext.mjs'
 const Logo = () => {
   
   const context = useAppContext()
-  const logo= context.arreConfig.logo
+  const logo= `../${context.arreConfig.logo}`
 
   if (!logo) {
     return (
@@ -13,8 +13,8 @@ const Logo = () => {
   }
 
   return (
-    <div className="logo">
-      <img src={logo}/>
+    <div className="logo"  style={{backgroundImage: logo}}>
+      {/*<img src={logo}/>*/}
     </div>
   )
 }
