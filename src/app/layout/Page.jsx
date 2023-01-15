@@ -4,6 +4,7 @@ import Header from 'app/layout/Header.jsx'
 import Menu from 'app/layout/Menu.jsx'
 import Footer from 'app/layout/Footer.jsx'
 import useScroll from 'app/layout/hooks/useScroll.mjs'
+import Switcher from './Switcher.jsx'
 
 const MENU_OFFSET = 64
 
@@ -162,33 +163,44 @@ const Page = ({menu, children}) => {
     
       {!responsiveOpen
         ? <div className="body">
-            <aside>
-              <Menu 
-                    path            = {path}
-                    menu            = {menu}
-                    onMenuClick     = {handleOpenMenu}
-                    activeOption    = {activeOption}/>
-              <Footer/>
-            </aside>
+            <div className="left">
+              <>
+               {path=='docs'
+                ? <Switcher/>
+                : null
+               }
+                <Menu 
+                  menu            = {menu}
+                  onMenuClick     = {handleOpenMenu}
+                  activeOption    = {activeOption}/>
+                {/*<Footer/>*/}
+              </>
+            </div>
 
 
             <div className="content">
               {children}
+              <Footer/>
             </div>
-        </div>
+          </div>
       :  <>
           <div className="body">
+            {path=='docs'
+            ? <Switcher/>
+            : null
+            }
+
             <Menu 
                   path            = {path}
                   menu            = {menu}
                   onMenuClick     = {handleOpenMenu}
                   activeOption    = {activeOption}/>
                             
-            </div>
-            <div className="content">
-              {children}
-            </div>
+          </div>
+          <div className="content">
+            {children}
             <Footer/>
+          </div>
           </>
           
       } 

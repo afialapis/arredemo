@@ -1,21 +1,26 @@
-.main > footer {
-  
-  display: none;
-}
-aside > footer {
-  align-self: center;
-  display: block;
-  //height: 70px;
-}
-
-@media screen and (max-width: 600px) {
-  .main > footer {
-    display: block;
-  }
-}
+// .main > footer {
+//   
+//   display: none;
+// }
+// .left > footer {
+//   align-self: center;
+//   //display: block;
+//   //height: 70px;
+// 
+// }
+// 
+// @media screen and (max-width: 600px) {
+//   .main > footer {
+//     display: block;
+//   }
+// }
 
 
 footer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+
   font-size: var(--font-size-sm);
   //background-color: red; //var(--header-bg-color);
   
@@ -27,10 +32,11 @@ footer {
   z-index: 2;
 
   .badges {
-    padding: 1em 0;
+    //padding: 1em 0;
+    text-align: left;
 
     span.badge {
-      display: block;
+      //display: block;
       padding-top: 0.5em;
       padding-right: 1em;
 
@@ -43,8 +49,27 @@ footer {
     }        
   }
 
+  .license {
+    text-align: right;
+  }
+
   a {
     color: white;
     text-decoration: underline;
   }
+
+  @media screen and (max-width: 600px) {
+    display: block;
+
+    .badges {
+      text-align: center;
+    }
+    .license {
+      text-align: center;
+      margin-top: 1em;
+    }
+  
+  }
+
+
 }

@@ -1,5 +1,12 @@
 
+.switcher {
+  //padding-bottom: 1em;
+  height: 2em;
+}
+
 .menu {
+  height: calc(100% - 2.25em);
+  overflow-y:auto;
 
   ul {
     overflow-y: auto;
@@ -48,28 +55,5 @@
   }
 
 
-  @media screen and (min-width: 601px) {
-    padding-left: 2em;
 
-    .switcher {
-      padding-left: 0.5em;
-    }
-  
-
-  }
-
-  @media screen and (max-width: 600px) {
-    position: fixed;
-    top: var(--header-grid-height-resp);
-    left: 0;
-    display: block;
-    width: 100%;
-
-
-    background-color: var(--header-bg-color);
-    padding: 1rem;
-
-
-
-  }
 }

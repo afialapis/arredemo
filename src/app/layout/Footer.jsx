@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer>
       <Badges/>
-      <div>
+      <div className="license">
         {`${pkgName} is sharpened by `}<Company company= {company} url= {url}/> under <License name={license}/> license
       </div>
     </footer>

@@ -1,27 +1,9 @@
 import React from 'react'
-import useAppContext from 'app/context/useAppContext.mjs'
 
-const Menu = ({path, menu, onMenuClick, activeOption}) => {
-  const context = useAppContext()
+const Menu = ({ menu, onMenuClick, activeOption}) => {
 
-  return (
+return (
     <div className="menu">
-      {path=='docs'
-       ? 
-          <div className="switcher">
-            <select 
-              onChange={(event) => context.onSwitchVersion(event.target.value)}
-              value={context.selectedVersion}>
-              {context.versions.map((v) =>
-                <option 
-                  key  = {v}
-                  value= {v}>
-                  {`Version: ${v}`}
-                </option>          
-              )}
-            </select>        
-          </div>
-        : null}
       <ul>
         {menu.map( (item,idx) => 
           <li key={`menu_${idx}`}

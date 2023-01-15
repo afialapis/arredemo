@@ -50,12 +50,7 @@ const Docs = ({readme}) => {
 
   useEffect(() => {
     console.log('Docs.useEffect. Creating menu.')
-    const elements= [
-      ...Array.from(document.getElementsByTagName('h1')), 
-      ...Array.from(document.getElementsByTagName('h2')), 
-      ...Array.from(document.getElementsByTagName('h3'))
-    ]
-
+    const elements=Array.from(document.querySelectorAll('h1, h2, h3'))
     const nMenu= []
     for (const el of elements) {
       const oid= el.id
