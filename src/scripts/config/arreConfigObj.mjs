@@ -79,6 +79,10 @@ export class ArreConfigObj {
   get has_demo() {
     return this.demo_entry != ''
   }
+
+  get md_keep_summary_content() {
+    return this.config?.md?.keep_summary_content || false
+  }
   
   get demo_entry() {
     const demo_js= this.config.demo_entry

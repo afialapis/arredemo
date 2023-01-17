@@ -22,6 +22,9 @@ const MENU_OFFSET = 64
 
 const domScrollTo = (selector) => {
   const node= document.querySelector(selector)
+  if (! node) {
+    return
+  }
   const rect= node.getBoundingClientRect()
 
   const to=  window.scrollY + (rect.y  - MENU_OFFSET)

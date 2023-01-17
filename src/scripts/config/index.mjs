@@ -1,18 +1,31 @@
-import { arreJsonPath, readJsonFileSync } from "../utils/io/json.mjs";
-import { ArreConfigObj } from "./arreConfigObj.mjs";
+import { arreJsonPath, readJsonFileSync } from "../utils/io/json.mjs"
+import { ArreConfigObj } from "./arreConfigObj.mjs"
+import defaults from './defaults.mjs'
 
 function getArreConfigFromJson (data, pkgPath) {
-  return new ArreConfigObj(data, pkgPath)
+  const config= {
+    ...defaults,
+    ...data
+  }
+  return new ArreConfigObj(config, pkgPath)
 }
 
 function getArreConfigFromPkgPath (pkgPath) {
   const jsonPath = arreJsonPath(pkgPath)
   const data = readJsonFileSync(jsonPath)
-  return new ArreConfigObj(data, pkgPath)
+  const config= {
+    ...defaults,
+    ...data
+  }
+  return new ArreConfigObj(config, pkgPath)
 }
 
 function getArreConfigFromAnswers (data, pkgPath) {
-  return new ArreConfigObj(data, pkgPath)
+  const config= {
+    ...defaults,
+    ...data
+  }
+  return new ArreConfigObj(config, pkgPath)
 }
 
 

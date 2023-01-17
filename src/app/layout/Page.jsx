@@ -23,7 +23,7 @@ const Page = ({menu, children}) => {
     setResponsiveOpen(false)
 
     const hid= menu[idx].id.replace('menu-', '')
-    domScrollTo(hid)
+    domScrollTo(`#${hid}`)
   }
 
   // console.log('Page : render ' + menu.length)

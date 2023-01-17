@@ -13,7 +13,7 @@ const loadArreDemoAppData = async (pkgPath, arreConfig) => {
   let readmes = await fetchMdFiles(pkgName, versions)
 
   for (const [version, md] of Object.entries(readmes)) {
-    const md_parsed= preparseMd(md)
+    const md_parsed= preparseMd(md, pkgName, arreConfig)
     readmes[version]= md_parsed
   }
 
