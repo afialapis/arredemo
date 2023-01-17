@@ -34,7 +34,7 @@ const App = ({pkgPath, pkgJson, arreConfig, readmes}) => {
         : null
         }*/
         <Route path={'*'} 
-               element={<Docs readme = {readme}/>}/>
+               element={<Docs readme   = {readme}/>}/>
 
     )
   );

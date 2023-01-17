@@ -2,28 +2,83 @@ import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 import { copyFolderSync } from '../utils/io/copy.mjs'
+import { stripHtml } from '../utils/md/text.mjs'
+
+/*import mtj from 'markdown-to-jsx'
+const { compiler } = mtj*/
+//import Markdown from 'markdown-to-jsx'
+import { marked } from 'marked'
+import { gfmHeadingId } from "marked-gfm-heading-id"
+
+import cheerio from 'cheerio'
+//import mdOptions from '../utils/md/mdOptions.mjs'
+import {renderToString} from 'react-dom/server'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 
-const _renderReadmes = (readmes) => {
+const _getMenuFromMd = (md) => {
+  
+  //const jsx= Markdown({md, options: mdOptions})
+  //const html= renderToString(jsx)
+
+  //const options = {
+  //  prefix: "my-prefix-",
+  //};
+  
+  marked.use(gfmHeadingId())
+  const html = marked.parse(md, {headerIds: true})
+  //console.log(html)
+  const $ = cheerio.load(html, {xmlMode: true, lowerCaseTags: false, lowerCaseAttributeNames: false, decodeEntities: false})
+
+  //console.log($.html())
+
+  
+  const menu= []
+  $('h1').map((idx, el) => {
+    //const node= $(el).get()[0]
+    console.log($(el).get())
+    const oid= $(el).id
+    const title= stripHtml($(el).html().trim())
+    const level=  parseInt($(el).name.replace('h',''))
+    const item= {
+      id: oid,  
+      title, 
+      level,
+      //node: el
+    }
+    console.log(item)
+    menu.push(item)
+  })
+  console.log(menu)
+  return menu
+}
+
+
+const _renderVersionDocs = (readmes) => {
 
   const _versionName = (v) => v.replace(/\./g, '_')
   const _versionMdName = (v) => `md_${_versionName(v)}`
+  const _versionMenuName = (v) => `menu_${_versionName(v)}`
   const _toB64 = (s) => Buffer.from(s).toString('base64')
   
   let output= ""
 
   Object.entries(readmes).map(([version, md]) => {
     const escapedMd= _toB64(md)
+    const menu = _getMenuFromMd(md)
     output+= `const ${_versionMdName(version)} = decodeURIComponent(escape(window.atob(\`${escapedMd}\`)));\n`
+    output+= `const ${_versionMenuName(version)} = JSON.parse('${JSON.stringify(menu, '\n', 2)}');\n`
   })
 
-  output+= '\n\nconst readmes = {\n'
+  output+= '\n\nconst versionDocs = {\n'
 
   Object.keys(readmes).map((version) => {
-    output+= `"${version}": ${_versionMdName(version)},\n`
+    output+= `"${version}": {\n`
+    output+= `  "md": ${_versionMdName(version)},\n`
+    output+= `  "menu": ${_versionMenuName(version)},\n`
+    output+= `},\n`
   })
 
   output+= '}\n\n'
@@ -65,7 +120,7 @@ const _renderIndexJs = (source, dest, pkgPath, pkgJson, arreConfig, readmes) => 
   js= js.replace(/_PKG_PATH_/g, pkgPath)
   js= js.replace(/_PKG_JSON_/g, JSON.stringify(pkgJson, '\n', 2))
   js= js.replace(/_ARRE_CONFIG_/g, JSON.stringify(arreConfig.config, '\n', 2))
-  js= js.replace(/_READMES_/g, _renderReadmes(readmes))
+  js= js.replace(/_VERSION_DOCS_/g, _renderVersionDocs(readmes))
 
   fs.writeFileSync(dest, js, {encoding:'utf8'})
 }

@@ -9,7 +9,7 @@ return (
           <li key={`menu_${idx}`}
               className= {`${activeOption==idx ? 'selected' : ''} level-${item.level}`}
               data-level={item.level}
-              id={item.id}    
+              id={`menu-${item.id}`}
               onClick={() => onMenuClick(idx)}
               >
             <span 
