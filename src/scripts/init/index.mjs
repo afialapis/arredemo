@@ -9,8 +9,8 @@
 import prompts from 'prompts'
 import {existsSync, mkdirSync} from 'fs'
 import path from 'path'
-import { arreJsonPath, saveObjectToJsonWithConfirm } from '../utils/io/json.mjs'
-import { getArreConfigFromAnswers, getArreConfigFromPkgPath } from '../config/index.mjs'
+import { arreJsonPath, saveObjectToJsonWithConfirm } from '#scripts/utils/io/json.mjs'
+import { getArreConfigFromAnswers, getArreConfigFromPkgPath } from '#scripts/config/index.mjs'
 import configQuestions from './questions/index.mjs'
 
 

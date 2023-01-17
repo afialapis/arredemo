@@ -1,4 +1,4 @@
-import { arreJsonPath, readJsonFileSync } from "../utils/io/json.mjs"
+import { arreJsonPath, readJsonFileSync } from "#scripts/utils/io/json.mjs"
 import { ArreConfigObj } from "./arreConfigObj.mjs"
 import defaults from './defaults.mjs'
 

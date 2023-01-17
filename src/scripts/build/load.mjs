@@ -1,7 +1,7 @@
 import path from 'path'
-import { readJsonFile } from '../utils/io/json.mjs'
-import fetchMdFiles from '../utils/fetch/fetchMdFiles.mjs'
-import preparseMd from '../utils/md/preparseMd.mjs'
+import { readJsonFile } from '#scripts/utils/io/json.mjs'
+import fetchMdFiles from '#scripts/utils/fetch/fetchMdFiles.mjs'
+import preparseMd from '#scripts/utils/md/preparseMd.mjs'
 
 const loadArreDemoAppData = async (pkgPath, arreConfig) => {
 

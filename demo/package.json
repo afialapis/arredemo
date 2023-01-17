@@ -9,8 +9,12 @@
   "author": "donato@afialapis.com",
   "license": "MIT",
   "homepage": "https://github.com/afialapis/arredemo#readme",
+  "devDependencies": {
+    "arredemo": "file:../"
+  },
   "scripts": {
-    "reset": "rm -fr arredemo",
-    "build": "npm run reset && node ../bin/arre.mjs build"
+    "reset": "rm -fr node_modules && npm run clean && npm i",
+    "clean": "rm -fr arredemo",
+    "build": "npm run clean && npx arredemo build"
   }
 }

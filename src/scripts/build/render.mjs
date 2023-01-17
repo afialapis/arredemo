@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
-import { copyFolderSync } from '../utils/io/copy.mjs'
+import { copyFolderSync } from '#scripts/utils/io/copy.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

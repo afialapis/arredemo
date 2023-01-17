@@ -22,7 +22,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 
-import {globalHelp} from '../src/scripts/help/actions.mjs'
+import {globalHelp} from '#scripts/help/actions.mjs'
 
 
 const args = process.argv.slice(2)

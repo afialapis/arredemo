@@ -5,7 +5,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src/",
     "paths": {
-      "app/*": ["./src/app/*"]
+      "#app/*": ["./src/app/*"],
+      "#scripts/*": ["./src/scripts/*"]
     },
   },
   "exclude": [

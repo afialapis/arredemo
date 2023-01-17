@@ -16,8 +16,6 @@ const _BABEL= {
     ['babel-plugin-module-resolver', {
       'root': [path.resolve('.')],
       'extension': [
-          '.js',
-          '.cjs',
           '.mjs',
           '.jsx'
       ],

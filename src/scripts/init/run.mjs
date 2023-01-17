@@ -6,7 +6,7 @@
  */
 'use strict'
 
-import {buildHelp} from '../help/actions.mjs'
+import {buildHelp} from '#scripts/help/actions.mjs'
 import {arreInit} from './index.mjs'
 
 (async () => {
