@@ -6,13 +6,13 @@ import {getMenuFromMdDOM} from 'app/util/dom.mjs'
 const Docs = ({readme}) => {
   const [menu, setMenu]= useState([])
 
-  /*
+  
   useEffect(() => {
     try {
       PR.prettyPrint()
     } catch(e) {}
   }, [readme])
-  */
+  
 
   useEffect(() => {
     const nMenu = getMenuFromMdDOM()
