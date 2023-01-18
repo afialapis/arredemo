@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import {useLocation} from 'react-router-dom'
 import Header from 'app/layout/Header.jsx'
-import PageBodyWeb from 'app/layout/PageBodyWeb.jsx'
-import PageBodyMobi from 'app/layout/PageBodyMobi.jsx'
-import useActiveOption from './useActiveOption.jsx'
+import Menu from 'app/layout/Menu.jsx'
+import Footer from 'app/layout/Footer.jsx'
+import VersionSwitcher from './VersionSwitcher.jsx'
+import useActiveOption from './hooks/useActiveOption.mjs'
 import { domScrollTo } from 'app/util/dom.mjs'
 
 const getPath = (loc) => loc.pathname.split('/')[1] == 'demo' ? 'demo' : 'docs'
@@ -21,12 +22,9 @@ const Page = ({menu, children}) => {
   
   const handleOpenMenu = (idx) => {
     setResponsiveOpen(false)
-
     const hid= menu[idx].id.replace('menu-', '')
     domScrollTo(`#${hid}`)
   }
-
-  // console.log('Page : render ' + menu.length)
   
   return (
     <div className="main">
@@ -38,24 +36,29 @@ const Page = ({menu, children}) => {
           />
       </nav>
 
-    
-      {!responsiveOpen
-        ? <PageBodyWeb 
-            menu= {menu}
-            onMenuClick={handleOpenMenu}
-            activeOption={activeOption}
-            path= {path}>
-            {children}
-          </PageBodyWeb>
-        
-      :  <PageBodyMobi 
-            menu= {menu}
-            onMenuClick={handleOpenMenu}
-            activeOption={activeOption}
-            path= {path}>
+      <div className={`body`}>
+        <div className={`menu-container ${responsiveOpen ? 'responsive-open' : ''}`}>
+          <>
+            {path=='docs'
+            ? <VersionSwitcher/>
+            : null
+            }
+            <Menu 
+              path            = {path}
+              menu            = {menu}
+              onMenuClick     = {handleOpenMenu}
+              activeOption    = {activeOption}/>
+            {/*<Footer/>*/}
+          </>
+        </div>
+
+
+        <div className="content">
           {children}
-        </PageBodyMobi>
-      } 
+          <Footer/>
+        </div>
+      </div>
+          
         
       
     </div>

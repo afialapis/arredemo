@@ -1,9 +1,8 @@
 import React from 'react'
 import useAppContext from 'app/context/useAppContext.mjs'
 
-const Switcher = () => {
+const VersionSwitcher = () => {
   const context = useAppContext()
-
 
   return (
 
@@ -24,4 +23,4 @@ const Switcher = () => {
   )
 }
 
-export default Switcher
+export default VersionSwitcher
