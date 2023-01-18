@@ -13,8 +13,11 @@
     "arredemo": "file:../"
   },
   "scripts": {
-    "reset": "rm -fr node_modules && npm run clean && npm i",
+    "reset": "npm cache clean --force && rm -fr node_modules && npm run clean && npm i",
     "clean": "rm -fr arredemo",
     "build": "npm run clean && npx arredemo build"
+  },
+  "dependencies": {
+    "react-touch-drag-slider": "^2.2.5"
   }
 }

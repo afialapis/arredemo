@@ -19,6 +19,8 @@ const Docs = ({readme}) => {
     setMenu(nMenu)
   }, [])
 
+  console.log('NOW DOCS')
+
   return (
     <Page menu = {menu}>
       <DocsMd readme={readme}/>

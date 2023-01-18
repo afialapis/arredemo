@@ -1,6 +1,5 @@
 import path from 'path'
 import alias_plugin from '@rollup/plugin-alias';
-//import {externals} from 'rollup-plugin-node-externals'
 import replace from '@rollup/plugin-replace'
 import {babel} from '@rollup/plugin-babel'
 import {nodeResolve} from '@rollup/plugin-node-resolve'
@@ -24,19 +23,7 @@ function toTitleCase(str) {
   return s
 }
 
-
-// const makeGlobals = (pkgJson) => {
-//   const pkgs= Object.keys(pkgJson?.dependencies || [])
-//   const globals= {}
-//   pkgs.map((n) => {
-//     globals[n]= toTitleCase(n)
-//   })
-//   return globals
-// }
-
-
 function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
-  //const bundleDeps= true
   //const pkgJsonPath= path.join(pkgPath, 'package.json')
   //const input= arreConfig.demo_entry
 
@@ -67,11 +54,6 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
           ['@babel/preset-react']
         ]
       }),      
-      //externals({
-      //  packagePath: pkgJsonPath,
-      //  deps: !bundleDeps,
-      //  peerDeps: !bundleDeps
-      //}),
       replace({
         preventAssignment: true,
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
@@ -85,7 +67,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
       }),
       scss()
     ],
-    //external: ['react', 'react-dom', 'react-router-dom', 'markdown-to-jsx']
+    external: ['react', 'react-dom', 'react-router-dom', 'markdown-to-jsx']
   }
   
   const outputs= [
@@ -94,8 +76,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
       format: 'iife',
       exports: 'named',
       sourcemap: true,
-      name: toTitleCase(pkgJson.name),
-      //globals: makeGlobals(pkgJson)      
+      name: toTitleCase(pkgJson.name),   
       globals: {
         'react': 'React',
         'react-dom': 'ReactDOM',
@@ -111,7 +92,6 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
     //    terser({ ecma: 8, safari10: true })
     //  ],
     //  name: toTitleCase(pkgJson.name),
-    //  globals: makeGlobals(pkgJson)   
     //}    
   ]
   
