@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { /*useRef,*/ useState/*, useEffect*/ } from 'react'
 import Page from 'app/layout/Page.jsx'
 // import parseMenu from './parseMenu.mjs'
-// import useAppContext from 'app/context/useAppContext.mjs'
+//import useAppContext from 'app/context/useAppContext.mjs'
 
 const Demo = () => {
-  const context = useAppContext()
+  //const context = useAppContext()
   //const demoRef= useRef(undefined)
   const [menu, setMenu]= useState([])
 
@@ -30,7 +30,8 @@ const Demo = () => {
   console.log(`Demo render`)
 
   return (
-    <Page menu  = {menu}> 
+    <Page menu  = {menu}
+          path = 'demo'> 
       <div id="arredemo_demo"
            /*ref={demoRef}*/
            >

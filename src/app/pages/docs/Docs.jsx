@@ -18,11 +18,10 @@ const Docs = ({readme}) => {
     const nMenu = getMenuFromMdDOM()
     setMenu(nMenu)
   }, [])
-
-  console.log('NOW DOCS')
-
+  
   return (
-    <Page menu = {menu}>
+    <Page menu = {menu}
+          path = 'docs'>
       <DocsMd readme={readme}/>
     </Page>
   )

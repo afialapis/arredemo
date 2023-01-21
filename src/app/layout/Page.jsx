@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react'
-import {useLocation} from 'react-router-dom'
+import React, {useState} from 'react'
 import Header from 'app/layout/Header.jsx'
 import Menu from 'app/layout/Menu.jsx'
 import Footer from 'app/layout/Footer.jsx'
@@ -7,18 +6,9 @@ import VersionSwitcher from './VersionSwitcher.jsx'
 import useActiveOption from './hooks/useActiveOption.mjs'
 import { domScrollTo } from 'app/util/dom.mjs'
 
-const getPath = (loc) => loc.pathname.split('/')[1] == 'demo' ? 'demo' : 'docs'
-
-
-const Page = ({menu, children}) => {
-  const location= useLocation()
-  const [path, setPath]= useState(getPath(location))
+const Page = ({path, menu, children}) => {
   const [responsiveOpen, setResponsiveOpen]= useState(false)
   const activeOption = useActiveOption(menu)
-
-  useEffect(() => {
-    setPath(getPath(location))
-  }, [location])
   
   const handleOpenMenu = (idx) => {
     setResponsiveOpen(false)

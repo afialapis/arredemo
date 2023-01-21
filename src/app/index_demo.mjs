@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from 'app/App.jsx'
+import AppDemo from 'app/AppDemo.jsx'
 
 import 'app/assets/scss/index.scss'
 
@@ -14,7 +14,6 @@ const arreConfig = JSON.parse(`
 _ARRE_CONFIG_
 `)
 
-_READMES_
 
 /*
 ReactDOM.render(
@@ -29,11 +28,11 @@ ReactDOM.render(
 
 ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
   <React.StrictMode>
-    <App 
+    <AppDemo 
       pkgPath = {pkgPath}
       pkgJson = {pkgJson}
       arreConfig = {arreConfig}
-      readmes = {readmes}
+      
     />
   </React.StrictMode>
 );

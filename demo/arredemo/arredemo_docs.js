@@ -1,4 +1,4 @@
-(function (React, ReactDOM, reactRouterDom, Markdown) {
+(function (React, ReactDOM, Markdown) {
   'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -54,10 +54,10 @@
       className: "toolbar"
     }, has_demo ? /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("a", {
       className: "link demo " + (path == 'demo' ? 'dark' : 'light'),
-      href: "/demo"
+      href: "demo.html"
     }, 'Demo'), /*#__PURE__*/React__default["default"].createElement("a", {
       className: "link docs " + (path == 'docs' ? 'dark' : 'light'),
-      href: "/docs"
+      href: "docs.html"
     }, 'Docs')) : null, /*#__PURE__*/React__default["default"].createElement(RepoLink, null)), /*#__PURE__*/React__default["default"].createElement("div", {
       className: "toggler",
       onClick: function onClick() {
@@ -370,23 +370,23 @@
     */
   };
 
-  var getPath = function getPath(loc) {
-    return loc.pathname.split('/')[1] == 'demo' ? 'demo' : 'docs';
-  };
+  //const getPath = (loc) => loc.pathname.split('/')[1] == 'demo' ? 'demo' : 'docs'
+
   var Page = function Page(_ref) {
-    var menu = _ref.menu,
+    var path = _ref.path,
+      menu = _ref.menu,
       children = _ref.children;
-    var location = reactRouterDom.useLocation();
-    var _useState = React.useState(getPath(location)),
-      path = _useState[0],
-      setPath = _useState[1];
-    var _useState2 = React.useState(false),
-      responsiveOpen = _useState2[0],
-      setResponsiveOpen = _useState2[1];
+    //const location= useLocation()
+    //const [path, setPath]= useState(getPath(location))
+    var _useState = React.useState(false),
+      responsiveOpen = _useState[0],
+      setResponsiveOpen = _useState[1];
     var activeOption = useActiveOption(menu);
-    React.useEffect(function () {
-      setPath(getPath(location));
-    }, [location]);
+
+    //useEffect(() => {
+    //  setPath(getPath(location))
+    //}, [location])
+
     var handleOpenMenu = function handleOpenMenu(idx) {
       setResponsiveOpen(false);
       var hid = menu[idx].id.replace('menu-', '');
@@ -416,6 +416,9 @@
     }, children, /*#__PURE__*/React__default["default"].createElement(Footer, null))));
   };
 
+  var WrapperP = function WrapperP(props) {
+    return /*#__PURE__*/React__default["default"].createElement("div", props);
+  };
   var DocsMd = function DocsMd(_ref) {
     var readme = _ref.readme;
     var options = {
@@ -434,6 +437,9 @@
           props: {
             className: 'prettyprint'
           }
+        },
+        p: {
+          component: WrapperP
         }
       },
       slugify: slugify
@@ -457,15 +463,15 @@
       var nMenu = getMenuFromMdDOM();
       setMenu(nMenu);
     }, []);
-    console.log('NOW DOCS');
     return /*#__PURE__*/React__default["default"].createElement(Page, {
-      menu: menu
+      menu: menu,
+      path: "docs"
     }, /*#__PURE__*/React__default["default"].createElement(DocsMd, {
       readme: readme
     }));
   };
 
-  var App = function App(_ref) {
+  var AppDocs = function AppDocs(_ref) {
     var pkgPath = _ref.pkgPath,
       pkgJson = _ref.pkgJson,
       arreConfig = _ref.arreConfig,
@@ -483,20 +489,6 @@
       setSelectedVersion(nVersion);
       setReadme(readmes[nVersion]);
     }, []);
-    var router = reactRouterDom.createBrowserRouter(reactRouterDom.createRoutesFromElements(
-    /*#__PURE__*/
-    /*{arreConfig.has_demo
-     ? <Route path={'/demo'} element={<Demo/>}/>
-     : null
-     }*/
-    React__default["default"].createElement(reactRouterDom.Route, {
-      path: '/',
-      element: /*#__PURE__*/React__default["default"].createElement(Docs, {
-        readme: readme
-      })
-    })));
-    console.log('Rendering app, router is');
-    console.log(router);
     return /*#__PURE__*/React__default["default"].createElement(AppContext.Provider, {
       value: {
         pkgPath: pkgPath,
@@ -507,8 +499,8 @@
         readme: readme,
         onSwicthVersion: onSwicthVersion
       }
-    }, /*#__PURE__*/React__default["default"].createElement(reactRouterDom.RouterProvider, {
-      router: router
+    }, /*#__PURE__*/React__default["default"].createElement(Docs, {
+      readme: readme
     }));
   };
 
@@ -561,12 +553,12 @@
     document.getElementById('arredemo-app'))
   */
 
-  ReactDOM__default["default"].createRoot(document.getElementById("arredemo-app")).render( /*#__PURE__*/React__default["default"].createElement(React__default["default"].StrictMode, null, /*#__PURE__*/React__default["default"].createElement(App, {
+  ReactDOM__default["default"].createRoot(document.getElementById("arredemo-app")).render( /*#__PURE__*/React__default["default"].createElement(React__default["default"].StrictMode, null, /*#__PURE__*/React__default["default"].createElement(AppDocs, {
     pkgPath: pkgPath,
     pkgJson: pkgJson,
     arreConfig: arreConfig,
     readmes: readmes
   })));
 
-})(React, ReactDOM, ReactRouterDOM, MarkdownToJSX);
-//# sourceMappingURL=bundle.js.map
+})(React, ReactDOM, MarkdownToJSX);
+//# sourceMappingURL=arredemo_docs.js.map

@@ -83,10 +83,10 @@ const renderArreDemoApp = (pkgPath, pkgJson, arreConfig, readmes) => {
   // render template /app to pkg/arredemo/_temp
   //  except index.html, wich already goes to pkg/arredemo/index.html
   copyFolderSync(tmplFolder, outFolder, (sourceEl, destEl) => {
-    if (path.basename(destEl) == 'index.html') {
+    if ( ['index.html', 'demo.html', 'docs.html'].indexOf(path.basename(destEl))>=0) {
       return () => _renderIndexHtml(sourceEl, destEl.replace(`${path.sep}_temp`, ''), pkgJson, arreConfig)
     }
-    if (path.basename(destEl) == 'index.mjs') {
+    if (['index_demo.mjs', 'index_docs.mjs'].indexOf(path.basename(destEl))>=0) {
       return () => _renderIndexJs(sourceEl, destEl, pkgPath, pkgJson, arreConfig, readmes)
     }
     return undefined

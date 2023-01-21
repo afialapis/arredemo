@@ -19,11 +19,11 @@ const Header = ({path, responsiveOpen, onResponsiveToggle}) => {
         <div className="toolbar">
           {has_demo
            ? <>
-              <a className={`link demo ${path=='demo' ? 'dark' : 'light'}`} href='/demo'>
+              <a className={`link demo ${path=='demo' ? 'dark' : 'light'}`} href='demo.html'>
                 {'Demo'}
               </a>
 
-              <a className={`link docs ${path=='docs' ? 'dark' : 'light'}`} href='/docs'>
+              <a className={`link docs ${path=='docs' ? 'dark' : 'light'}`} href='docs.html'>
                 {'Docs'}
               </a>
             </>

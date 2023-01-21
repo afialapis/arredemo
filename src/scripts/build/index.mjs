@@ -44,9 +44,13 @@ async function makeArreDemoBuild (pkgPath, arreConfig) {
   console.log(`[arredemo] ${cyan('Rendering app')}...`)
   const rendFolder = renderArreDemoApp(pkgPath, pkgJson, arreConfig, readmes) 
   
-  console.log(`[arredemo] ${cyan('Building app')}...`)
-  const [inputOptions, outputOptionsList] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder)
-  const _buildOk = await rollupBuild(inputOptions, outputOptionsList)
+  console.log(`[arredemo] ${cyan('Building docs page')}...`)
+  const [inputOptionsForDocs, outputOptionsListForDocs] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_docs.mjs', 'arredemo_docs.js')
+  const _buildOkForDocs = await rollupBuild(inputOptionsForDocs, outputOptionsListForDocs)
+
+  console.log(`[arredemo] ${cyan('Building demo page')}...`)
+  const [inputOptionsForDemo, outputOptionsListForDemo] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_demo.mjs', 'arredemo_demo.js')
+  const _buildOkForDemo = await rollupBuild(inputOptionsForDemo, outputOptionsListForDemo)  
 
   console.log(`[arredemo] ${cyan('Cleaning')}...`)
   cleanArreDemoApp(pkgPath)

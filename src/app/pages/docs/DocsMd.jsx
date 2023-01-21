@@ -2,6 +2,11 @@ import React from 'react'
 import Markdown from 'markdown-to-jsx'
 import { slugify } from 'app/util/text.mjs'
 
+const WrapperP = (props) => {
+  return (
+    <div {...props}/>
+  )
+}
 
 const DocsMd = ({readme}) => {
   const options= {
@@ -21,6 +26,9 @@ const DocsMd = ({readme}) => {
           className: 'prettyprint'
         },
       },
+      p: {
+        component: WrapperP
+      }
     }, 
     slugify: slugify 
   }

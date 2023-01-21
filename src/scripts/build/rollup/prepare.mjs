@@ -9,7 +9,7 @@ import scss from 'rollup-plugin-postcss'
 const NODE_ENV = 'production'
 
 
-const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
+// const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
 
 function toTitleCase(str) {
   let s= str.replace(
@@ -23,14 +23,14 @@ function toTitleCase(str) {
   return s
 }
 
-function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
+function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, inputName, outputName) {
   //const pkgJsonPath= path.join(pkgPath, 'package.json')
   //const input= arreConfig.demo_entry
 
-  const input = path.join(rendFolder, 'index.mjs')
+  const input = path.join(rendFolder, inputName)
 
   const outFolder = path.join(pkgPath, 'arredemo')
-  const output= path.join(outFolder, 'bundle.js')
+  const output= path.join(outFolder, outputName)
 
   const inputOptions= {
     input,
@@ -67,7 +67,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
       }),
       scss()
     ],
-    external: ['react', 'react-dom', 'react-router-dom', 'markdown-to-jsx']
+    external: ['react', 'react-dom', 'markdown-to-jsx']
   }
   
   const outputs= [
@@ -80,7 +80,6 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder) {
       globals: {
         'react': 'React',
         'react-dom': 'ReactDOM',
-        'react-router-dom': 'ReactRouterDOM',
         'markdown-to-jsx': 'MarkdownToJSX',
       }
     },
