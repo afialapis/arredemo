@@ -1,344 +1,12 @@
-(function (React, ReactDOM$1) {
+(function (React, ReactDOM) {
   'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-  var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM$1);
+  var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
   var AppContext = /*#__PURE__*/React__default["default"].createContext();
-
-  function _regeneratorRuntime() {
-    _regeneratorRuntime = function () {
-      return exports;
-    };
-    var exports = {},
-      Op = Object.prototype,
-      hasOwn = Op.hasOwnProperty,
-      defineProperty = Object.defineProperty || function (obj, key, desc) {
-        obj[key] = desc.value;
-      },
-      $Symbol = "function" == typeof Symbol ? Symbol : {},
-      iteratorSymbol = $Symbol.iterator || "@@iterator",
-      asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
-      toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-    function define(obj, key, value) {
-      return Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-      }), obj[key];
-    }
-    try {
-      define({}, "");
-    } catch (err) {
-      define = function (obj, key, value) {
-        return obj[key] = value;
-      };
-    }
-    function wrap(innerFn, outerFn, self, tryLocsList) {
-      var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
-        generator = Object.create(protoGenerator.prototype),
-        context = new Context(tryLocsList || []);
-      return defineProperty(generator, "_invoke", {
-        value: makeInvokeMethod(innerFn, self, context)
-      }), generator;
-    }
-    function tryCatch(fn, obj, arg) {
-      try {
-        return {
-          type: "normal",
-          arg: fn.call(obj, arg)
-        };
-      } catch (err) {
-        return {
-          type: "throw",
-          arg: err
-        };
-      }
-    }
-    exports.wrap = wrap;
-    var ContinueSentinel = {};
-    function Generator() {}
-    function GeneratorFunction() {}
-    function GeneratorFunctionPrototype() {}
-    var IteratorPrototype = {};
-    define(IteratorPrototype, iteratorSymbol, function () {
-      return this;
-    });
-    var getProto = Object.getPrototypeOf,
-      NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-    NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
-    var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-    function defineIteratorMethods(prototype) {
-      ["next", "throw", "return"].forEach(function (method) {
-        define(prototype, method, function (arg) {
-          return this._invoke(method, arg);
-        });
-      });
-    }
-    function AsyncIterator(generator, PromiseImpl) {
-      function invoke(method, arg, resolve, reject) {
-        var record = tryCatch(generator[method], generator, arg);
-        if ("throw" !== record.type) {
-          var result = record.arg,
-            value = result.value;
-          return value && "object" == typeof value && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
-            invoke("next", value, resolve, reject);
-          }, function (err) {
-            invoke("throw", err, resolve, reject);
-          }) : PromiseImpl.resolve(value).then(function (unwrapped) {
-            result.value = unwrapped, resolve(result);
-          }, function (error) {
-            return invoke("throw", error, resolve, reject);
-          });
-        }
-        reject(record.arg);
-      }
-      var previousPromise;
-      defineProperty(this, "_invoke", {
-        value: function (method, arg) {
-          function callInvokeWithMethodAndArg() {
-            return new PromiseImpl(function (resolve, reject) {
-              invoke(method, arg, resolve, reject);
-            });
-          }
-          return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
-        }
-      });
-    }
-    function makeInvokeMethod(innerFn, self, context) {
-      var state = "suspendedStart";
-      return function (method, arg) {
-        if ("executing" === state) throw new Error("Generator is already running");
-        if ("completed" === state) {
-          if ("throw" === method) throw arg;
-          return doneResult();
-        }
-        for (context.method = method, context.arg = arg;;) {
-          var delegate = context.delegate;
-          if (delegate) {
-            var delegateResult = maybeInvokeDelegate(delegate, context);
-            if (delegateResult) {
-              if (delegateResult === ContinueSentinel) continue;
-              return delegateResult;
-            }
-          }
-          if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
-            if ("suspendedStart" === state) throw state = "completed", context.arg;
-            context.dispatchException(context.arg);
-          } else "return" === context.method && context.abrupt("return", context.arg);
-          state = "executing";
-          var record = tryCatch(innerFn, self, context);
-          if ("normal" === record.type) {
-            if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
-            return {
-              value: record.arg,
-              done: context.done
-            };
-          }
-          "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
-        }
-      };
-    }
-    function maybeInvokeDelegate(delegate, context) {
-      var methodName = context.method,
-        method = delegate.iterator[methodName];
-      if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
-      var record = tryCatch(method, delegate.iterator, context.arg);
-      if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
-      var info = record.arg;
-      return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
-    }
-    function pushTryEntry(locs) {
-      var entry = {
-        tryLoc: locs[0]
-      };
-      1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
-    }
-    function resetTryEntry(entry) {
-      var record = entry.completion || {};
-      record.type = "normal", delete record.arg, entry.completion = record;
-    }
-    function Context(tryLocsList) {
-      this.tryEntries = [{
-        tryLoc: "root"
-      }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
-    }
-    function values(iterable) {
-      if (iterable) {
-        var iteratorMethod = iterable[iteratorSymbol];
-        if (iteratorMethod) return iteratorMethod.call(iterable);
-        if ("function" == typeof iterable.next) return iterable;
-        if (!isNaN(iterable.length)) {
-          var i = -1,
-            next = function next() {
-              for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
-              return next.value = undefined, next.done = !0, next;
-            };
-          return next.next = next;
-        }
-      }
-      return {
-        next: doneResult
-      };
-    }
-    function doneResult() {
-      return {
-        value: undefined,
-        done: !0
-      };
-    }
-    return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
-      value: GeneratorFunctionPrototype,
-      configurable: !0
-    }), defineProperty(GeneratorFunctionPrototype, "constructor", {
-      value: GeneratorFunction,
-      configurable: !0
-    }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
-      var ctor = "function" == typeof genFun && genFun.constructor;
-      return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
-    }, exports.mark = function (genFun) {
-      return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
-    }, exports.awrap = function (arg) {
-      return {
-        __await: arg
-      };
-    }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
-      return this;
-    }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-      void 0 === PromiseImpl && (PromiseImpl = Promise);
-      var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
-      return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
-        return result.done ? result.value : iter.next();
-      });
-    }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
-      return this;
-    }), define(Gp, "toString", function () {
-      return "[object Generator]";
-    }), exports.keys = function (val) {
-      var object = Object(val),
-        keys = [];
-      for (var key in object) keys.push(key);
-      return keys.reverse(), function next() {
-        for (; keys.length;) {
-          var key = keys.pop();
-          if (key in object) return next.value = key, next.done = !1, next;
-        }
-        return next.done = !0, next;
-      };
-    }, exports.values = values, Context.prototype = {
-      constructor: Context,
-      reset: function (skipTempReset) {
-        if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
-      },
-      stop: function () {
-        this.done = !0;
-        var rootRecord = this.tryEntries[0].completion;
-        if ("throw" === rootRecord.type) throw rootRecord.arg;
-        return this.rval;
-      },
-      dispatchException: function (exception) {
-        if (this.done) throw exception;
-        var context = this;
-        function handle(loc, caught) {
-          return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
-        }
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i],
-            record = entry.completion;
-          if ("root" === entry.tryLoc) return handle("end");
-          if (entry.tryLoc <= this.prev) {
-            var hasCatch = hasOwn.call(entry, "catchLoc"),
-              hasFinally = hasOwn.call(entry, "finallyLoc");
-            if (hasCatch && hasFinally) {
-              if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
-              if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
-            } else if (hasCatch) {
-              if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
-            } else {
-              if (!hasFinally) throw new Error("try statement without catch or finally");
-              if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
-            }
-          }
-        }
-      },
-      abrupt: function (type, arg) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
-            var finallyEntry = entry;
-            break;
-          }
-        }
-        finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
-        var record = finallyEntry ? finallyEntry.completion : {};
-        return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
-      },
-      complete: function (record, afterLoc) {
-        if ("throw" === record.type) throw record.arg;
-        return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
-      },
-      finish: function (finallyLoc) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
-        }
-      },
-      catch: function (tryLoc) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          if (entry.tryLoc === tryLoc) {
-            var record = entry.completion;
-            if ("throw" === record.type) {
-              var thrown = record.arg;
-              resetTryEntry(entry);
-            }
-            return thrown;
-          }
-        }
-        throw new Error("illegal catch attempt");
-      },
-      delegateYield: function (iterable, resultName, nextLoc) {
-        return this.delegate = {
-          iterator: values(iterable),
-          resultName: resultName,
-          nextLoc: nextLoc
-        }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
-      }
-    }, exports;
-  }
-  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-      var info = gen[key](arg);
-      var value = info.value;
-    } catch (error) {
-      reject(error);
-      return;
-    }
-    if (info.done) {
-      resolve(value);
-    } else {
-      Promise.resolve(value).then(_next, _throw);
-    }
-  }
-  function _asyncToGenerator(fn) {
-    return function () {
-      var self = this,
-        args = arguments;
-      return new Promise(function (resolve, reject) {
-        var gen = fn.apply(self, args);
-        function _next(value) {
-          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-        }
-        function _throw(err) {
-          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-        }
-        _next(undefined);
-      });
-    };
-  }
 
   var useAppContext = function useAppContext() {
     var context = React.useContext(AppContext);
@@ -677,59 +345,295 @@
     }, children, /*#__PURE__*/React__default["default"].createElement(Footer, null))));
   };
 
+  var re = { exports: {} }, V = {};
+  /**
+   * @license React
+   * react-jsx-runtime.production.min.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+  var Le;
+  function vr() {
+    if (Le)
+      return V;
+    Le = 1;
+    var f = React__default["default"], h = Symbol.for("react.element"), y = Symbol.for("react.fragment"), w = Object.prototype.hasOwnProperty, P = f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, D = { key: !0, ref: !0, __self: !0, __source: !0 };
+    function j(E, d, T) {
+      var g, b = {}, O = null, u = null;
+      T !== void 0 && (O = "" + T), d.key !== void 0 && (O = "" + d.key), d.ref !== void 0 && (u = d.ref);
+      for (g in d)
+        w.call(d, g) && !D.hasOwnProperty(g) && (b[g] = d[g]);
+      if (E && E.defaultProps)
+        for (g in d = E.defaultProps, d)
+          b[g] === void 0 && (b[g] = d[g]);
+      return { $$typeof: h, type: E, key: O, ref: u, props: b, _owner: P.current };
+    }
+    return V.Fragment = y, V.jsx = j, V.jsxs = j, V;
+  }
+  (function(f) {
+    f.exports = vr() ;
+  })(re);
+  const hr = re.exports.Fragment, W = re.exports.jsx, gr = re.exports.jsxs, mr = String.raw;
+  function yr({
+    child: f,
+    sliderWidth: h,
+    sliderHeight: y,
+    scaleOnDrag: w = !1
+  }) {
+    const P = React.useRef(null), D = () => {
+      w && P.current && (P.current.style.transform = "scale(0.9)");
+    }, j = () => {
+      w && P.current && (P.current.style.transform = "scale(1)");
+    };
+    return /* @__PURE__ */ gr(hr, {
+      children: [/* @__PURE__ */ W("style", {
+        children: mr`
+          .rtds-single-slide-styles img {
+            max-width: 100%;
+            max-height: 100%;
+          }
+        `
+      }), /* @__PURE__ */ W("div", {
+        ref: P,
+        style: {
+          width: `${h}px`,
+          height: `${y}px`,
+          transition: "transform 0.2s ease-out"
+        },
+        className: "rtds-single-slide-styles",
+        children: /* @__PURE__ */ W("div", {
+          style: {
+            padding: "1rem",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            userSelect: "none"
+          },
+          onPointerDown: D,
+          onPointerUp: j,
+          onPointerLeave: j,
+          onDragStart: (E) => (E.preventDefault(), E.stopPropagation(), !1),
+          children: f
+        })
+      })]
+    });
+  }
+  function ee(f) {
+    const h = f.clientWidth, y = f.clientHeight;
+    return { width: h, height: y };
+  }
+  if (undefined) {
+    const { it: f, expect: h } = undefined, y = document.createElement("div");
+    f("Gets an elements dimensions", () => {
+      h(ee(y)).toStrictEqual({
+        width: 0,
+        height: 0
+      });
+    });
+  }
+  function br({
+    children: f,
+    onSlideComplete: h,
+    onSlideStart: y,
+    activeIndex: w = null,
+    threshHold: P = 100,
+    transition: D = 0.3,
+    scaleOnDrag: j = !1
+  }) {
+    const [E, d] = React.useState({
+      width: 0,
+      height: 0
+    }), T = React.useRef(!1), g = React.useRef(0), b = React.useRef(0), O = React.useRef(0), u = React.useRef(0), v = React.useRef(null), B = React.useRef(null), k = React.useCallback((m = E.width) => {
+      b.current = u.current * -m, O.current = b.current, J();
+    }, [E.width]), _ = React.useCallback(() => {
+      v.current && (v.current.style.transition = `transform ${D}s ease-out`);
+    }, [D]), p = () => {
+      v.current && (v.current.style.transition = "none");
+    };
+    React.useEffect(() => {
+      w !== u.current && (_(), u.current = w, k());
+    }, [w, k, _]), React.useLayoutEffect(() => {
+      v.current && (p(), d(ee(v.current)), k(ee(v.current).width));
+    }, [k]), React.useEffect(() => {
+      const m = () => {
+        if (p(), v.current) {
+          const {
+            width: S,
+            height: I
+          } = ee(v.current);
+          d({
+            width: S,
+            height: I
+          }), k(S);
+        }
+      }, C = ({
+        key: S
+      }) => {
+        const I = ["ArrowRight", "ArrowLeft"].includes(S);
+        I && _(), I && y && y(u.current), S === "ArrowRight" && u.current < f.length - 1 && (u.current += 1), S === "ArrowLeft" && u.current > 0 && (u.current -= 1), I && h && h(u.current), k();
+      };
+      return window.addEventListener("resize", m), window.addEventListener("keydown", C), () => {
+        window.removeEventListener("resize", m), window.removeEventListener("keydown", C);
+      };
+    }, [f.length, k, h, y, _]);
+    function te(m) {
+      return function(C) {
+        _(), u.current = m, g.current = C.pageX, T.current = !0, B.current = requestAnimationFrame(G), v.current && (v.current.style.cursor = "grabbing"), y && y(u.current);
+      };
+    }
+    function ne(m) {
+      if (T.current) {
+        const C = m.pageX;
+        b.current = O.current + C - g.current;
+      }
+    }
+    function z() {
+      _(), cancelAnimationFrame(B.current), T.current = !1;
+      const m = b.current - O.current;
+      m < -P && u.current < f.length - 1 && (u.current += 1), m > P && u.current > 0 && (u.current -= 1), _(), k(), v.current.style.cursor = "grab", h && h(u.current);
+    }
+    function G() {
+      J(), T.current && requestAnimationFrame(G);
+    }
+    function J() {
+      !v.current || (v.current.style.transform = `translateX(${b.current}px)`);
+    }
+    return /* @__PURE__ */ W("div", {
+      className: "rtds-slider-wrapper",
+      style: {
+        overflow: "hidden",
+        width: "100%",
+        height: "100%",
+        maxHeight: "100vh"
+      },
+      children: /* @__PURE__ */ W("div", {
+        "data-testid": "slider",
+        ref: v,
+        className: "rtds-slider-styles",
+        style: {
+          all: "initial",
+          width: "100%",
+          height: "100%",
+          maxHeight: "100vh",
+          display: "inline-flex",
+          willChange: "transform, scale",
+          cursor: "grab"
+        },
+        children: f.map((m, C) => /* @__PURE__ */ W("div", {
+          onPointerDown: te(C),
+          onPointerMove: ne,
+          onPointerUp: z,
+          onPointerLeave: () => {
+            T.current && z();
+          },
+          onContextMenu: (S) => {
+            S.preventDefault(), S.stopPropagation();
+          },
+          className: "slide-outer",
+          style: {
+            touchAction: "none"
+          },
+          children: /* @__PURE__ */ W(yr, {
+            child: m,
+            sliderWidth: E.width,
+            sliderHeight: E.height,
+            scaleOnDrag: j
+          })
+        }, m.key))
+      })
+    });
+  }
+
+  var images = [{
+    url: 'https://www.pngitem.com/pimgs/m/132-1329566_dc-comics-heroes-png-transparent-png.png',
+    title: 'batman'
+  }, {
+    url: 'https://www.pngitem.com/pimgs/m/505-5059412_marvel-heros-png-png-marvel-hero-transparent-png.png',
+    title: 'DeadPool'
+  }, {
+    url: 'https://static.wikia.nocookie.net/p__/images/e/e1/Mario_SSB4.png/revision/latest?cb=20201230192449&path-prefix=protagonist',
+    title: 'Super Mario'
+  }, {
+    url: 'https://www.freepnglogos.com/uploads/minions-png/minions-png-images-heroes-minions-transparent-21.png',
+    title: 'Minion'
+  }, {
+    url: 'https://www.pngitem.com/pimgs/m/122-1223582_gallery-image-heroes-of-the-storm-junkrat-png.png',
+    title: 'Junkrat'
+  }
+  //{url: '', title: ''},
+  ];
+
+  function App$1() {
+    console.log('[demo] Rendering demo/Demo/App');
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      style: {
+        height: "100vh",
+        width: "100vw"
+      }
+    }, /*#__PURE__*/React__default["default"].createElement(br, {
+      onSlideComplete: function onSlideComplete(i) {
+        console.log('finished dragging, current slide is', i);
+      },
+      onSlideStart: function onSlideStart(i) {
+        console.log('started dragging on slide', i);
+      },
+      activeIndex: 0,
+      threshHold: 100,
+      transition: 0.5,
+      scaleOnDrag: true
+    }, images.map(function (_ref, index) {
+      var url = _ref.url,
+        title = _ref.title;
+      return /*#__PURE__*/React__default["default"].createElement("img", {
+        src: url,
+        key: index,
+        alt: title
+      });
+    })));
+  }
+
+  var Demo$1 = function Demo() {
+    console.log('[demo] Rendering demo/Demo');
+    return /*#__PURE__*/React__default["default"].createElement(App$1, null);
+  };
+
   var Demo = function Demo() {
-    var _useAppContext = useAppContext(),
-      pkgPath = _useAppContext.pkgPath,
-      arreConfig = _useAppContext.arreConfig;
+    //const {pkgPath, arreConfig} = useAppContext()
     //const demoRef= useRef(undefined)
     var _useState = React.useState([]),
       menu = _useState[0];
       _useState[1];
-    console.log(pkgPath);
-    React.useEffect(function () {
-      function _renderDemo() {
-        return _renderDemo2.apply(this, arguments);
-      }
-      function _renderDemo2() {
-        _renderDemo2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-          var demo_styles, demo_entry, demoModule, DemoComponent;
-          return _regeneratorRuntime().wrap(function _callee$(_context) {
-            while (1) switch (_context.prev = _context.next) {
-              case 0:
-                demo_styles = arreConfig.demo_styles;
-                if (!demo_styles) {
-                  _context.next = 4;
-                  break;
-                }
-                _context.next = 4;
-                return import(demo_styles);
-              case 4:
-                demo_entry = "../" + arreConfig.demo_entry;
-                console.log("DEMO. Importing " + demo_entry);
-                _context.next = 8;
-                return import(demo_entry);
-              case 8:
-                demoModule = _context.sent;
-                DemoComponent = demoModule["default"]();
-                ReactDOM.render( /*#__PURE__*/React__default["default"].createElement(DemoComponent, null), document.getElementById('arredemo_demo'));
-              case 11:
-              case "end":
-                return _context.stop();
-            }
-          }, _callee);
-        }));
-        return _renderDemo2.apply(this, arguments);
-      }
-      _renderDemo();
-    }, []);
+
+    //  console.log(pkgPath)
+    //
+    //  useEffect(() => {
+    //    async function _renderDemo () {
+    //      const demo_styles = arreConfig.demo_styles
+    //      if (demo_styles) {
+    //        await import(demo_styles)
+    //      }
+    //
+    //      const demo_entry = `../${arreConfig.demo_entry}`
+    //
+    //      console.log(`DEMO. Importing ${demo_entry}`)
+    //      const demoModule = await import(demo_entry)
+    //      const DemoComponent = demoModule.default()
+    //
+    //      ReactDOM.render(<DemoComponent/>, document.getElementById('arredemo_demo'))
+    //    }
+    //    _renderDemo()
+    //
+    //  }, [])
+
     console.log("Demo render");
     return /*#__PURE__*/React__default["default"].createElement(Page, {
       menu: menu,
       path: "demo"
-    }, /*#__PURE__*/React__default["default"].createElement("div", {
-      id: "arredemo_demo"
-      /*ref={demoRef}*/
-    }));
+    }, /*#__PURE__*/React__default["default"].createElement(Demo$1, null));
   };
 
   var App = function App(_ref) {

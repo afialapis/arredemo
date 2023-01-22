@@ -7,20 +7,15 @@ const images= [
   {url: 'https://static.wikia.nocookie.net/p__/images/e/e1/Mario_SSB4.png/revision/latest?cb=20201230192449&path-prefix=protagonist', title: 'Super Mario'},
   {url: 'https://www.freepnglogos.com/uploads/minions-png/minions-png-images-heroes-minions-transparent-21.png', title: 'Minion'},
   {url: 'https://www.pngitem.com/pimgs/m/122-1223582_gallery-image-heroes-of-the-storm-junkrat-png.png', title: 'Junkrat'},
-  {url: '', title: ''},
+  //{url: '', title: ''},
 
 ]
 
 function App() {
 
   return (
+    <div style={{height: "100vh", width: "100vw"}}>
         <Slider
-          onSlideComplete={(i) => {
-            console.log('finished dragging, current slide is', i)
-          }}
-          onSlideStart={(i) => {
-            console.log('started dragging on slide', i)
-          }}
           activeIndex={0}
           threshHold={100}
           transition={0.5}
@@ -30,6 +25,7 @@ function App() {
             <img src={url} key={index} alt={title} />
           ))}
         </Slider>
+    </div>
   )
 }
 

@@ -2,7 +2,9 @@ import React from 'react'
 import App from '../src/index.mjs'
 
 const Demo = ( )=> {
-  <App/>
+  return (
+    <App/>
+  )
 }
 
 export default Demo
