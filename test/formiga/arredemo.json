@@ -1,0 +1,15 @@
+{
+  "theme": "default",
+  "favicon": "logo/favicon/formiga.ico",
+  "logo": "logo/formiga.png",
+  "company": "Afialapis",
+  "url": "formiga.afialapis.com",
+  "doc_versions": [
+    "0.1.2"
+  ],
+  "md": {
+    "keep_summary_content": false
+  },
+  "demo_entry": "demo/src/Demo.js",
+  "demo_styles": null
+}

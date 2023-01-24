@@ -1,0 +1,93 @@
+/**
+ * main styling
+ */
+
+
+body {
+  .formiga-title {
+    text-align: center;
+    color: $brand-black;
+    font-family: $font-primary;
+    font-weight: 200;    
+    background-image: url('assets/img/formiga.png');
+    background-repeat: no-repeat;
+    background-size: 15px;    
+  }
+
+  .formiga-container {
+    display: flex;
+
+    .formiga-form {
+      flex: 75%;
+
+
+
+      .formiga-form-inputs {
+        display: flex;
+        .formiga-form-inputs-left,
+        .formiga-form-inputs-middle,
+        .formiga-form-inputs-rigth {
+          flex: 33%;
+          padding: 0 2em;
+        }
+
+        .formiga-form-input-type-section { 
+          h2 {
+            border-bottom: 1px solid gray;
+          }
+        }    
+        
+        .formiga-form-input-type-section:not(:first-child) {
+          margin-top: 2em;
+  
+        }
+      }
+
+
+      .formiga-form-buttons {
+        text-align: center;
+        margin-top: 2em;
+      }
+    }
+    .formiga-resume {
+      flex: 25%;
+      padding-left: 2em;
+      .log {
+        color: gray;
+        font-size: 9pt;
+
+      }
+    }
+  }
+
+}
+
+
+
+/*
+.centered {
+  text-align: center;
+}
+
+.mgbottom {
+  margin-bottom: 2em;
+}
+
+.mgleft {
+  margin-left: 2em;
+}
+
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  margin: 0 2em;
+  background-color: #ece8e8;
+  padding: 1em;
+}
+*/
+
+

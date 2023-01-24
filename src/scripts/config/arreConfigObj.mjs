@@ -84,22 +84,22 @@ export class ArreConfigObj {
     return this.config?.md?.keep_summary_content || false
   }
   
-  get demo_entry() {
-    const demo_js= this.config.demo_entry
-    console.log('demo_entry???? + ' + demo_js)
-    if (_exists(demo_js, this.pkgPath)) {
-      return demo_js
-    }
-    return undefined    
-  }  
-
-  get demo_styles() {
-    const demo_css= this.config.demo_entry
-    if (_exists(demo_css, this.pkgPath)) {
-      return demo_css
-    }
-    return undefined   
-
-  }
+//  get demo_entry() {
+//    const demo_js= this.config.demo_entry
+//    console.log('demo_entry???? + ' + demo_js)
+//    if (_exists(demo_js, this.pkgPath)) {
+//      return demo_js
+//    }
+//    return undefined    
+//  }  
+//
+//  get demo_styles() {
+//    const demo_css= this.config.demo_entry
+//    if (_exists(demo_css, this.pkgPath)) {
+//      return demo_css
+//    }
+//    return undefined   
+//
+//  }
     
 }

@@ -71,6 +71,15 @@ const _renderIndexJs = (source, dest, pkgPath, pkgJson, arreConfig, readmes) => 
 }
 
 
+const _renderDemoJs = (source, dest, pkgPath, pkgJson, arreConfig, readmes) => {
+  let js= fs.readFileSync(source, {encoding:'utf8', flag:'r'})
+
+  js= js.replace(/_DEMO_ENTRY_/g, arreConfig.config.demo_entry)
+
+  fs.writeFileSync(dest, js, {encoding:'utf8'})
+}
+
+
 const renderArreDemoApp = (pkgPath, pkgJson, arreConfig, readmes) => {
   const tmplFolder = path.join(__dirname, '../../app')
   const arreFolder = path.join(pkgPath, 'arredemo')
@@ -88,6 +97,9 @@ const renderArreDemoApp = (pkgPath, pkgJson, arreConfig, readmes) => {
     }
     if (['index_demo.mjs', 'index_docs.mjs'].indexOf(path.basename(destEl))>=0) {
       return () => _renderIndexJs(sourceEl, destEl, pkgPath, pkgJson, arreConfig, readmes)
+    }
+    if (['Demo.jsx'].indexOf(path.basename(destEl))>=0) {
+      return () => _renderDemoJs(sourceEl, destEl, pkgPath, pkgJson, arreConfig, readmes)
     }
     return undefined
   })

@@ -4,13 +4,12 @@ import fetch from 'node-fetch'
 export default async function fetchPkgFile(pkgName, version, filename= 'README.md') {
 
   const url= getPkgFileUrl(pkgName, version, filename)
-  try {
-    const resp= await fetch(url)
-    const md= await resp.text()
-    return md
-  } catch(e) {
-    console.error(`Error fetching file ${filename} from ${url}`)
-    console.error(e)
-    return ''
+
+  const resp= await fetch(url)
+  if (resp.status!=200) {
+    throw new Error(`Unable to fetch file ${url}`)
   }
+  
+  const md= await resp.text()
+  return md
 }
