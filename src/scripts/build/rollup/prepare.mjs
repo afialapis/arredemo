@@ -4,12 +4,12 @@ import replace from '@rollup/plugin-replace'
 import {babel} from '@rollup/plugin-babel'
 import {nodeResolve} from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-// import { terser } from 'rollup-plugin-terser'
+import { terser } from 'rollup-plugin-terser'
 import scss from 'rollup-plugin-postcss'
 const NODE_ENV = 'production'
 
 
-// const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
+//const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
 
 function toTitleCase(str) {
   let s= str.replace(
@@ -72,6 +72,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
   
   const outputs= [
     {
+      //file: minifyExtension(output),
       file: output,
       format: 'iife',
       exports: 'named',
@@ -81,17 +82,11 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
         'react': 'React',
         'react-dom': 'ReactDOM',
         'markdown-to-jsx': 'MarkdownToJSX',
-      }
-    },
-    //{
-    //  file: minifyExtension(output),
-    //  format: 'iife',
-    //  exports: 'named',
-    //  plugins: [
-    //    terser({ ecma: 8, safari10: true })
-    //  ],
-    //  name: toTitleCase(pkgJson.name),
-    //}    
+      },
+      plugins: [
+        terser({ ecma: 8, safari10: true })
+      ],
+    }   
   ]
   
   return[inputOptions, outputs]
