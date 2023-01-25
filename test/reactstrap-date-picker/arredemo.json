@@ -10,6 +10,5 @@
   "md": {
     "keep_summary_content": false
   },
-  "demo_entry": "demo/demo.js",
-  "demo_styles": null
+  "demo_entry": "demo/demo.js"
 }

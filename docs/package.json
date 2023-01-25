@@ -1,0 +1,20 @@
+{
+  "name": "arredemo",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afialapis/arredemo.git"
+  },
+  "author": "donato@afialapis.com",
+  "license": "MIT",
+  "homepage": "https://github.com/afialapis/arredemo#readme",
+  "devDependencies": {
+    "arredemo": "file:../"
+  },
+  "scripts": {
+    "reset": "npm cache clean --force && rm -fr node_modules && npm run arredemo-clean && npm i",
+    "arredemo-clean": "rm -fr arredemo",
+    "arredemo-build": "npm run arredemo-clean && npx arredemo build"
+  }
+}

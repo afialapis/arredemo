@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import Page from 'app/layout/Page.jsx'
-import TheTestDemo from '../../../../_DEMO_ENTRY_'
+_DEMO_IMPORT_
 import parseMenu from './parseMenu.mjs'
 
 const Demo = () => {

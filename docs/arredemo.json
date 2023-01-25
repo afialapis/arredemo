@@ -1,8 +1,8 @@
-const defs= {
+{
   "theme": "default",
-  "favicon": "logo/favicon/arredemo.ico",
-  "logo": "logo/arredemo.png",
-  "company": "Arre Demo!",
+  "favicon": "../logo/favicon/arredemo.ico",
+  "logo": "../logo/arredemo.png",
+  "company": "Afialapis",
   "url": "arredemo.afialapis.com",
   "doc_versions": [
     "0.0.1"
@@ -12,6 +12,3 @@ const defs= {
   },
   "demo_entry": null
 }
-
-
-export default defs

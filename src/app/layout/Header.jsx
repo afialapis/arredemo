@@ -5,10 +5,9 @@ import RepoLink from 'app/layout/components/RepoLink.jsx'
 
 
 const Header = ({path, responsiveOpen, onResponsiveToggle}) => {
-  const context = useAppContext()
-  const has_demo = context.arreConfig.demo_entry != ''
-  
-  const logo= `url(../${context.arreConfig.logo})`
+  const {arreConfig} = useAppContext()
+  const has_demo = arreConfig.demo_entry != null
+  const logo= `url(../${arreConfig.logo})`
 
   return (
 

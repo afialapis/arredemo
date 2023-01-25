@@ -1,0 +1,35 @@
+body.arredemo {
+  pre {
+    display: block;
+    padding: 1.5em 1em !important;
+    border: 1px solid #bebab0;
+    overflow-x: auto;
+  }
+
+  /* inline code sections */
+  code {
+    color: var(--inline-code-color);
+    text-decoration-color: var(--inline-code-color);
+    word-wrap: break-word;
+    font-family: "Liberation Mono","Courier New",monospace;
+
+
+  }
+
+  pre.prettyprint {
+    background-color: var(--code-bg-color);
+
+    code {
+      line-height: 1em;
+      font-size: 10pt;
+    }  
+  }
+
+
+  a :has(code),
+  .link:has(code) {
+    color: var(--inline-code-color);
+    text-decoration-color: var(--inline-code-color);
+  }
+
+}

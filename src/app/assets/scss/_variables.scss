@@ -3,16 +3,23 @@
   --font-size: 12pt;
   --font-size-sm: 9pt;
 
-  --primary-color: #432E30;
-  --primary-color-light: #8E7474;
+  --heading-color-l1: #432E30;
+  --heading-color-l2: #756060;
+  --heading-color-l3: #8E7474;
+
   --accent-color: #DD356E;
-  --accent-color-light: #f0b9cb;
-  /*--accent-color-light: #FFE4E4;
-  --accent-color-dark: #B94B4C;*/
+  --accent-color-light: #df608a;
+
+  --action-color: #DD356E;
+  --action-color-light: #df608a;
+
+  --link-color: #DD356E;
+  --link-color-light: #df608a;  
+
+  --inline-code-color: #5e5656;
+
   --white-color: #FAFBFC;
-  /*--light-gray-color: #C6CBD1;
-  --medium-gray-color: #959DA5;
-  --dark-gray-color: #444D56; */
+
   --header-bg-color: #F8F8FA;
   --header-bg-color-secondary: #e4e4f7;
   --code-bg-color: #f9f9f9;

@@ -26,6 +26,5 @@ export default [
   "doc_versions": ["0.0.50", "0.0.60", "0.0.61", "0.0.62"],
 
   "demo_entry": "demo/index.js",
-  "demo_styles": "demo/styles.scss",
 }
 */

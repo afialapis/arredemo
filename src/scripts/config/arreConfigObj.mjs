@@ -93,13 +93,5 @@ export class ArreConfigObj {
 //    return undefined    
 //  }  
 //
-//  get demo_styles() {
-//    const demo_css= this.config.demo_entry
-//    if (_exists(demo_css, this.pkgPath)) {
-//      return demo_css
-//    }
-//    return undefined   
-//
-//  }
     
 }

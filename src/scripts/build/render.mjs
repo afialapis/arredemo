@@ -74,7 +74,10 @@ const _renderIndexJs = (source, dest, pkgPath, pkgJson, arreConfig, readmes) => 
 const _renderDemoJs = (source, dest, pkgPath, pkgJson, arreConfig, readmes) => {
   let js= fs.readFileSync(source, {encoding:'utf8', flag:'r'})
 
-  js= js.replace(/_DEMO_ENTRY_/g, arreConfig.config.demo_entry)
+  if (arreConfig.config.demo_entry!=null) {
+    const s= `import TheTestDemo from '../../../../${arreConfig.config.demo_entry}'`
+    js= js.replace(/_DEMO_IMPORT_/, s)
+  }
 
   fs.writeFileSync(dest, js, {encoding:'utf8'})
 }

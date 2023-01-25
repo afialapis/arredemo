@@ -1,8 +1,11 @@
 @import "variables.scss";
 @import "commons.scss";
-@import "header.scss";
-@import "toggler.scss";
-@import "menu.scss";
-@import "body.scss";
-@import "footer.scss";
-@import "loading.scss";
+//@import "components/loading.scss";
+@import "components/code.scss";
+@import "components/select.scss";
+@import "components/button.scss";
+@import "components/toggler.scss";
+@import "layout/body.scss";
+@import "layout/header.scss";
+@import "layout/menu.scss";
+@import "layout/footer.scss";

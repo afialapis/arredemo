@@ -21,7 +21,8 @@ const Footer = () => {
     <footer>
       <Badges/>
       <div className="license">
-        {`${pkgName} is sharpened by `}<Company company= {company} url= {url}/> under <License name={license}/> license
+        <span className="package-name">{pkgName}</span> is sharpened by <Company company= {company} url= {url}/> under <License name={license}/> license.
+        This site was built using <a href={`https://arredemo.afialapis.com`} target="_blank noopener noreferrer"><span className="package-name">arredemo</span></a>.
       </div>
     </footer>
   )

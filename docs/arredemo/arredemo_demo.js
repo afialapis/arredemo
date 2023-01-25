@@ -41,9 +41,10 @@
     var path = _ref.path,
       responsiveOpen = _ref.responsiveOpen,
       onResponsiveToggle = _ref.onResponsiveToggle;
-    var context = useAppContext();
-    var has_demo = context.arreConfig.demo_entry != '';
-    var logo = "url(../" + context.arreConfig.logo + ")";
+    var _useAppContext = useAppContext(),
+      arreConfig = _useAppContext.arreConfig;
+    var has_demo = arreConfig.demo_entry != null;
+    var logo = "url(../" + arreConfig.logo + ")";
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: "grid",
       style: {
@@ -394,256 +395,6 @@
     }, children, /*#__PURE__*/React__default["default"].createElement(Footer, null))));
   };
 
-  var re = { exports: {} }, V = {};
-  /**
-   * @license React
-   * react-jsx-runtime.production.min.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
-  var Le;
-  function vr() {
-    if (Le)
-      return V;
-    Le = 1;
-    var f = React__default["default"], h = Symbol.for("react.element"), y = Symbol.for("react.fragment"), w = Object.prototype.hasOwnProperty, P = f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, D = { key: !0, ref: !0, __self: !0, __source: !0 };
-    function j(E, d, T) {
-      var g, b = {}, O = null, u = null;
-      T !== void 0 && (O = "" + T), d.key !== void 0 && (O = "" + d.key), d.ref !== void 0 && (u = d.ref);
-      for (g in d)
-        w.call(d, g) && !D.hasOwnProperty(g) && (b[g] = d[g]);
-      if (E && E.defaultProps)
-        for (g in d = E.defaultProps, d)
-          b[g] === void 0 && (b[g] = d[g]);
-      return { $$typeof: h, type: E, key: O, ref: u, props: b, _owner: P.current };
-    }
-    return V.Fragment = y, V.jsx = j, V.jsxs = j, V;
-  }
-  (function(f) {
-    f.exports = vr() ;
-  })(re);
-  const hr = re.exports.Fragment, W = re.exports.jsx, gr = re.exports.jsxs, mr = String.raw;
-  function yr({
-    child: f,
-    sliderWidth: h,
-    sliderHeight: y,
-    scaleOnDrag: w = !1
-  }) {
-    const P = React.useRef(null), D = () => {
-      w && P.current && (P.current.style.transform = "scale(0.9)");
-    }, j = () => {
-      w && P.current && (P.current.style.transform = "scale(1)");
-    };
-    return /* @__PURE__ */ gr(hr, {
-      children: [/* @__PURE__ */ W("style", {
-        children: mr`
-          .rtds-single-slide-styles img {
-            max-width: 100%;
-            max-height: 100%;
-          }
-        `
-      }), /* @__PURE__ */ W("div", {
-        ref: P,
-        style: {
-          width: `${h}px`,
-          height: `${y}px`,
-          transition: "transform 0.2s ease-out"
-        },
-        className: "rtds-single-slide-styles",
-        children: /* @__PURE__ */ W("div", {
-          style: {
-            padding: "1rem",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            userSelect: "none"
-          },
-          onPointerDown: D,
-          onPointerUp: j,
-          onPointerLeave: j,
-          onDragStart: (E) => (E.preventDefault(), E.stopPropagation(), !1),
-          children: f
-        })
-      })]
-    });
-  }
-  function ee(f) {
-    const h = f.clientWidth, y = f.clientHeight;
-    return { width: h, height: y };
-  }
-  if (undefined) {
-    const { it: f, expect: h } = undefined, y = document.createElement("div");
-    f("Gets an elements dimensions", () => {
-      h(ee(y)).toStrictEqual({
-        width: 0,
-        height: 0
-      });
-    });
-  }
-  function br({
-    children: f,
-    onSlideComplete: h,
-    onSlideStart: y,
-    activeIndex: w = null,
-    threshHold: P = 100,
-    transition: D = 0.3,
-    scaleOnDrag: j = !1
-  }) {
-    const [E, d] = React.useState({
-      width: 0,
-      height: 0
-    }), T = React.useRef(!1), g = React.useRef(0), b = React.useRef(0), O = React.useRef(0), u = React.useRef(0), v = React.useRef(null), B = React.useRef(null), k = React.useCallback((m = E.width) => {
-      b.current = u.current * -m, O.current = b.current, J();
-    }, [E.width]), _ = React.useCallback(() => {
-      v.current && (v.current.style.transition = `transform ${D}s ease-out`);
-    }, [D]), p = () => {
-      v.current && (v.current.style.transition = "none");
-    };
-    React.useEffect(() => {
-      w !== u.current && (_(), u.current = w, k());
-    }, [w, k, _]), React.useLayoutEffect(() => {
-      v.current && (p(), d(ee(v.current)), k(ee(v.current).width));
-    }, [k]), React.useEffect(() => {
-      const m = () => {
-        if (p(), v.current) {
-          const {
-            width: S,
-            height: I
-          } = ee(v.current);
-          d({
-            width: S,
-            height: I
-          }), k(S);
-        }
-      }, C = ({
-        key: S
-      }) => {
-        const I = ["ArrowRight", "ArrowLeft"].includes(S);
-        I && _(), I && y && y(u.current), S === "ArrowRight" && u.current < f.length - 1 && (u.current += 1), S === "ArrowLeft" && u.current > 0 && (u.current -= 1), I && h && h(u.current), k();
-      };
-      return window.addEventListener("resize", m), window.addEventListener("keydown", C), () => {
-        window.removeEventListener("resize", m), window.removeEventListener("keydown", C);
-      };
-    }, [f.length, k, h, y, _]);
-    function te(m) {
-      return function(C) {
-        _(), u.current = m, g.current = C.pageX, T.current = !0, B.current = requestAnimationFrame(G), v.current && (v.current.style.cursor = "grabbing"), y && y(u.current);
-      };
-    }
-    function ne(m) {
-      if (T.current) {
-        const C = m.pageX;
-        b.current = O.current + C - g.current;
-      }
-    }
-    function z() {
-      _(), cancelAnimationFrame(B.current), T.current = !1;
-      const m = b.current - O.current;
-      m < -P && u.current < f.length - 1 && (u.current += 1), m > P && u.current > 0 && (u.current -= 1), _(), k(), v.current.style.cursor = "grab", h && h(u.current);
-    }
-    function G() {
-      J(), T.current && requestAnimationFrame(G);
-    }
-    function J() {
-      !v.current || (v.current.style.transform = `translateX(${b.current}px)`);
-    }
-    return /* @__PURE__ */ W("div", {
-      className: "rtds-slider-wrapper",
-      style: {
-        overflow: "hidden",
-        width: "100%",
-        height: "100%",
-        maxHeight: "100vh"
-      },
-      children: /* @__PURE__ */ W("div", {
-        "data-testid": "slider",
-        ref: v,
-        className: "rtds-slider-styles",
-        style: {
-          all: "initial",
-          width: "100%",
-          height: "100%",
-          maxHeight: "100vh",
-          display: "inline-flex",
-          willChange: "transform, scale",
-          cursor: "grab"
-        },
-        children: f.map((m, C) => /* @__PURE__ */ W("div", {
-          onPointerDown: te(C),
-          onPointerMove: ne,
-          onPointerUp: z,
-          onPointerLeave: () => {
-            T.current && z();
-          },
-          onContextMenu: (S) => {
-            S.preventDefault(), S.stopPropagation();
-          },
-          className: "slide-outer",
-          style: {
-            touchAction: "none"
-          },
-          children: /* @__PURE__ */ W(yr, {
-            child: m,
-            sliderWidth: E.width,
-            sliderHeight: E.height,
-            scaleOnDrag: j
-          })
-        }, m.key))
-      })
-    });
-  }
-
-  var images = [{
-    url: 'https://www.pngitem.com/pimgs/m/132-1329566_dc-comics-heroes-png-transparent-png.png',
-    title: 'batman'
-  }, {
-    url: 'https://www.pngitem.com/pimgs/m/505-5059412_marvel-heros-png-png-marvel-hero-transparent-png.png',
-    title: 'DeadPool'
-  }, {
-    url: 'https://static.wikia.nocookie.net/p__/images/e/e1/Mario_SSB4.png/revision/latest?cb=20201230192449&path-prefix=protagonist',
-    title: 'Super Mario'
-  }, {
-    url: 'https://www.freepnglogos.com/uploads/minions-png/minions-png-images-heroes-minions-transparent-21.png',
-    title: 'Minion'
-  }, {
-    url: 'https://www.pngitem.com/pimgs/m/122-1223582_gallery-image-heroes-of-the-storm-junkrat-png.png',
-    title: 'Junkrat'
-  }
-  //{url: '', title: ''},
-  ];
-
-  function App$1() {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      style: {
-        height: "80vh",
-        width: "100%",
-        textAlign: "center",
-        backgroundColor: "rgb(236, 236, 236)"
-      }
-    }, /*#__PURE__*/React__default["default"].createElement(br, {
-      activeIndex: 0,
-      threshHold: 100,
-      transition: 0.5,
-      scaleOnDrag: false
-    }, images.map(function (_ref, index) {
-      var url = _ref.url,
-        title = _ref.title;
-      return /*#__PURE__*/React__default["default"].createElement("img", {
-        src: url,
-        key: index,
-        alt: title
-      });
-    })));
-  }
-
-  var Demo$1 = function Demo() {
-    return /*#__PURE__*/React__default["default"].createElement(App$1, null);
-  };
-
   var parseMenu = function parseMenu(contentNode) {
     var headings = contentNode.querySelectorAll('h1, h2, h3');
     var parseHead = function parseHead(h) {
@@ -666,6 +417,7 @@
     return menu;
   };
 
+  _DEMO_IMPORT_;
   var Demo = function Demo() {
     var _useState = React.useState([]),
       menu = _useState[0],
@@ -679,7 +431,7 @@
       path: "demo"
     }, /*#__PURE__*/React__default["default"].createElement("div", {
       ref: demoRef
-    }, /*#__PURE__*/React__default["default"].createElement(Demo$1, null)));
+    }, /*#__PURE__*/React__default["default"].createElement(TheTestDemo, null)));
   };
 
   var App = function App(_ref) {
@@ -725,9 +477,9 @@
   var css_248z = "/* css variables*/\n:root {\n  --font-size: 12pt;\n  --font-size-sm: 9pt;\n  --heading-color-l1: #432E30;\n  --heading-color-l2: #756060;\n  --heading-color-l3: #8E7474;\n  --accent-color: #DD356E;\n  --accent-color-light: #df608a;\n  --action-color: #DD356E;\n  --action-color-light: #df608a;\n  --link-color: #DD356E;\n  --link-color-light: #df608a;\n  --inline-code-color: #5e5656;\n  --white-color: #FAFBFC;\n  --header-bg-color: #F8F8FA;\n  --header-bg-color-secondary: #e4e4f7;\n  --code-bg-color: #f9f9f9;\n  --header-logo-width: 125px;\n  --header-logo-width-resp: 100px;\n  --header-grid-height: 4em;\n  --header-grid-height-resp: 3em;\n  --header-sub-height: 0;\n  --header-sub-height-resp: 2.5em;\n  --menu-width-web: 20em;\n  --menu-responsive-color: rgba(0, 0, 0, 1);\n  --border: 1px solid var(--header-bg-color); }\n\n/*\n@font-face {\n  font-family: \"Inconsolata\";\n  font-weight: normal;\n  src: url(../fonts/Inconsolata/Inconsolata-Regular.ttf) format(\"truetype\");\n}\n\n@font-face {\n  font-family: \"Inconsolata\";\n  font-weight: bold;\n  src: url(../fonts/Inconsolata/Inconsolata-Bold.ttf) format(\"truetype\");\n}\n*/\nbody.arredemo * {\n  box-sizing: border-box; }\n\n/* normalized */\nbody.arredemo {\n  padding: 0;\n  margin: 0;\n  font-family: 'Inconsolata', Arial, sans-serif;\n  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  line-height: 1.5em;\n  background-color: white; }\n  body.arredemo h1 {\n    font-size: 2em;\n    color: var(--heading-color-l1); }\n  body.arredemo h2 {\n    font-size: 1.5em;\n    color: var(--heading-color-l2); }\n  body.arredemo h3 {\n    font-size: 1.25em;\n    color: var(--heading-color-l3); }\n  body.arredemo hr {\n    padding: 1rem 0;\n    border: 0;\n    border-bottom: 1px solid var(--bg-color); }\n  body.arredemo a,\n  body.arredemo .link {\n    color: var(--link-color);\n    text-decoration: underline;\n    text-decoration-color: var(--link-color);\n    -webkit-transition: opacity 0.5s ease-in-out;\n    -moz-transition: opacity 0.5s ease-in-out;\n    -ms-transition: opacity 0.5s ease-in-out;\n    -o-transition: opacity 0.5s ease-in-out;\n    transition: opacity 0.5s ease-in-out;\n    opacity: 1;\n    cursor: pointer; }\n    body.arredemo a:hover,\n    body.arredemo .link:hover {\n      opacity: 0.5; }\n    body.arredemo a img,\n    body.arredemo .link img {\n      position: relative;\n      vertical-align: middle; }\n    body.arredemo a img + span,\n    body.arredemo .link img + span {\n      margin-left: 0.5em; }\n  body.arredemo .package-name {\n    font-weight: 600;\n    color: var(--accent-color); }\n\nbody.arredemo {\n  /* inline code sections */ }\n  body.arredemo pre {\n    display: block;\n    padding: 1.5em 1em !important;\n    border: 1px solid #bebab0;\n    overflow-x: auto; }\n  body.arredemo code {\n    color: var(--inline-code-color);\n    text-decoration-color: var(--inline-code-color);\n    word-wrap: break-word;\n    font-family: \"Liberation Mono\",\"Courier New\",monospace; }\n  body.arredemo pre.prettyprint {\n    background-color: var(--code-bg-color); }\n    body.arredemo pre.prettyprint code {\n      line-height: 1em;\n      font-size: 10pt; }\n  body.arredemo a :has(code),\n  body.arredemo .link:has(code) {\n    color: var(--inline-code-color);\n    text-decoration-color: var(--inline-code-color); }\n\nbody.arredemo *,\nbody.arredemo *::before,\nbody.arredemo *::after {\n  box-sizing: border-box; }\n\n:root {\n  --select-border: #777;\n  --select-focus: blue;\n  --select-arrow: var(--select-border); }\n\nbody.arredemo {\n  /*\n  label {\n    font-size: 1.125rem;\n    font-weight: 500;\n  }\n  */ }\n  body.arredemo select {\n    appearance: none;\n    background-color: transparent;\n    border: none;\n    padding: 0 1em 0 0;\n    margin: 0;\n    width: 100%;\n    z-index: 1;\n    outline: none; }\n    body.arredemo select::-ms-expand {\n      display: none; }\n  body.arredemo .select {\n    display: grid;\n    grid-template-areas: \"select\";\n    align-items: center;\n    position: relative;\n    min-width: 15ch;\n    max-width: 30ch;\n    border: 1px solid var(--select-border);\n    border-radius: 0.25em;\n    padding: 0.25em 0.5em;\n    cursor: pointer;\n    background-color: #fff;\n    background-image: linear-gradient(to top, #f9f9f9, #fff 33%); }\n    body.arredemo .select select, body.arredemo .select::after {\n      grid-area: select; }\n    body.arredemo .select:not(.select--multiple)::after {\n      content: \"\";\n      justify-self: end;\n      width: 0.8em;\n      height: 0.5em;\n      background-color: var(--select-arrow);\n      clip-path: polygon(100% 0%, 0 0%, 50% 100%); }\n  body.arredemo select:focus + .focus {\n    position: absolute;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    border: 2px solid var(--select-focus);\n    border-radius: inherit; }\n  body.arredemo select[multiple] {\n    padding-right: 0;\n    /*\n    * Safari will not reveal an option\n    * unless the select height has room to \n    * show all of it\n    * Firefox and Chrome allow showing \n    * a partial option\n    */\n    height: 6rem;\n    /* \n    * Experimental - styling of selected options\n    * in the multiselect\n    * Not supported crossbrowser\n    */ }\n    body.arredemo select[multiple] option {\n      white-space: normal;\n      outline-color: var(--select-focus); }\n  body.arredemo .select--disabled {\n    cursor: not-allowed;\n    background-color: #eee;\n    background-image: linear-gradient(to top, #ddd, #eee 33%); }\n  body.arredemo .select + label {\n    margin-top: 2rem; }\n\n/* buttons */\nbody.arredemo .button--primary {\n  padding: 10px 22px;\n  background-color: var(--action-color);\n  color: white;\n  position: relative;\n  text-decoration: none;\n  border: 0;\n  transition: all .3s ease-out; }\n\nbody.arredemo .button--primary:after {\n  position: absolute;\n  content: \"\";\n  width: 1rem;\n  height: 1rem;\n  background-color: var(--action-color-light);\n  right: -0.4rem;\n  top: -0.4rem;\n  transition: all 0.3s ease-out; }\n\nbody.arredemo .button--primary:hover {\n  text-shadow: 0px 1px 1px var(--action-color-light);\n  color: white;\n  transform: translate3D(0, -3px, 0); }\n\nbody.arredemo .button--primary:hover::after {\n  transform: rotate(90deg); }\n\nbody.arredemo .button--secondary {\n  padding: 10px 22px;\n  border: 2px solid var(--action-color);\n  transition: all 0.5s ease-out; }\n\nbody.arredemo .button--secondary:hover {\n  border-color: var(--action-color);\n  color: var(--action-color); }\n\ndiv.toggler {\n  text-align: right;\n  padding-top: 0.5em;\n  padding-right: 1em;\n  cursor: pointer;\n  display: none; }\n  @media screen and (max-width: 600px) {\n    div.toggler {\n      display: block; } }\n  div.toggler .toggle {\n    position: relative; }\n  div.toggler .toggle span,\n  div.toggler .toggle span:before,\n  div.toggler .toggle span:after {\n    content: '';\n    position: absolute;\n    height: 2px;\n    width: 18px;\n    border-radius: 2px;\n    background: var(--action-color);\n    display: block;\n    cursor: pointer;\n    transition: all 0.3s ease-in-out;\n    right: 0; }\n  div.toggler .toggle span:before {\n    top: -6px; }\n  div.toggler .toggle span:after {\n    bottom: -6px; }\n  div.toggler .toggle.open span {\n    background-color: transparent; }\n  div.toggler .toggle.open span:before,\n  div.toggler .toggle.open span:after {\n    top: 0; }\n  div.toggler .toggle.open span:before {\n    transform: rotate(45deg); }\n  div.toggler .toggle.open span:after {\n    transform: rotate(-45deg); }\n\ndiv.body {\n  position: relative;\n  margin-top: calc(var(--header-grid-height) + 1em);\n  width: 100%;\n  padding: 0 2em; }\n  @media screen and (max-width: 600px) {\n    div.body {\n      margin-top: calc(var(--header-grid-height-resp) + 1em);\n      padding: 0 1em; } }\n  div.body.with-menu div.content {\n    margin-left: var(--menu-width-web); }\n    @media screen and (max-width: 600px) {\n      div.body.with-menu div.content {\n        margin-left: 0; } }\n\nnav.header {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 2;\n  background-color: var(--header-bg-color); }\n  @media screen and (min-width: 600px) {\n    nav.header {\n      padding-left: 4em;\n      padding-right: 4em; } }\n  nav.header .grid {\n    display: grid;\n    grid-template-columns: var(--header-logo-width) auto 0%;\n    padding: 1em 0;\n    height: var(--header-grid-height);\n    background-repeat: no-repeat;\n    background-size: auto 100%; }\n    @media screen and (max-width: 600px) {\n      nav.header .grid {\n        grid-template-columns: var(--header-logo-width-resp) auto 20%;\n        height: var(--header-grid-height-resp); } }\n    nav.header .grid div.logo img {\n      max-height: 100%; }\n      @media screen and (max-width: 600px) {\n        nav.header .grid div.logo img {\n          width: 100px;\n          margin-left: 0.5em; } }\n    @media screen and (max-width: 600px) {\n      nav.header .grid div.toolbar .link.github span {\n        display: none; } }\n    nav.header .grid div.toolbar a {\n      text-decoration: none; }\n      nav.header .grid div.toolbar a.light {\n        color: var(--action-color-light);\n        text-decoration-color: var(--action-color-light);\n        font-weight: lighter; }\n      nav.header .grid div.toolbar a.dark {\n        color: var(--action-color);\n        text-decoration-color: var(--action-color);\n        font-weight: bolder; }\n      nav.header .grid div.toolbar a:not(:last-child) {\n        padding-right: 1em; }\n        @media screen and (max-width: 600px) {\n          nav.header .grid div.toolbar a:not(:last-child) {\n            padding-right: 0.5em; } }\n      nav.header .grid div.toolbar a img {\n        width: 1em;\n        top: -0.05em; }\n  nav.header .grid div.toolbar {\n    text-align: right; }\n    @media screen and (max-width: 600px) {\n      nav.header .grid div.toolbar {\n        text-align: center; } }\n\n.menu-container {\n  position: fixed;\n  left: 0;\n  width: var(--menu-width-web);\n  padding-left: 1em;\n  top: calc(var(--header-grid-height) + 1em);\n  height: calc(100% - calc(var(--header-grid-height) + 1em));\n  overflow: hidden;\n  /*\n  min-height: 100vh;\n  display: grid;\n  grid-template-rows: auto auto;\n  grid-gap: 1em;\n  justify-content: center;\n  \n  flex-grow: 1;\n  display: flex;\n  */\n  /*\n\n  @media screen and (max-width: 600px) {\n    position: fixed;\n    top: var(--header-grid-height-resp);\n    left: 0;\n    display: block;\n    width: 100%;\n\n    background-color: var(--header-bg-color);\n    padding: 1rem;\n  }\n  */\n  border-right: var(--border); }\n  @media screen and (max-width: 600px) {\n    .menu-container {\n      display: none; }\n      .menu-container.responsive-open {\n        display: block;\n        width: 100%;\n        padding: 1em;\n        overflow: auto;\n        background-color: var(--menu-responsive-color);\n        float: left;\n        top: 0;\n        z-index: 2; } }\n  .menu-container .switcher {\n    height: 2em; }\n  .menu-container .menu {\n    height: calc(100% - 2.25em);\n    overflow-y: auto; }\n    .menu-container .menu ul {\n      overflow-y: auto;\n      list-style: none;\n      padding-left: 0.5em;\n      text-align: left; }\n      .menu-container .menu ul li {\n        padding: 0.5em 0 0 0;\n        font-weight: 300; }\n      .menu-container .menu ul li.level-1 {\n        font-weight: bold; }\n        .menu-container .menu ul li.level-1 a, .menu-container .menu ul li.level-1 .link {\n          color: var(--heading-color-l1); }\n      .menu-container .menu ul li.level-2 {\n        padding-left: 1.5em; }\n        .menu-container .menu ul li.level-2 a, .menu-container .menu ul li.level-2 .link {\n          color: var(--heading-color-l2); }\n      .menu-container .menu ul li.level-3 {\n        padding-left: 3em; }\n        .menu-container .menu ul li.level-3 a, .menu-container .menu ul li.level-3 .link {\n          color: var(--heading-color-l3); }\n      .menu-container .menu ul li a,\n      .menu-container .menu ul li .link {\n        text-decoration: none; }\n      .menu-container .menu ul .selected {\n        position: relative; }\n      .menu-container .menu ul .selected a {\n        color: var(--accent-color); }\n      .menu-container .menu ul .selected:after {\n        position: absolute;\n        content: \"\";\n        width: 0.1rem;\n        height: 75%;\n        background-color: var(--accent-color);\n        left: -0.5rem;\n        top: 0.25rem; }\n\nfooter {\n  display: grid;\n  grid-template-columns: 50% 50%;\n  font-size: var(--font-size-sm);\n  border-top: var(--border);\n  padding: 1.5em;\n  text-align: center;\n  z-index: 2; }\n  footer .badges {\n    text-align: left; }\n    footer .badges span.badge {\n      padding-top: 0.5em;\n      padding-right: 1em; }\n      @media screen and (max-width: 600px) {\n        footer .badges span.badge {\n          display: inline-block;\n          padding-top: 0; } }\n  footer .license {\n    text-align: right; }\n  footer a {\n    color: white;\n    text-decoration: underline; }\n  @media screen and (max-width: 600px) {\n    footer {\n      display: block; }\n      footer .badges {\n        text-align: center; }\n      footer .license {\n        text-align: center;\n        margin-top: 1em; } }\n";
   styleInject(css_248z);
 
-  var pkgPath = '/home/lapis/repos/gh/arredemo/test/arredemo-custom-test';
-  var pkgJson = JSON.parse("\n  {\n  \"name\": \"arredemo-custom-test\",\n  \"version\": \"0.0.0\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/afialapis/arredemo.git\"\n  },\n  \"author\": \"donato@afialapis.com\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com/afialapis/arredemo#readme\",\n  \"devDependencies\": {\n    \"arredemo\": \"file:../../\"\n  },\n  \"scripts\": {\n    \"reset\": \"npm cache clean --force && rm -fr node_modules && npm run arredemo-clean && npm i\",\n    \"arredemo-clean\": \"rm -fr arredemo\",\n    \"arredemo-build\": \"npm run arredemo-clean && npx arredemo build\"\n  },\n  \"dependencies\": {\n    \"react-touch-drag-slider\": \"^2.2.5\"\n  }\n}\n");
-  var arreConfig = JSON.parse("\n{\n  \"theme\": \"default\",\n  \"favicon\": \"../../logo/favicon/arredemo.ico\",\n  \"logo\": \"../../logo/arredemo.png\",\n  \"company\": \"Arre Demo!\",\n  \"url\": \"arredemo.afialapis.com\",\n  \"doc_versions\": [\n    \"0.0.0\"\n  ],\n  \"md\": {\n    \"keep_summary_content\": false\n  },\n  \"demo_entry\": \"demo/index.mjs\",\n  \"demo_styles\": null\n}\n");
+  var pkgPath = '/home/lapis/repos/gh/arredemo/docs';
+  var pkgJson = JSON.parse("\n  {\n  \"name\": \"arredemo\",\n  \"version\": \"0.0.0\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/afialapis/arredemo.git\"\n  },\n  \"author\": \"donato@afialapis.com\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com/afialapis/arredemo#readme\",\n  \"devDependencies\": {\n    \"arredemo\": \"file:../\"\n  },\n  \"scripts\": {\n    \"reset\": \"npm cache clean --force && rm -fr node_modules && npm run arredemo-clean && npm i\",\n    \"arredemo-clean\": \"rm -fr arredemo\",\n    \"arredemo-build\": \"npm run arredemo-clean && npx arredemo build\"\n  }\n}\n");
+  var arreConfig = JSON.parse("\n{\n  \"theme\": \"default\",\n  \"favicon\": \"../logo/favicon/arredemo.ico\",\n  \"logo\": \"../logo/arredemo.png\",\n  \"company\": \"Afialapis\",\n  \"url\": \"arredemo.afialapis.com\",\n  \"doc_versions\": [\n    \"0.0.1\"\n  ],\n  \"md\": {\n    \"keep_summary_content\": false\n  },\n  \"demo_entry\": null\n}\n");
 
   /*
   ReactDOM.render(
