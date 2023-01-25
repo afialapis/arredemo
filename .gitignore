@@ -42,3 +42,8 @@ codepen
 TODO.lst
 .old
 test/bundle.js
+
+docs/arredemo
+test/arredemo-custom-test/arredemo
+test/formiga/arredemo
+test/reactstrap-date-picker/arredemo
