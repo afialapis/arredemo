@@ -82,7 +82,7 @@ Sometimes, for the shake of a better visualization in your repo's GitHub page, y
 If `md.strip_details_tag` is `true` (the default), `arredemo` will strip out this HTML tags, leaving the inner text. 
 
 But, depending on how your use it, you may want to keep the content inside ```\<summary\>\<\/summary\>``` or not. Use 
-`md.keep_summary_content = true` in order to do it (it defaults to `false`).
+`md.keep_summary_content: true` in order to do it (it defaults to `false`).
 
 ## Demo
 
@@ -93,3 +93,5 @@ Path to your demo index file.
 This file will make a `export default` of your React component.
 
 Yes: in the future this will be done better and non-React stuff will be compatible too.
+
+If `demo_entry: null`, no Demo page will be built.

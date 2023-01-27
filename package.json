@@ -1,12 +1,15 @@
 {
   "name": "arredemo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
   "imports": {
     "#app/*": "./src/app/*",
     "#scripts/*": "./src/scripts/*"
+  },
+  "exports": {
+    "cli": "./src/cli.mjs"
   },
   "scripts": {
     "docs-clean": "cd docs && npm run arredemo-clean",
