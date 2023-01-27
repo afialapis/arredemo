@@ -51,10 +51,10 @@ const _renderIndexHtml = (source, dest, pkgJson, arreConfig) => {
   html= html.replace(/_KEYWORDS_/g, kwords)
   html= html.replace(/_AUTHOR_/g, author)
   html= html.replace(/_URL_/g, web_url)
-  html= html.replace(/_LOGO_/g, logo_url)
-  html= html.replace(/_FAVICON_ICO_/g, favicon_ico_url)
-  html= html.replace(/_FAVICON_PNG_/g, favicon_png_url)
-  html= html.replace(/_FAVICON_APPLE_/g, favicon_apple_url)
+  html= html.replace(/_LOGO_/g,          logo_url          ? path.join('..', logo_url)          : '')
+  html= html.replace(/_FAVICON_ICO_/g,   favicon_ico_url   ? path.join('..', favicon_ico_url  ) : '')
+  html= html.replace(/_FAVICON_PNG_/g,   favicon_png_url   ? path.join('..', favicon_png_url  ) : '')
+  html= html.replace(/_FAVICON_APPLE_/g, favicon_apple_url ? path.join('..', favicon_apple_url) : '')
 
   fs.writeFileSync(dest, html, {encoding:'utf8'})
 }

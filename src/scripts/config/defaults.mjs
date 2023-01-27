@@ -8,6 +8,7 @@ const defs= {
     "0.0.1"
   ],
   "md": {
+    "strip_details_tag": true,
     "keep_summary_content": false
   },
   "demo_entry": null

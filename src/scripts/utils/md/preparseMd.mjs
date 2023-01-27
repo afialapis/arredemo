@@ -158,7 +158,9 @@ const preparseMd= (md, packageName, arreConfig) => {
 
   lines= _groupBySections(lines)
   lines=  _removeBadgesAndLogo(lines) 
-  lines= _removeSummaryTags(lines, arreConfig.md_keep_summary_content) 
+  if (arreConfig.md_strip_details_tag) {
+    lines= _removeSummaryTags(lines, arreConfig.md_keep_summary_content) 
+  }
 
   
   return lines.join('\n')

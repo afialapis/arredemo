@@ -1,20 +1,21 @@
 {
   "name": "arredemo",
   "version": "0.0.1",
-  "description": "Easily generate your library's docs & demo site",
+  "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
-  "exports_XXX": {
-    "./demo": "./src/component/demo"
-  },
   "imports": {
     "#app/*": "./src/app/*",
     "#scripts/*": "./src/scripts/*"
   },
   "scripts": {
-    "reset": "npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
+    "docs-clean": "cd docs && npm run arredemo-clean",
+    "docs-build": "cd docs && npm run arredemo-build",
+    "reset": "npm run docs-clean && npm run test-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-clean": "cd test/arredemo-custom-test && npm run arredemo-clean && cd ../formiga && npm run arredemo-clean && cd ../reactstrap-date-picker && npm run arredemo-clean",
+    "test": "cd test/arredemo-custom-test && npm run arredemo-build && cd ../formiga && npm run arredemo-build && cd ../reactstrap-date-picker && npm run arredemo-build",
+    "prepare": "npm run docs-build"
   },
   "repository": {
     "type": "git",
@@ -27,20 +28,15 @@
   },
   "homepage": "https://github.com/afialapis/arredemo#readme",
   "dependencies": {
-    "@babel/cli": "^7.18.6",
     "@babel/core": "^7.18.6",
     "@babel/eslint-parser": "^7.18.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
     "@babel/preset-env": "^7.18.6",
-    "@babel/preset-modules": "^0.1.5",
     "@babel/preset-react": "^7.18.6",
-    "@babel/register": "^7.18.6",
     "@rollup/plugin-alias": "^4.0.2",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-replace": "^4.0.0",
-    "babel-plugin-module-extension": "^0.1.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "cross-spawn": "^7.0.3",
     "eslint": "^8.18.0",
@@ -50,15 +46,12 @@
     "markdown-to-jsx": "^7.1.8",
     "node-fetch": "^3.3.0",
     "node-sass": "^7.0.3",
-    "nollup": "^0.21.0",
     "postcss": "^8.4.16",
     "prompts": "^2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^2.79.1",
-    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-serve": "^2.0.1",
     "rollup-plugin-terser": "^7.0.2"
   }
 }

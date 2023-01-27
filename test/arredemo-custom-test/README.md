@@ -18,7 +18,7 @@ Current package will basically make use of the external `react-touch-drag-slider
 As any other test within `arredemo`:
 
 ```
-  npm run arredemo-build
+  npx arredemo build
 ```
 
 And then visit the generated `./arredemo/index.html` with your browser.

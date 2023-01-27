@@ -38,7 +38,7 @@ export class ArreConfigObj {
     if (_exists(png, this.pkgPath)) {
       return png
     }
-    return undefined
+    return ico
 
   }
   
@@ -52,7 +52,7 @@ export class ArreConfigObj {
     if (_exists(png, this.pkgPath)) {
       return png
     }
-    return undefined
+    return ico
   }
 
 
@@ -82,6 +82,10 @@ export class ArreConfigObj {
 
   get md_keep_summary_content() {
     return this.config?.md?.keep_summary_content || false
+  }
+
+  get md_strip_details_tag() {
+    return ! (this.config?.md?.strip_details_tag===false)
   }
   
 //  get demo_entry() {
