@@ -26,7 +26,9 @@ The docs page will be made from your repo's `README.md` file.
 
 Notice you can include several versions of your package to be documented, not just the current one. 
 
-# ES Modules
+## Demo
+
+### ES Modules
 
 They are the future, so just ESM is allowed.
 
