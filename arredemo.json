@@ -1,12 +1,10 @@
 {
   "theme": "default",
-  "favicon": "../logo/favicon/arredemo.ico",
-  "logo": "../logo/arredemo.png",
+  "favicon": "logo/favicon/arredemo.ico",
+  "logo": "logo/arredemo.png",
   "company": "Afialapis",
   "url": "arredemo.afialapis.com",
-  "doc_versions": [
-    "0.0.1"
-  ],
+  "doc_versions": null,
   "md": {
     "strip_details_tag": false,
     "keep_summary_content": true

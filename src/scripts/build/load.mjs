@@ -10,27 +10,42 @@ const loadArreDemoAppData = async (pkgPath, arreConfig) => {
   const pkgJson = await readJsonFile(jsonPath)
   
   const pkgName = pkgJson.name
-  const versions = arreConfig.doc_versions
+  
+  let versions = []
   let readmes = []
-  try{
-    readmes= await fetchMdFiles(pkgName, versions)
-  } catch(e) {
-    const localMdPath= path.join(pkgPath, 'README.md')
-    const localMd= readFileSync(localMdPath, {encoding:'utf8', flag:'r'})
 
-    if (! localMd.length) {
-      throw new Error(`Uanble to find README.md, not even locally`)
+  // Local version/readme first
+  const localMdPath= path.join(pkgPath, 'README.md')
+  const localMd= readFileSync(localMdPath, {encoding:'utf8', flag:'r'})
+  const localVersion= pkgJson.version || "0.0.1"
+
+  if (! localMd.length) {
+    throw new Error(`Uanble to find README.md, not even locally`)
+  }
+
+  readmes[localVersion]= preparseMd(localMd, pkgName, arreConfig)
+
+  // Optional extra versions
+  let extraVersions = []
+  const confVersions= arreConfig?.doc_versions || []
+
+  confVersions.map((v) => {
+    if (v!=localVersion) {
+      if (extraVersions.indexOf(v)<0) {
+        extraVersions.push(v)
+      }
     }
-    versions.map((v) => {
-      readmes[v]= localMd
-    })
+  })
 
-  }
+  try{
+    const extraReadmes= await fetchMdFiles(pkgName, extraVersions)
 
-  for (const [version, md] of Object.entries(readmes)) {
-    const md_parsed= preparseMd(md, pkgName, arreConfig)
-    readmes[version]= md_parsed
-  }
+    for (const [v, md] of Object.entries(extraReadmes)) {
+      const md_parsed= preparseMd(md, pkgName, arreConfig)
+      readmes[v]= md_parsed
+    }
+  } catch(_) {}
+
 
 
   return [pkgJson, readmes]

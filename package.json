@@ -12,8 +12,8 @@
     "./cli": "./src/cli.mjs"
   },
   "scripts": {
-    "docs-clean": "cd docs && npm run arredemo-clean",
-    "docs-build": "cd docs && npm run arredemo-build",
+    "docs-clean": "rm -fr arredemo",
+    "docs-build": "npm run docs-clean && node bin/arre.mjs build",
     "reset": "npm run docs-clean && npm run test-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
     "lint": "eslint .",
     "test-clean": "cd test/arredemo-custom-test && npm run arredemo-clean && cd ../formiga && npm run arredemo-clean && cd ../reactstrap-date-picker && npm run arredemo-clean",

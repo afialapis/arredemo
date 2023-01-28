@@ -59,7 +59,9 @@ Shown in the site's Footer.
 
 ### `doc_versions`
 
-Array of values of the versions of your package you want to show Docs for.
+Optional array of values of the versions of your package you want to show Docs for.
+
+Current version (repo time, not necessarily published yet) will be taken by default.
 
 ### `md.strip_details_tag` and `md.keep_summary_content`
 

@@ -4,10 +4,10 @@ import Docs from 'app/pages/docs/Docs.jsx'
 
 
 const AppDocs = ({pkgPath, pkgJson, arreConfig, readmes}) => {
-
-  const [versions, setVersions]= useState(arreConfig.doc_versions)
-  const [selectedVersion, setSelectedVersion]= useState(arreConfig.doc_versions[0])
-  const [readme, setReadme]= useState(readmes[arreConfig.doc_versions[0]])
+  const docVersions= Object.keys(readmes)
+  const [versions, setVersions]= useState(docVersions)
+  const [selectedVersion, setSelectedVersion]= useState(docVersions[0])
+  const [readme, setReadme]= useState(readmes[docVersions[0]])
 
   const onSwicthVersion = useCallback((nVersion)=> {
     setSelectedVersion(nVersion)

@@ -73,7 +73,7 @@ export class ArreConfigObj {
   }  
 
   get doc_versions() {
-    return this.config.doc_versions
+    return this.config?.doc_versions || []
   }
   
   get has_demo() {
