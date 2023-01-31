@@ -1,14 +1,7 @@
 import { arreJsonPath, readJsonFileSync } from "#scripts/utils/io/json.mjs"
-import { ArreConfigObj } from "./arreConfigObj.mjs"
+import { parseArreConfig } from "./parse.mjs"
 import defaults from './defaults.mjs'
 
-function getArreConfigFromJson (data, pkgPath) {
-  const config= {
-    ...defaults,
-    ...data
-  }
-  return new ArreConfigObj(config, pkgPath)
-}
 
 function getArreConfigFromPkgPath (pkgPath) {
   const jsonPath = arreJsonPath(pkgPath)
@@ -17,7 +10,7 @@ function getArreConfigFromPkgPath (pkgPath) {
     ...defaults,
     ...data
   }
-  return new ArreConfigObj(config, pkgPath)
+  return parseArreConfig(config, pkgPath)
 }
 
 function getArreConfigFromAnswers (data, pkgPath) {
@@ -25,8 +18,8 @@ function getArreConfigFromAnswers (data, pkgPath) {
     ...defaults,
     ...data
   }
-  return new ArreConfigObj(config, pkgPath)
+  return parseArreConfig(config, pkgPath)
 }
 
 
-export {getArreConfigFromJson, getArreConfigFromPkgPath, getArreConfigFromAnswers}
+export {getArreConfigFromPkgPath, getArreConfigFromAnswers}

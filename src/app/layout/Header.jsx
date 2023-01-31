@@ -6,17 +6,19 @@ import RepoLink from 'app/layout/components/RepoLink.jsx'
 
 const Header = ({path, responsiveOpen, onResponsiveToggle}) => {
   const {arreConfig} = useAppContext()
-  const has_demo = arreConfig.demo_entry != null
-  const logo= `url(../${arreConfig.logo})`
+
+  const logo_url = arreConfig.logo.ok 
+    ? `url("${arreConfig.logo.dest}")` 
+    : undefined
 
   return (
 
-      <div className="grid" style={{"backgroundImage": logo}}>
+      <div className="grid" style={{"backgroundImage": logo_url}}>
 
         {/*<Logo/>*/}
         <div></div>
         <div className="toolbar">
-          {has_demo
+          {arreConfig.has_demo
            ? <>
               <a className={`link demo ${path=='demo' ? 'dark' : 'light'}`} href='demo.html'>
                 {'Demo'}

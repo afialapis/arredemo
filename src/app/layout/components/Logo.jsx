@@ -3,17 +3,20 @@ import useAppContext from 'app/context/useAppContext.mjs'
 
 const Logo = () => {
   
-  const context = useAppContext()
-  const logo= `../${context.arreConfig.logo}`
+  const {arreConfig} = useAppContext()
 
-  if (!logo) {
+  const logo_url = arreConfig.logo.ok 
+    ? `url("${arreConfig.logo.dest}")` 
+    : undefined
+
+  if (!logo_url) {
     return (
       null
     )
   }
 
   return (
-    <div className="logo"  style={{backgroundImage: logo}}>
+    <div className="logo"  style={{backgroundImage: logo_url}}>
       {/*<img src={logo}/>*/}
     </div>
   )

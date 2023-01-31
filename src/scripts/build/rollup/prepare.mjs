@@ -6,6 +6,7 @@ import {nodeResolve} from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import scss from 'rollup-plugin-postcss'
+import copy from 'rollup-plugin-copy'
 const NODE_ENV = 'production'
 
 
@@ -21,6 +22,23 @@ function toTitleCase(str) {
   s= s.charAt(0).toLowerCase() + s.substr(1);
   s= s.replace(/-/g,'')
   return s
+}
+
+function _imgCopyTargets (arreConfig) {
+  let targets= []
+  const _checkI = (src, dest) => {
+    if (src!=undefined) {
+      targets.push({
+        src, dest: 'arredemo', rename: dest
+      })
+    }
+  }
+  _checkI(arreConfig.favicon.main?.src, arreConfig.favicon.main?.dest)
+  _checkI(arreConfig.favicon.ico?.src, arreConfig.favicon.ico?.dest)
+  _checkI(arreConfig.favicon.apple?.src, arreConfig.favicon.apple?.dest)
+  _checkI(arreConfig.logo?.src, arreConfig.logo?.dest)
+
+  return targets
 }
 
 function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, inputName, outputName) {
@@ -65,7 +83,11 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       commonjs({
         esmExternals: true
       }),
-      scss()
+      scss(),
+
+      copy({
+        targets: _imgCopyTargets (arreConfig)
+      })
     ],
     external: ['react', 'react-dom', 'markdown-to-jsx']
   }

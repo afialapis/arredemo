@@ -20,7 +20,7 @@ export class ArreConfigObj {
     return this.config.theme || 'default'
   }
 
-  get faviconIco() {
+  get sourceFaviconIco() {
     const fav= this.config.favicon
     if (_exists(fav, this.pkgPath)) {
       return fav
@@ -28,8 +28,8 @@ export class ArreConfigObj {
     return undefined
   }
 
-  get faviconPng() {
-    const ico= this.faviconIco
+  get sourceFaviconPng() {
+    const ico= this.sourceFaviconIco
     if (!ico) {
       return undefined
     }
@@ -39,11 +39,10 @@ export class ArreConfigObj {
       return png
     }
     return ico
-
   }
   
-  get faviconApple() {
-    const ico= this.faviconIco
+  get sourceFaviconApple() {
+    const ico= this.sourceFaviconIco
     if (!ico) {
       return undefined
     }
@@ -55,14 +54,47 @@ export class ArreConfigObj {
     return ico
   }
 
+  get destFaviconIco() {
+    const ico= this.sourceFaviconIco
+    if (!ico) {
+      return undefined
+    }
+    return path.basename(ico)
+  }
 
-  get logo() {
+  get destFaviconPng() {
+    const png= this.sourceFaviconPng
+    if (!png) {
+      return undefined
+    }
+    return path.basename(png)
+  }
+
+
+  get destFaviconApple() {
+    const apple= this.sourceFaviconApple
+    if (!apple) {
+      return undefined
+    }
+    return path.basename(apple)
+  }
+
+  get sourceLogo() {
     const logo= this.config.logo
     if (_exists(logo, this.pkgPath)) {
       return logo
     }
     return undefined
   }
+
+  get destLogo() {
+    const logo= this.sourceLogo
+    if (!logo) {
+      return undefined
+    }
+    return path.basename(logo)
+  }
+
   
   get company() {
     return this.config.company || ''

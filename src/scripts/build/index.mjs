@@ -1,6 +1,6 @@
 import { /*red, green,*/ cyan} from 'farrapa-colors'
 import { loadArreDemoAppData } from "./load.mjs"
-import { renderArreDemoApp, cleanArreDemoApp } from "./render.mjs"
+import { renderArreDemoApp, cleanArreDemoApp } from "./render/index.mjs"
 import { rollupArreDemoAppConfig } from "./rollup/prepare.mjs"
 import { rollupBuild } from "./rollup/build.mjs"
 
@@ -48,9 +48,11 @@ async function makeArreDemoBuild (pkgPath, arreConfig) {
   const [inputOptionsForDocs, outputOptionsListForDocs] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_docs.mjs', 'arredemo_docs.js')
   const _buildOkForDocs = await rollupBuild(inputOptionsForDocs, outputOptionsListForDocs)
 
-  console.log(`[arredemo] ${cyan('Building demo page')}...`)
-  const [inputOptionsForDemo, outputOptionsListForDemo] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_demo.mjs', 'arredemo_demo.js')
-  const _buildOkForDemo = await rollupBuild(inputOptionsForDemo, outputOptionsListForDemo)  
+  if (arreConfig.has_demo) {
+    console.log(`[arredemo] ${cyan('Building demo page')}...`)
+    const [inputOptionsForDemo, outputOptionsListForDemo] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_demo.mjs', 'arredemo_demo.js')
+    const _buildOkForDemo = await rollupBuild(inputOptionsForDemo, outputOptionsListForDemo)  
+  }
 
   console.log(`[arredemo] ${cyan('Cleaning')}...`)
   cleanArreDemoApp(pkgPath)

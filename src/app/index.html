@@ -3,31 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>_TITLE_</title>
+  <title>{{title}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="_DESCRIPTION_" />
-	<meta name="keywords" content="_KEYWORDS_" />
-	<meta name="author" content="_AUTHOR_" />
+	{{#description}}
+	<meta name="description" content="{{description}}" />
+	{{/description}}
+	{{#keywords}}
+	<meta name="keywords" content="{{keywords}}" />
+	{{/keywords}}
+	{{#author}}
+	<meta name="author" content="{{author}}" />
+	{{/author}}
 
-
+  {{#favicon_ico}}
 	<!-- For IE 9 and below. ICO should be 32x32 pixels in size -->
-	<!--[if IE]><link rel="shortcut icon" href=""/><![endif]-->
+	<!--[if IE]><link rel="shortcut icon" href="{{favicon_ico}}"/><![endif]-->
+	{{/favicon_ico}}
+  {{#favicon_apple}}
 	<!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. --> 
-	<link rel="apple-touch-icon-precomposed" href=""/>
+	<link rel="apple-touch-icon-precomposed" href="{{favicon_apple}}"/>
+	{{/favicon_apple}}
+	{{#favicon_main}}
 	<!-- Firefox, Chrome, Safari, IE 11+ and Opera. 196x196 pixels in size. -->
-	<link rel="icon" href=""/>
+	<link rel="icon" href="{{favicon_main}}"/>
+	{{/favicon_main}}
 
   <!-- Facebook and Twitter integration -->
-	<meta property="og:title"       content="_TITLE_"/>
-	<meta property="og:image"       content="_LOGO_"/>
-	<meta property="og:url"         content="_URL_"/>
-	<meta property="og:site_name"   content="_URL_"/>
-	<meta property="og:description" content="_DESCRIPTION_"/>
-	<meta name="twitter:title"      content="_TITLE_" />
-	<meta name="twitter:image"      content="_LOGO_" />
-	<meta name="twitter:url"        content="_URL_"/>
+	<meta property="og:title"       content="{{title}}"/>
+	{{#logo}}
+	<meta property="og:image"       content="{{logo}}"/>
+	{{/logo}}
+	{{#url}}
+	<meta property="og:url"         content="{{url}}"/>
+	<meta property="og:site_name"   content="{{url}}"/>
+	{{/url}}
+	{{#description}}
+	<meta property="og:description" content="{{description}}"/>
+	{{/description}}
+	<meta name="twitter:title"      content="{{title}}" />
+	{{#logo}}
+	<meta name="twitter:image"      content="{{logo}}" />
+	{{/logo}}
+	{{#url}}
+	<meta name="twitter:url"        content="{{url}}"/>
+	{{/url}}
 	<meta name="twitter:card"       content="summary" />
-	<meta name="twitter:text"       content="_DESCRIPTION_" />
+	{{#description}}
+	<meta name="twitter:text"       content="{{description}}" />
+	{{/description}}
 
 	<!--<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet"/>--> 
 </head>
@@ -38,11 +61,9 @@
   <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
 	<script crossorigin src="https://unpkg.com/markdown-to-jsx@7.1.1/dist/index.umd.js"></script>
-  
-
 	<script crossorigin src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 	
-	<script src="arredemo_docs.js"></script>
+	<script src="{{bundle}}"></script>
 
   <script>
     // Sanity-check the component loaded...
