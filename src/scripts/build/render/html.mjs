@@ -36,8 +36,9 @@ const _renderIndexHtmlAs = (source, dest, pkgJson, arreConfig, bundle) => {
 const renderIndexHtml = (source, dest, pkgJson, arreConfig) => {
   _renderIndexHtmlAs(source, dest, pkgJson, arreConfig, 'arredemo_docs.js')
   _renderIndexHtmlAs(source, dest.replace('index.html', 'docs.html'), pkgJson, arreConfig, 'arredemo_docs.js')
-  _renderIndexHtmlAs(source, dest.replace('index.html', 'demo.html'), pkgJson, arreConfig, 'arredemo_demo.js')
-
+  if (arreConfig.has_demo) {
+    _renderIndexHtmlAs(source, dest.replace('index.html', 'demo.html'), pkgJson, arreConfig, 'arredemo_demo.js')
+  }
 }
 
 export {renderIndexHtml}

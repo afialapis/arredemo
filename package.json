@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
@@ -12,13 +12,13 @@
     "./cli": "./src/cli.mjs"
   },
   "scripts": {
-    "docs-clean": "rm -fr arredemo",
-    "docs-build": "npm run docs-clean && node bin/arre.mjs build",
-    "reset": "npm run docs-clean && npm run test-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
+    "site-clean": "rm -fr arredemo",
+    "site-build": "npm run site-clean && node bin/arre.mjs build",
+    "reset": "npm run site-clean && npm run test-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
     "lint": "eslint .",
     "test-clean": "cd test/arredemo-custom-test && npm run arredemo-clean && cd ../formiga && npm run arredemo-clean && cd ../reactstrap-date-picker && npm run arredemo-clean",
     "test": "cd test/arredemo-custom-test && npm run arredemo-build && cd ../formiga && npm run arredemo-build && cd ../reactstrap-date-picker && npm run arredemo-build",
-    "prepare": "npm run docs-build"
+    "prepare": "npm run site-build"
   },
   "repository": {
     "type": "git",
