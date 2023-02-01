@@ -15,6 +15,19 @@ _ARRE_CONFIG_
 `)
 
 
+ReactDOM.render(
+  <AppDemo 
+    pkgPath = {pkgPath}
+    pkgJson = {pkgJson}
+    arreConfig = {arreConfig}
+    
+  />, 
+  document.getElementById('arredemo-app'))
+
+/*
+
+// React 18
+
 ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
   <React.StrictMode>
     <AppDemo 
@@ -25,3 +38,4 @@ ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
     />
   </React.StrictMode>
 );
+*/

@@ -16,6 +16,18 @@ _ARRE_CONFIG_
 
 _READMES_
 
+ReactDOM.render(
+  <AppDocs 
+    pkgPath = {pkgPath}
+    pkgJson = {pkgJson}
+    arreConfig = {arreConfig}
+    readmes = {readmes}      
+  />,
+  document.getElementById('arredemo-app'))
+
+/*
+
+// React 18
 
 ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
   <React.StrictMode>
@@ -27,3 +39,5 @@ ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
     />
   </React.StrictMode>
 );
+*/
+
