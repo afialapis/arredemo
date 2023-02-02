@@ -1,12 +1,15 @@
 import path from 'path'
-import alias_plugin from '@rollup/plugin-alias';
-import replace from '@rollup/plugin-replace'
+
+import alias_plugin from '@rollup/plugin-alias'
+import json from '@rollup/plugin-json'
 import {babel} from '@rollup/plugin-babel'
+import replace from '@rollup/plugin-replace'
 import {nodeResolve} from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
 import scss from 'rollup-plugin-postcss'
 import copy from 'rollup-plugin-copy'
+import { terser } from 'rollup-plugin-terser'
+
 const NODE_ENV = 'production'
 
 
@@ -58,6 +61,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
           find: 'app', replacement: rendFolder
         }]
       }),
+      json(),
       babel({
         exclude: /node_modules/,
         /*https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers*/

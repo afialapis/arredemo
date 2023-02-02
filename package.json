@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
@@ -38,6 +38,7 @@
     "@rollup/plugin-alias": "^4.0.2",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-replace": "^4.0.0",
     "babel-plugin-module-resolver": "^4.1.0",
