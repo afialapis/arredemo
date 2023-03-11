@@ -1,6 +1,6 @@
 const renderReadmes = (readmes) => {
 
-  const _versionName = (v) => v.replace(/\./g, '_')
+  const _versionName = (v) => v.replace(/[\.-]/g, '_')
   const _versionMdName = (v) => `md_${_versionName(v)}`
   const _toB64 = (s) => Buffer.from(s).toString('base64')
   

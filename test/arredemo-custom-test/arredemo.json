@@ -5,7 +5,7 @@
   "company": "Arre Demo!",
   "url": "arredemo.afialapis.com",
   "doc_versions": [
-    "0.0.0"
+    "0.0.1-beta.1"
   ],
   "md": {
     "strip_details_tag": true,
