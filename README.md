@@ -1,3 +1,35 @@
+![arredemo logo](https://arredemo.afialapis.com/logo.png)
+
+[![NPM Version](https://badge.fury.io/js/arredemo.svg)](https://www.npmjs.com/package/arredemo)
+[![NPM Downloads](https://img.shields.io/npm/dm/arredemo.svg?style=flat)](https://www.npmjs.com/package/arredemo)
+
+
+# arredemo
+
+---
+
+> **arre demo!**
+
+>
+
+> Véxase **arre**. Interxección:
+
+> **1** Voz para facer andar as cabalarías.
+
+> _Arre, faco!_
+
+>
+
+> Véxase **demo**. Substantivo masculino:
+
+> **1** Ser imaxinario que representa o mal na tradición popular. 
+
+> _O demo anda sempre tentando a xente._
+
+---
+
+
+
 # Intro
 
 `arredemo` will instantly build a static site for your package, containing:

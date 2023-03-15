@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "0.0.12",
+  "version": "0.0.11",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
@@ -19,8 +19,8 @@
   "scripts": {
     "site-clean": "rm -fr arredemo",
     "site-build": "npm run site-clean && node bin/arre.mjs build",
-    "reset": "npm run site-clean && npm run test-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
-    "lint": "eslint .",
+    "reset": "npm run site-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
+    "lint": "eslint ./src/**.mjs",
     "test-custom": "cd test/arredemo-custom-test && npm run arredemo-clean && npm run arredemo-build",
     "test-noreact": "cd test/arredemo-noreact-test && npm run arredemo-clean && npm run arredemo-build",
     "test-formiga": "cd test/formiga && npm run arredemo-clean && npm run arredemo-build",
@@ -66,6 +66,6 @@
     "rollup": "^3.19.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "tinguir": "^0.0.2"
+    "tinguir": "^0.0.3"
   }
 }

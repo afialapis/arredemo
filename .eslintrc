@@ -1,7 +1,7 @@
-const _ESLINT = {
-  root: true,
-  parser: "@babel/eslint-parser",
-  parserOptions: {
+{
+  "root": true,
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -12,30 +12,30 @@ const _ESLINT = {
     },
     "requireConfigFile": false,
     "babelOptions": {
-      babelrc: true,
-      // configFile: false,
+      "babelrc": true
+      // configFile": false,
     }
   },
-  extends:  [
+  "extends":  [
     "eslint:recommended",
     "plugin:react/recommended"
   ],
-  env: {
-    browser: true,
-    mocha: true,
-    node: true,
-    es6: true
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true,
+    "es6": true
   },
-  plugins: [
+  "plugins": [
     "react",
     "react-hooks"
   ],
-  settings: {
+  "settings": {
     "react": {
       "version": "detect"
     }    
   },
-  rules: {
+  "rules": {
     "semi": 0,
     "vars-on-top": 0,
     "spaced-comment": 0,
@@ -75,5 +75,3 @@ const _ESLINT = {
     "react-hooks/exhaustive-deps": "warn"  
   }
 }
-
-export default _ESLINT
