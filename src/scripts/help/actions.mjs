@@ -1,7 +1,7 @@
 import {blue_bold, 
   blue_light, 
   red_light, 
-  red_bold} from 'farrapa/colors'
+  red_bold} from 'tinguir'
 
 const _bl= blue_light 
 const _bb= blue_bold

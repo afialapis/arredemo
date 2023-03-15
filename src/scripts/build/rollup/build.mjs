@@ -1,5 +1,5 @@
 import { rollup } from 'rollup'
-import {red, cyan, green} from 'farrapa/colors'
+import {red, cyan, green} from 'tinguir'
 
 async function _rollupGenerateOutputs(bundle, outputOptionsList) {
   for (const outputOptions of outputOptionsList) {

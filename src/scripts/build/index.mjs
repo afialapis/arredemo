@@ -1,4 +1,4 @@
-import { /*red, green,*/ cyan} from 'farrapa/colors'
+import { /*red, green,*/ cyan} from 'tinguir'
 import { loadArreDemoAppData } from "./load.mjs"
 import { renderArreDemoApp, cleanArreDemoApp } from "./render/index.mjs"
 import { rollupArreDemoAppConfig } from "./rollup/prepare.mjs"
