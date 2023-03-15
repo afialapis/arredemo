@@ -21,9 +21,12 @@
     "site-build": "npm run site-clean && node bin/arre.mjs build",
     "reset": "npm run site-clean && npm run test-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
     "lint": "eslint .",
-    "test-clean": "cd test/arredemo-custom-test && npm run arredemo-clean && cd ../formiga && npm run arredemo-clean && cd ../reactstrap-date-picker && npm run arredemo-clean",
-    "test": "cd test/arredemo-custom-test && npm run arredemo-build && cd ../formiga && npm run arredemo-build && cd ../reactstrap-date-picker && npm run arredemo-build",
-    "prepare": "npm run site-build"
+    "test-custom": "cd test/arredemo-custom-test && npm run arredemo-clean && npm run arredemo-build",
+    "test-noreact": "cd test/arredemo-noreact-test && npm run arredemo-clean && npm run arredemo-build",
+    "test-formiga": "cd test/formiga && npm run arredemo-clean && npm run arredemo-build",
+    "test-rdp": "cd test/reactstrap-date-picker && npm run arredemo-clean && npm run arredemo-build",
+    "test": "npm run test-custom && npm run test-noreact && npm run test-formiga && npm run test-rdp",
+    "prepare": "npm run lint && npm run test && npm run site-build"
   },
   "repository": {
     "type": "git",

@@ -109,7 +109,7 @@ export class ArreConfigObj {
   }
   
   get has_demo() {
-    return this.demo_entry != ''
+    return (this.demo_entry != '') && (this.demo_entry != undefined)
   }
 
   get md_keep_summary_content() {
