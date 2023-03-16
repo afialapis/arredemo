@@ -1,5 +1,5 @@
 import path from 'path'
-
+import { fileURLToPath } from 'url'
 import alias_plugin from '@rollup/plugin-alias'
 import json from '@rollup/plugin-json'
 import {babel} from '@rollup/plugin-babel'
@@ -11,6 +11,8 @@ import copy from 'rollup-plugin-copy'
 import terser from '@rollup/plugin-terser'
 
 const NODE_ENV = 'production'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 
 //const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
@@ -63,6 +65,8 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       }),
       json(),
       babel({
+        babelrc: false,
+        root: path.join(__dirname, '../../..'),
         exclude: /node_modules/,
         /*https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers*/
 
