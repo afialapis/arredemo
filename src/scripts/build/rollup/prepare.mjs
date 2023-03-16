@@ -65,11 +65,12 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       }),
       json(),
       babel({
-        babelrc: false,
-        root: path.join(__dirname, '../../..'),
+        // Babel resolution involves just arredemo folders
+        cwd: path.join(__dirname, '../../../..'), 
+        
         exclude: /node_modules/,
+        
         /*https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers*/
-
         babelHelpers: 'bundled',
 
         presets: [
