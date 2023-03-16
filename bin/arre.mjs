@@ -27,7 +27,7 @@ import {globalHelp} from '#scripts/help/actions.mjs'
 
 const args = process.argv.slice(2)
 
-const arreActions= ['build', 'help']
+const arreActions= ['build', 'help', 'version']
 
 const scriptIndex = args.findIndex(
   x => arreActions.indexOf(x) >= 0

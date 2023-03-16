@@ -49,6 +49,7 @@ function _log_help(action, usage, extra, error= undefined) {
 
 const _buildUsage = `\t${_bl('npx arredemo')} ${_bb('build')} ${_bl('[force]')}`
 const _helpUsage = `\t${_bl('npx arredemo')} ${_bb('help')}`
+const _versionUsage = `\t${_bl('npx arredemo')} ${_bb('version')}`
 
 function buildHelp(pkgPath, error= undefined) {
   const usage= _buildUsage
@@ -66,6 +67,13 @@ function helpHelp(pkgPath, error= undefined) {
   _log_err(error)  
 }
 
+
+function versionHelp(pkgPath, error= undefined) {
+  const usage= _versionUsage
+  _log_help('version', usage, '')
+  _log_err(error)  
+}
+
 function globalHelp(error= undefined, extra= undefined) {
   if (error) {
   _log_err(error)
@@ -80,7 +88,9 @@ const text= [
   '\n',
   _buildUsage,
   '\n',
-  _helpUsage
+  _helpUsage,
+  '\n',
+  _versionUsage
   ].join('\n')
 
   _log_text(text)
@@ -90,5 +100,6 @@ const text= [
 export {
   buildHelp,
   helpHelp,
+  versionHelp,
   globalHelp
 }
