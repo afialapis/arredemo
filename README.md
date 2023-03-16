@@ -37,7 +37,21 @@
 - *Docs* page, made from your repo's `README.md`
 - *Demo* page, made from your demo component (who hasn't a `/demo` folder, huh?)
 
-# Site build
+# Install
+
+```
+  npm i [-D] arredemo
+```
+
+Optionally, you can install `arredemo` globally. It works too!
+
+
+```
+  npm i -g arredemo
+```
+
+
+# Build your site
 
 This single command will do the magic:
 
