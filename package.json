@@ -66,6 +66,6 @@
     "rollup": "^3.19.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "tinguir": "^0.0.3"
+    "tinguir": "^0.0.4"
   }
 }
