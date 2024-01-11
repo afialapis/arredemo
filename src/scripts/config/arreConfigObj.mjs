@@ -100,6 +100,10 @@ export class ArreConfigObj {
     return this.config.company || ''
   }
   
+  get company_url() {
+    return this.config.company_url || ''
+  }
+  
   get url() {
     return this.config.url || ''
   }  

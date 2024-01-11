@@ -2,8 +2,9 @@
   "theme": "default",
   "favicon": "logo/favicon/reactstrap-date-picker.ico",
   "logo": "logo/reactstrap-date-picker.png",
-  "company": "Afialapis",
   "url": "reactstrap-date-picker.afialapis.com",
+  "company": "Arre Demo!",
+  "company_url": "https://www.afialapis.com",
   "doc_versions": [
     "1.0.6"
   ],

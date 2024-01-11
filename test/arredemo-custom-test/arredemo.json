@@ -2,8 +2,9 @@
   "theme": "default",
   "favicon": "../../logo/favicon/arredemo.png",
   "logo": "../../logo/arredemo.png",
+  "url": "https://www.afialapis.com/os/arredemo",
   "company": "Arre Demo!",
-  "url": "arredemo.afialapis.com",
+  "company_url": "https://www.afialapis.com",
   "doc_versions": [
     "0.0.1-beta.1"
   ],

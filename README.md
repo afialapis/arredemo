@@ -1,4 +1,4 @@
-![arredemo logo](https://arredemo.afialapis.com/favicon.png)
+![arredemo logo](https://www.afialapis.com/os/arredemo/favicon.png)
 
 [![NPM Version](https://badge.fury.io/js/arredemo.svg)](https://www.npmjs.com/package/arredemo)
 [![NPM Downloads](https://img.shields.io/npm/dm/arredemo.svg?style=flat)](https://www.npmjs.com/package/arredemo)
@@ -97,7 +97,7 @@ Path to your [FavIcon](https://www.w3schools.com/html/html_favicon.asp) file.
 
 Path to your logo file. It'll be shown in the site's header.
 
-### `company` and `url`
+### `url`, `company` and `company_url`
 
 Shown in the site's Footer.
 

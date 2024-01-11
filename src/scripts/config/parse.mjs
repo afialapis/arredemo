@@ -31,6 +31,7 @@ const parseArreConfig = (config, pkgPath) => {
 
   const theme = config?.theme || 'default'
   const company = config?.company || ''
+  const company_url = config?.company_url || ''
   const url = config?.url || ''
 
   // Docs
@@ -70,6 +71,7 @@ const parseArreConfig = (config, pkgPath) => {
   return {
     theme,
     company,
+    company_url,
     url,
     doc_versions,
     md,

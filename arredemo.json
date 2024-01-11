@@ -3,7 +3,8 @@
   "favicon": "logo/favicon/arredemo.png",
   "logo": "logo/arredemo.png",
   "company": "Afialapis",
-  "url": "arredemo.afialapis.com",
+  "company_url": "https://www.afialapis.com",
+  "url": "https://www.afialapis.com/os/arredemo",
   "doc_versions": null,
   "md": {
     "strip_details_tag": false,

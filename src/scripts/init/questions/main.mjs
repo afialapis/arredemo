@@ -25,17 +25,24 @@ export default [
     message: 'Path to your logo image file'
   },
 
-  // company
-  {
-    type: 'text',
-    name: 'company',
-    message: 'Name of your company'
-  }  ,
-
   // url
   {
     type: 'text',
     name: 'url',
     message: 'URL of your website'
-  }   
+  } ,
+
+  // company
+  {
+    type: 'text',
+    name: 'company',
+    message: 'Name of your company'
+  }  ,  
+
+  // company_url
+  {
+    type: 'text',
+    name: 'company_url',
+    message: 'URL of your Company'
+  } 
 ]

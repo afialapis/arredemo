@@ -3,7 +3,8 @@ const defs= {
   "favicon": "logo/favicon/arredemo.ico",
   "logo": "logo/arredemo.png",
   "company": "Arre Demo!",
-  "url": "arredemo.afialapis.com",
+  "company_url": "https://www.afialapis.com",
+  "url": "https://www.afialapis.com/os/arredemo",
   "doc_versions": [
     "0.0.1"
   ],
