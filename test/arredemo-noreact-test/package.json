@@ -11,10 +11,11 @@
   "scripts": {
     "clean-lib": "rm -fr lib && mkdir lib",
     "lint": "eslint ./src/**.mjs",
-    "lib": "npm run clean-lib && npx babel ./src/index.mjs -o ./lib/index.cjs",
+    "lib": "npm run clean-lib && npx @babel/cli ./src/index.mjs -o ./lib/index.cjs",
     "x-reset": "npm cache clean --force && npm run clean-lib && rm -fr node_modules && npm run arredemo-clean && npm i --ignore-scripts",
     "arredemo-clean": "rm -fr arredemo",
-    "x-run": "npm run lint && npm run lib && npm run arredemo-clean && npx arredemo build"
+    "x-run-all": "npm run lint && npm run lib && npm run arredemo-clean && npx arredemo build",
+    "x-run": "npm run arredemo-clean && npx arredemo build"
   },
   "devDependencies": {
     "arredemo": "file:../../",
