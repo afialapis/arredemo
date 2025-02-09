@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/afialapis/arredemo.git"
+    "url": "https://github.com/afialapis/arredemo.git"
   },
   "author": "donato@afialapis.com",
   "license": "MIT",
