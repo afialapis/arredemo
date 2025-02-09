@@ -3,7 +3,10 @@ nav.header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;  
+  z-index: 2; 
+
+  // Look and feel
+  background-color: var(--header-bg-color); 
 
   @media screen and (min-width: 600px) {
     padding-left: 4em;
@@ -16,14 +19,14 @@ nav.header {
     padding: 1em 0;
     height: var(--header-grid-height);
 
+    //background-image: url(attr(data-logo));
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+
     @media screen and (max-width: 600px) {
       grid-template-columns: var(--header-logo-width-resp) auto 20%;
       height: var(--header-grid-height-resp);
     }
-
-    //background-image: url(attr(data-logo));
-    background-repeat: no-repeat;
-    background-size: auto 100%;
     
 
     div.logo {
@@ -74,10 +77,6 @@ nav.header {
       }      
     }
   }
-
-  // Look and feel
-
-  background-color: var(--header-bg-color);
 
   .grid {
 

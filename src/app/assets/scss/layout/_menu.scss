@@ -20,6 +20,12 @@
   display: flex;
   */
 
+
+
+  // Look and feel
+  // font-weight: 200;
+  border-right: var(--border);
+
   @media screen and (max-width: 600px) {
     display: none;
 
@@ -50,12 +56,6 @@
     padding: 1rem;
   }
   */
-
-
-
-  // Look and feel
-  // font-weight: 200;
-  border-right: var(--border);
 
 
 
@@ -122,17 +122,7 @@
         top: 0.25rem;
       }
     }
-  
-  
-  
   }
-  
-
-
-
-
-
-
 }
 
 

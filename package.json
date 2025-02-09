@@ -19,13 +19,13 @@
   "scripts": {
     "site-clean": "rm -fr arredemo",
     "site-build": "npm run site-clean && node bin/arre.mjs build",
-    "reset": "npm run site-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i",
+    "reset": "npm run site-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i --ignore-scripts && npm run test-custom-reset && npm run test-noreact-reset ",
     "lint": "eslint ./src/**.mjs",
-    "test-custom": "cd test/arredemo-custom-test && npm run arredemo-clean && npm run arredemo-build",
-    "test-noreact": "cd test/arredemo-noreact-test && npm run arredemo-clean && npm run arredemo-build",
-    "test-formiga": "cd test/formiga && npm run arredemo-clean && npm run arredemo-build",
-    "test-rdp": "cd test/reactstrap-date-picker && npm run arredemo-clean && npm run arredemo-build",
-    "test": "npm run test-custom && npm run test-noreact && npm run test-formiga",
+    "test-custom-reset": "cd test/arredemo-custom-test && npm run --silent x-reset",
+    "test-noreact-reset": "cd test/arredemo-noreact-test  && npm run --silent x-reset",
+    "test-custom": "cd test/arredemo-custom-test && npm run x-run",
+    "test-noreact": "cd test/arredemo-noreact-test  && npm run x-run",
+    "test": "npm run test-custom && npm run test-noreact",
     "prepare": "npm run lint && npm run test && npm run site-build"
   },
   "repository": {
@@ -59,7 +59,6 @@
     "markdown-to-jsx": "^7.7.3",
     "mustache": "^4.2.0",
     "node-fetch": "^3.3.2",
-    "node-sass": "^8.0.0",
     "postcss": "^8.5.1",
     "prompts": "^2.4.2",
     "react": "^18.3.1",
@@ -67,6 +66,7 @@
     "rollup": "^4.34.6",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.84.0",
     "tinguir": "^0.0.4"
   },
   "devDependencies": {

@@ -12,18 +12,21 @@
     "clean-lib": "rm -fr lib && mkdir lib",
     "lint": "eslint ./src/**.mjs",
     "lib": "npm run clean-lib && npx babel ./src/index.mjs -o ./lib/index.cjs",
-    "reset": "npm cache clean --force && npm run clean-lib && rm -fr node_modules && npm run arredemo-clean && npm i",
+    "x-reset": "npm cache clean --force && npm run clean-lib && rm -fr node_modules && npm run arredemo-clean && npm i --ignore-scripts",
     "arredemo-clean": "rm -fr arredemo",
-    "arredemo-build": "npm run arredemo-clean && npx arredemo build",
-    "prepare": "npm run lint && npm run lib && npm run arredemo-build"
+    "x-run": "npm run lint && npm run lib && npm run arredemo-clean && npx arredemo build"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.3",
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/node": "^7.20.7",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/register": "^7.21.0",
-    "eslint": "^8.36.0"    
+    "arredemo": "file:../../",
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.8",
+    "@babel/eslint-parser": "^7.26.8",
+    "@babel/node": "^7.26.0",
+    "@babel/preset-env": "^7.26.8",
+    "@babel/register": "^7.25.9",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "globals": "^15.14.0"
   }
 }
