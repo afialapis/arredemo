@@ -10,7 +10,6 @@
 
 > **arre demo!**
 
->
 
 > Véxase **arre**. Interxección:
 
@@ -18,7 +17,6 @@
 
 > _Arre, faco!_
 
->
 
 > Véxase **demo**. Substantivo masculino:
 
@@ -143,3 +141,15 @@ This file will make a `export default` of your React component.
 Yes: in the future this will be done better and non-React stuff will be compatible too.
 
 If `demo_entry: null`, no Demo page will be built.
+
+## Changelog
+
+### 1.0.0
+
+Upgraded all dependencies.
+
+Mainly: now React version is _18.3.1_.
+
+### 0.0.18
+
+React version is _16.13.1_
