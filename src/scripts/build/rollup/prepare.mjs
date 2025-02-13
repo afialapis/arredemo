@@ -49,7 +49,7 @@ function _imgCopyTargets (arreConfig) {
 function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, inputName, outputName) {
   //const pkgJsonPath= path.join(pkgPath, 'package.json')
   //const input= arreConfig.demo_entry
-
+  
   const input = path.join(rendFolder, inputName)
 
   const outFolder = path.join(pkgPath, 'arredemo')
@@ -92,8 +92,13 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       commonjs({
         esmExternals: true
       }),
-      scss(),
-
+      scss({
+        use: {
+          sass: {
+            silenceDeprecations: ['legacy-js-api'],
+          }
+        },
+      }),
       copy({
         targets: _imgCopyTargets (arreConfig)
       })

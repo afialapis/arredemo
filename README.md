@@ -1,24 +1,23 @@
+# arredemo
 ![arredemo logo](https://www.afialapis.com/os/arredemo/favicon.png)
 
 [![NPM Version](https://badge.fury.io/js/arredemo.svg)](https://www.npmjs.com/package/arredemo)
 [![NPM Downloads](https://img.shields.io/npm/dm/arredemo.svg?style=flat)](https://www.npmjs.com/package/arredemo)
 
 
-# arredemo
-
 ---
 
 > **arre demo!**
 
 
-> Véxase **arre**. Interxección:
+> Véxase **[arre](https://academia.gal/dicionario/-/termo/arre)**. Interxección:
 
 > **1** Voz para facer andar as cabalarías.
 
 > _Arre, faco!_
 
 
-> Véxase **demo**. Substantivo masculino:
+> Véxase **[demo](https://academia.gal/dicionario/-/termo/demo)**. Substantivo masculino:
 
 > **1** Ser imaxinario que representa o mal na tradición popular. 
 
@@ -34,6 +33,8 @@
 
 - *Docs* page, made from your repo's `README.md`
 - *Demo* page, made from your demo component (who hasn't a `/demo` folder, huh?)
+
+For example, [`arredemo` site](https://www.afialapis.com/os/arredemo/) itself has been built with `arredemo`.
 
 # Install
 
@@ -74,12 +75,12 @@ Notice you can include several versions of your package to be documented, not ju
 
 ### ES Modules
 
-They are the future, so just ESM is allowed.
+They are the future, so just ESM are allowed.
 
 
 # Configuration options
 
-The `arredemo.json` file will contain `Arredemo`'s configuration. It is created he first time you run the build.
+The `arredemo.json` file will contain `arredemo`'s configuration. It is created he first time you run the build.
 
 ## UI options
 
@@ -143,6 +144,12 @@ Yes: in the future this will be done better and non-React stuff will be compatib
 If `demo_entry: null`, no Demo page will be built.
 
 ## Changelog
+
+### 1.0.2
+
+Removed Dart Sass `legacy-js-api` warnings.
+
+Upgraded all other dependencies.
 
 ### 1.0.0
 
