@@ -1,7 +1,7 @@
 # arredemo
-
 [![NPM Version](https://badge.fury.io/js/arredemo.svg)](https://www.npmjs.com/package/arredemo)
 [![NPM Downloads](https://img.shields.io/npm/dm/arredemo.svg?style=flat)](https://www.npmjs.com/package/arredemo)
+
 ![arredemo logo](https://www.afialapis.com/os/arredemo/favicon.png)
 
 
@@ -143,20 +143,20 @@ Yes: in the future this will be done better and non-React stuff will be compatib
 
 If `demo_entry: null`, no Demo page will be built.
 
-## Changelog
+# Changelog
 
-### 1.0.2
+## 1.0.2
 
 Removed Dart Sass `legacy-js-api` warnings.
 
 Upgraded all other dependencies.
 
-### 1.0.0
+## 1.0.0
 
 Upgraded all dependencies.
 
 Mainly: now React version is _18.3.1_.
 
-### 0.0.18
+## 0.0.18
 
 React version is _16.13.1_
