@@ -1,8 +1,8 @@
 # arredemo
-![arredemo logo](https://www.afialapis.com/os/arredemo/favicon.png)
 
 [![NPM Version](https://badge.fury.io/js/arredemo.svg)](https://www.npmjs.com/package/arredemo)
 [![NPM Downloads](https://img.shields.io/npm/dm/arredemo.svg?style=flat)](https://www.npmjs.com/package/arredemo)
+![arredemo logo](https://www.afialapis.com/os/arredemo/favicon.png)
 
 
 ---
