@@ -25,7 +25,8 @@ const _renderIndexHtmlAs = (source, dest, pkgJson, arreConfig, bundle) => {
     favicon_main,
     favicon_ico,
     favicon_apple,
-    bundle
+    bundle,
+    bundle_version: `${Math.floor(+new Date() / 1000)}`
   }
   const html = Mustache.render(tmpl, data)
 

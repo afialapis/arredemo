@@ -29,7 +29,7 @@
 
 # Intro
 
-`arredemo` will instantly build a static site for your package, containing:
+[`arredemo`](https://www.afialapis.com/os/arredemo) will instantly build a static site for your package, containing:
 
 - *Docs* page, made from your repo's `README.md`
 - *Demo* page, made from your demo component (who hasn't a `/demo` folder, huh?)
@@ -145,18 +145,4 @@ If `demo_entry: null`, no Demo page will be built.
 
 # Changelog
 
-## 1.0.2
-
-Removed Dart Sass `legacy-js-api` warnings.
-
-Upgraded all other dependencies.
-
-## 1.0.0
-
-Upgraded all dependencies.
-
-Mainly: now React version is _18.3.1_.
-
-## 0.0.18
-
-React version is _16.13.1_
+See [changelog here](https://github.com/afialapis/arredemo/blob/main/CHANGELOG.md)
