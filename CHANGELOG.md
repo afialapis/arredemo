@@ -1,6 +1,12 @@
 
 # Changelog
 
+
+## 1.2.0
+
+Upgraded deps
+Min Node: 21
+
 ## 1.1.0
 
 Added bundle version for cache busting
