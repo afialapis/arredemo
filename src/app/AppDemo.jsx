@@ -7,7 +7,7 @@ const App = ({pkgPath, pkgJson, arreConfig}) => {
 
    
   return (
-    <AppContext.Provider value={{pkgPath, pkgJson, arreConfig /*, versions, selectedVersion, readme, onSwicthVersion*/}}>
+    <AppContext.Provider value={{pkgPath, pkgJson, arreConfig /*, versions, selectedVersion, readme, onSwitchVersion*/}}>
       <Demo/>
     </AppContext.Provider>
   )

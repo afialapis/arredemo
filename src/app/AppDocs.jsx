@@ -9,13 +9,13 @@ const AppDocs = ({pkgPath, pkgJson, arreConfig, readmes}) => {
   const [selectedVersion, setSelectedVersion]= useState(docVersions[0])
   const [readme, setReadme]= useState(readmes[docVersions[0]])
 
-  const onSwicthVersion = useCallback((nVersion)=> {
+  const onSwitchVersion = useCallback((nVersion)=> {
     setSelectedVersion(nVersion)
     setReadme(readmes[nVersion])
   }, [])
   
   return (
-    <AppContext.Provider value={{pkgPath, pkgJson, arreConfig, versions, selectedVersion, readme, onSwicthVersion}}>
+    <AppContext.Provider value={{pkgPath, pkgJson, arreConfig, versions, selectedVersion, readme, onSwitchVersion}}>
       <Docs readme   = {readme}/>
     </AppContext.Provider>
   )

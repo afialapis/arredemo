@@ -1,6 +1,9 @@
 
 # Changelog
 
+## 1.2.1
+
+Fix version switcher
 
 ## 1.2.0
 
