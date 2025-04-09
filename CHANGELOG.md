@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 1.2.2
+
+Stick `react` and `react-dom` to `^18.3.1`
+
 ## 1.2.1
 
 Fix version switcher
