@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 2.0.0
+
+Upgraded deps
+Going React 19
+
 ## 1.2.2
 
 Stick `react` and `react-dom` to `^18.3.1`
