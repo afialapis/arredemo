@@ -4,9 +4,7 @@
 
 ![arredemo logo](https://www.afialapis.com/os/arredemo/favicon.png)
 
-
 ---
-
 > **arre demo!**
 
 
@@ -22,10 +20,7 @@
 > **1** Ser imaxinario que representa o mal na tradición popular. 
 
 > _O demo anda sempre tentando a xente._
-
 ---
-
-
 
 # Intro
 
@@ -38,45 +33,35 @@ For example, [`arredemo` site](https://www.afialapis.com/os/arredemo/) itself ha
 
 # Install
 
-```
-  npm i [-D] arredemo
-```
+It's maybe better to install `arredemo` globally:
 
-Optionally, you can install `arredemo` globally. It works too!
-
-
+```sh
+npm i -g arredemo
 ```
-  npm i -g arredemo
-```
-
 
 # Build your site
 
 This single command will do the magic:
 
-```
-  npx arredemo build
+```sh
+npx arredemo build
 ```
 
 The first time you launch it, the `arredemo.json` file will be created. You can then tweak it manually for further builds.
-
-An `arredemo` folder will be made, containing the static site. You may want your web server to point to `arredemo/index.html`!
-
+An `arredemo` folder will be made, containing the static site. You may want:
+- your web server to point to `arredemo/index.html`
+- to add `arredemo` to your `.gitignore` file
 
 # Site content
 
-## Docs
+## Docs page
 
 The docs page will be made from your repo's `README.md` file.
-
 Notice you can include several versions of your package to be documented, not just the current one. `arredemo` will read them from `npm` registry.
 
-## Demo
+## Demo page
 
-### ES Modules
-
-They are the future, so just ESM are allowed.
-
+Optionally, you can add to your site a demo page. It's made from a React component. Check [`demo_entry`](#demo_entry).
 
 # Configuration options
 

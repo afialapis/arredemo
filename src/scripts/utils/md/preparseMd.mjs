@@ -32,30 +32,29 @@ const _groupBySections = (lines, h1ChTag = "section", h2ChTag = "article") => {
    */
   const output = []
 
-  let openedl1 = false,
-    openedl2 = false
+  let openedl1 = false
+  let openedl2 = false
 
   for (const line of lines) {
-    if (line.indexOf("#") === 0) {
-      if (line.indexOf("# ") === 0) {
-        if (openedl2) {
-          output.push(`</${h2ChTag}>`)
-          openedl2 = false
-        }
-        if (openedl1) {
-          output.push(`</${h1ChTag}>`)
-        }
-        output.push(`<${h1ChTag}>`)
-        openedl1 = true
-      }
+    const isH1 = line.indexOf("# ") === 0
+    const isH2 = line.indexOf("## ") === 0
 
-      if (line.indexOf("## ") === 0) {
-        if (openedl2) {
-          output.push(`</${h2ChTag}>`)
-        }
-        output.push(`<${h2ChTag}>`)
-        openedl2 = true
+    if (isH1) {
+      if (openedl2) {
+        output.push(`</${h2ChTag}>`)
+        openedl2 = false
       }
+      if (openedl1) {
+        output.push(`</${h1ChTag}>`)
+      }
+      output.push(`<${h1ChTag}>`)
+      openedl1 = true
+    } else if (isH2) {
+      if (openedl2) {
+        output.push(`</${h2ChTag}>`)
+      }
+      output.push(`<${h2ChTag}>`)
+      openedl2 = true
     }
     output.push(line)
   }
@@ -147,7 +146,7 @@ const preparseMd = (md, _packageName, arreConfig) => {
 
   let lines = parsed.split("\n")
 
-  lines = _groupBySections(lines)
+  //lines = _groupBySections(lines)
   lines = _removeBadgesAndLogo(lines)
   if (arreConfig.md_strip_details_tag) {
     lines = _removeSummaryTags(lines, arreConfig.md_keep_summary_content)

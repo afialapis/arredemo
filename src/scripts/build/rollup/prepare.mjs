@@ -122,11 +122,6 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       exports: "named",
       sourcemap: true,
       name: toTitleCase(pkgJson.name),
-      //globals: {
-      //  react: "React",
-      //  "react-dom": "ReactDOM",
-      //  "markdown-to-jsx": "MarkdownToJSX"
-      //},
       plugins: [terser({ ecma: 8, safari10: true })]
     }
   ]

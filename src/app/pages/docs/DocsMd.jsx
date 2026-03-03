@@ -8,16 +8,6 @@ const WrapperP = (props) => {
 const DocsMd = ({ readme }) => {
   const options = {
     overrides: {
-      section: {
-        props: {
-          className: "doc-section"
-        }
-      },
-      article: {
-        props: {
-          className: "doc-article"
-        }
-      },
       pre: {
         props: {
           className: "prettyprint"

@@ -5,7 +5,9 @@
   "company": "Afialapis",
   "company_url": "https://www.afialapis.com",
   "url": "https://www.afialapis.com/os/arredemo",
-  "doc_versions": null,
+  "doc_versions": [
+    "2.2.0"
+  ],
   "md": {
     "strip_details_tag": false,
     "keep_summary_content": true
