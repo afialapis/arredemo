@@ -8,7 +8,6 @@ import { useOnClickOutside } from "./hooks/useOnClickOutside.mjs"
 import VersionSwitcher from "./VersionSwitcher.jsx"
 
 const Page = ({ path, menu, children }) => {
-  const pageRef = useRef(null)
   const menuRef = useRef(null)
   const [responsiveOpen, setResponsiveOpen] = useState(false)
   const activeOption = useActiveOption(menu)
@@ -21,14 +20,12 @@ const Page = ({ path, menu, children }) => {
     }
   }
 
-  useOnClickOutside(pageRef, menuRef, () => {
-    //if (menuRef?.current) {
+  useOnClickOutside(menuRef, () => {
     setResponsiveOpen(false)
-    //}
   })
 
   return (
-    <div className="main" ref={pageRef}>
+    <div className="main">
       <nav className="header">
         <Header
           path={path}

@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react"
 
-export const useOnClickOutside = (pageRef, ref, handler) => {
+export const useOnClickOutside = (ref, handler) => {
   const handleClick = useCallback(
     (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
@@ -9,16 +9,6 @@ export const useOnClickOutside = (pageRef, ref, handler) => {
     },
     [ref, handler]
   )
-  /*
-  useEffect(() => {
-    if (!pageRef?.current) return
-
-    pageRef.current.addEventListener("click", handleClick)
-    return () => {
-      pageRef.current.removeEventListener("click", handleClick)
-    }
-  }, [pageRef, handleClick])
-  */
 
   useEffect(() => {
     document.body.addEventListener("click", handleClick)

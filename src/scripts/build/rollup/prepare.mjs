@@ -44,7 +44,7 @@ function _imgCopyTargets(arreConfig) {
 }
 
 function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, inputName, outputName) {
-  const pkgJsonPath= path.join(pkgPath, 'package.json')
+  const pkgJsonPath = path.join(pkgPath, "package.json")
   //const input= arreConfig.demo_entry
 
   const input = path.join(rendFolder, inputName)
@@ -76,7 +76,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
               loose: true
             }
           ],
-          ["@babel/preset-react", { "runtime": "automatic" }]
+          ["@babel/preset-react", { runtime: "automatic" }]
         ]
       }),
       commonjs({
@@ -111,7 +111,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       copy({
         targets: _imgCopyTargets(arreConfig)
       })
-    ],
+    ]
   }
 
   const outputs = [
