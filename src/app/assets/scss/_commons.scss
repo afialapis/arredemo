@@ -24,7 +24,9 @@ body.arredemo {
   font-family: 'Inconsolata', Arial, sans-serif;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.5em;
-  background-color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
 
 
   h1 {

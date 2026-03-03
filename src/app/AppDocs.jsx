@@ -6,6 +6,7 @@ const AppDocs = ({ pkgPath, pkgJson, arreConfig, readmes }) => {
   const docVersions = Object.keys(readmes)
   const [selectedVersion, setSelectedVersion] = useState(docVersions[0])
   const [readme, setReadme] = useState(readmes[docVersions[0]])
+  const [theme, setTheme] = useState("light")
 
   const onSwitchVersion = useCallback(
     (nVersion) => {
@@ -14,6 +15,14 @@ const AppDocs = ({ pkgPath, pkgJson, arreConfig, readmes }) => {
     },
     [readmes]
   )
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light"
+      document.documentElement.setAttribute("data-theme", newTheme)
+      return newTheme
+    })
+  }, [])
 
   return (
     <AppContext.Provider
@@ -24,7 +33,9 @@ const AppDocs = ({ pkgPath, pkgJson, arreConfig, readmes }) => {
         versions: docVersions,
         selectedVersion,
         readme,
-        onSwitchVersion
+        onSwitchVersion,
+        theme,
+        toggleTheme
       }}
     >
       <Docs readme={readme} />

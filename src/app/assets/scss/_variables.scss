@@ -1,5 +1,8 @@
 /* css variables*/
 :root {
+  --bg-color: #FAFBFC;
+  --text-color: #333333;
+
   --font-size: 12pt;
   --font-size-sm: 9pt;
 
@@ -36,5 +39,21 @@
   --menu-responsive-color: rgba(0, 0, 0, 1);
 
   --border: 1px solid var(--header-bg-color);
+}
 
+[data-theme="dark"] {
+  --bg-color: #1a1a1d;
+  --text-color: #e0e0e0;
+
+  --heading-color-l1: #ffffff;
+  --heading-color-l2: #cccccc;
+  --heading-color-l3: #b3b3b3;
+
+  --header-bg-color: #242429;
+  --header-bg-color-secondary: #2c2c33;
+  --code-bg-color: #2b2b30;
+
+  --inline-code-color: #bfa1a1;
+  --menu-responsive-color: rgba(255, 255, 255, 1);
+  --border: 1px solid #33333a;
 }

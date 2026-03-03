@@ -6,6 +6,7 @@
 From `eslint` to `biome`
 Min `node` is `24`
 Upgraded deps, like `react` to `19`
+Added night/day themes toggle
 
 ## 2.0.0
 
