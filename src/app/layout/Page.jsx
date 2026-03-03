@@ -1,60 +1,62 @@
-import React, {useState} from 'react'
-import Header from 'app/layout/Header.jsx'
-import Menu from 'app/layout/Menu.jsx'
-import Footer from 'app/layout/Footer.jsx'
-import VersionSwitcher from './VersionSwitcher.jsx'
-import useActiveOption from './hooks/useActiveOption.mjs'
-import { domScrollTo } from 'app/util/dom.mjs'
+import Footer from "app/layout/Footer.jsx"
+import Header from "app/layout/Header.jsx"
+import Menu from "app/layout/Menu.jsx"
+import { domScrollTo } from "app/util/dom.mjs"
+import { useRef, useState } from "react"
+import useActiveOption from "./hooks/useActiveOption.mjs"
+import { useOnClickOutside } from "./hooks/useOnClickOutside.mjs"
+import VersionSwitcher from "./VersionSwitcher.jsx"
 
-const Page = ({path, menu, children}) => {
-  const [responsiveOpen, setResponsiveOpen]= useState(false)
+const Page = ({ path, menu, children }) => {
+  const pageRef = useRef(null)
+  const menuRef = useRef(null)
+  const [responsiveOpen, setResponsiveOpen] = useState(false)
   const activeOption = useActiveOption(menu)
-  
+
   const handleOpenMenu = (idx) => {
     setResponsiveOpen(false)
-    const hid= menu[idx].id.replace('menu-', '')
-    domScrollTo(`#${hid}`)
+    if (idx) {
+      const hid = menu[idx].id.replace("menu-", "")
+      domScrollTo(`#${hid}`)
+    }
   }
-  
+
+  useOnClickOutside(pageRef, menuRef, () => {
+    //if (menuRef?.current) {
+    setResponsiveOpen(false)
+    //}
+  })
+
   return (
-    <div className="main">
+    <div className="main" ref={pageRef}>
       <nav className="header">
-        <Header 
-          path  = {path}
-          responsiveOpen= {responsiveOpen}
-          onResponsiveToggle= {(show) => setResponsiveOpen(show)}
-          />
+        <Header
+          path={path}
+          responsiveOpen={responsiveOpen}
+          onResponsiveToggle={(show) => setResponsiveOpen(show)}
+        />
       </nav>
 
-      <div className={`body ${menu.length>0 ? 'with-menu' : 'without-menu'}`}>
-        {menu.length==0
-         ? null
-         :
-            <div className={`menu-container ${responsiveOpen ? 'responsive-open' : ''}`}>
-              <>
-                {path=='docs'
-                ? <VersionSwitcher/>
-                : null
-                }
-                <Menu 
-                  path            = {path}
-                  menu            = {menu}
-                  onMenuClick     = {handleOpenMenu}
-                  activeOption    = {activeOption}/>
-                {/*<Footer/>*/}
-              </>
-            </div>
-         }
-
+      <div className={`body ${menu.length > 0 ? "with-menu" : "without-menu"}`}>
+        {menu.length === 0 ? null : (
+          <div className={`menu-container ${responsiveOpen ? "responsive-open" : ""}`}>
+            {path === "docs" ? <VersionSwitcher /> : null}
+            <Menu
+              innerRef={menuRef}
+              path={path}
+              menu={menu}
+              onMenuClick={handleOpenMenu}
+              activeOption={activeOption}
+            />
+            {/*<Footer/>*/}
+          </div>
+        )}
 
         <div className="content">
           {children}
-          <Footer/>
+          <Footer />
         </div>
       </div>
-          
-        
-      
     </div>
   )
 }

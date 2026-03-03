@@ -1,17 +1,17 @@
-import fsPromises from 'fs/promises'
-import {readFileSync} from 'fs'
-import os from 'os'
-import path from 'path'
-import prompts from 'prompts'
+import { readFileSync } from "node:fs"
+import fsPromises from "node:fs/promises"
+import os from "node:os"
+import path from "node:path"
+import prompts from "prompts"
 
-const arreJsonPath = (pkgPath) => path.join(pkgPath, 'arredemo.json')
+const arreJsonPath = (pkgPath) => path.join(pkgPath, "arredemo.json")
 
 async function readJsonFile(jsonPath) {
   try {
     const data = await fsPromises.readFile(jsonPath)
     const obj = JSON.parse(data)
     return obj
-  } catch (err){
+  } catch (err) {
     console.log(err)
     return {}
   }
@@ -19,15 +19,14 @@ async function readJsonFile(jsonPath) {
 
 function readJsonFileSync(jsonPath) {
   try {
-    const data = readFileSync(jsonPath, {encoding:'utf8', flag:'r'})
+    const data = readFileSync(jsonPath, { encoding: "utf8", flag: "r" })
     const obj = JSON.parse(data)
     return obj
-  } catch (err){
+  } catch (err) {
     console.log(err)
     return {}
   }
 }
-
 
 function __objectToJson(config) {
   return JSON.stringify(config, null, 2) + os.EOL
@@ -40,14 +39,17 @@ function _objectToJs(config) {
 async function _saveFileWithConfirm(filename, content, force, message) {
   try {
     await access(filename)
-    
-    if (! force) {
-      const questions= [{
-        type: 'confirm',
-        name: 'overwrite',
-        message: message || `${path.basename(filename)} already exists. Do you wanrt to overwrite it?`,
-        initial: false      
-      }]
+
+    if (!force) {
+      const questions = [
+        {
+          type: "confirm",
+          name: "overwrite",
+          message:
+            message || `${path.basename(filename)} already exists. Do you wanrt to overwrite it?`,
+          initial: false
+        }
+      ]
 
       const answers = await prompts(questions)
 
@@ -55,12 +57,9 @@ async function _saveFileWithConfirm(filename, content, force, message) {
         return
       }
     }
-  } catch(e) {}
+  } catch (_) {}
 
-  await fsPromises.writeFile(
-    filename,
-    content
-  )
+  await fsPromises.writeFile(filename, content)
 }
 
 async function saveObjectToJsonWithConfirm(filename, obj, force) {
@@ -71,6 +70,10 @@ async function saveObjectToJsWithConfirm(filename, obj, force) {
   await _saveFileWithConfirm(filename, _objectToJs(obj), force)
 }
 
-
-
-export {arreJsonPath, readJsonFile, readJsonFileSync, saveObjectToJsonWithConfirm, saveObjectToJsWithConfirm}
+export {
+  arreJsonPath,
+  readJsonFile,
+  readJsonFileSync,
+  saveObjectToJsonWithConfirm,
+  saveObjectToJsWithConfirm
+}

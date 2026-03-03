@@ -1,6 +1,12 @@
 
 # Changelog
 
+## 2.2.0
+
+From `eslint` to `biome`
+Min `node` is `24`
+Upgraded deps
+
 ## 2.0.0
 
 Upgraded deps

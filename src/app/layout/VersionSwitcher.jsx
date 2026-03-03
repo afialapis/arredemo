@@ -1,25 +1,21 @@
-import React from 'react'
-import useAppContext from 'app/context/useAppContext.mjs'
+import useAppContext from "app/context/useAppContext.mjs"
 
 const VersionSwitcher = () => {
   const context = useAppContext()
 
   return (
-
     <div className="switcher select">
-      <select 
+      <select
         onChange={(event) => context.onSwitchVersion(event.target.value)}
-        value={context.selectedVersion}>
-        {context.versions.map((v) =>
-          <option 
-            key  = {v}
-            value= {v}>
+        value={context.selectedVersion}
+      >
+        {context.versions.map((v) => (
+          <option key={v} value={v}>
             {`Version: ${v}`}
-          </option>          
-        )}
-      </select>        
+          </option>
+        ))}
+      </select>
     </div>
-
   )
 }
 

@@ -1,16 +1,16 @@
-import { stripHtml } from 'app/util/text.mjs'
+import { stripHtml } from "app/util/text.mjs"
 
 const getMenuFromMdDOM = () => {
-  const elements=Array.from(document.querySelectorAll('h1, h2, h3'))
-  const menu= []
+  const elements = Array.from(document.querySelectorAll("h1, h2, h3"))
+  const menu = []
   for (const el of elements) {
-    const oid= el.id
-    const title= stripHtml(el.innerHTML.trim())
-    const level=  parseInt(el.tagName.replace('H',''))
-    const item= {
-      id: oid,  
-      title, 
-      level,
+    const oid = el.id
+    const title = stripHtml(el.innerHTML.trim())
+    const level = parseInt(el.tagName.replace("H", ""), 10)
+    const item = {
+      id: oid,
+      title,
+      level
       //node: el
     }
     menu.push(item)
@@ -21,15 +21,14 @@ const getMenuFromMdDOM = () => {
 const MENU_OFFSET = 64
 
 const domScrollTo = (selector) => {
-  const node= document.querySelector(selector)
-  if (! node) {
+  const node = document.querySelector(selector)
+  if (!node) {
     return
   }
-  const rect= node.getBoundingClientRect()
+  const rect = node.getBoundingClientRect()
 
-  const to=  window.scrollY + (rect.y  - MENU_OFFSET)
-  window.scrollTo({top: to, left: 0, behavior: 'smooth'})
-
+  const to = window.scrollY + (rect.y - MENU_OFFSET)
+  window.scrollTo({ top: to, left: 0, behavior: "smooth" })
 
   /*
   const node= menu[idx].node
@@ -40,5 +39,4 @@ const domScrollTo = (selector) => {
   */
 }
 
-
-export {getMenuFromMdDOM, domScrollTo}
+export { getMenuFromMdDOM, domScrollTo }

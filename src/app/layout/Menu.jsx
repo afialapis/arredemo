@@ -1,23 +1,28 @@
-import React from 'react'
+import { useCallback } from "react"
 
-const Menu = ({ menu, onMenuClick, activeOption}) => {
+const Menu = ({ innerRef, menu, onMenuClick, activeOption }) => {
+  const handleClick = useCallback(
+    (idx) => {
+      onMenuClick(idx)
+    },
+    [onMenuClick]
+  )
 
-return (
-    <div className="menu">
+  return (
+    <div ref={innerRef} className="menu">
       <ul>
-        {menu.map( (item,idx) => 
-          <li key={`menu_${idx}`}
-              className= {`${activeOption==idx ? 'selected' : ''} level-${item.level}`}
-              data-level={item.level}
-              id={`menu-${item.id}`}
-              onClick={() => onMenuClick(idx)}
-              >
-            <span 
-                  className= "link">
-              {item.title}
-            </span>
+        {menu.map((item, idx) => (
+          <li
+            key={`menu_${item.id || idx}`}
+            className={`${activeOption === idx ? "selected" : ""} level-${item.level}`}
+            data-level={item.level}
+            id={`menu-${item?.id || idx}`}
+            onClick={() => handleClick(idx)}
+            onKeyDown={() => handleClick(idx)}
+          >
+            <span className="link">{item.title}</span>
           </li>
-        )}
+        ))}
       </ul>
     </div>
   )

@@ -1,21 +1,20 @@
-import fs from 'fs'
-import Mustache from 'mustache'
-
+import fs from "node:fs"
+import Mustache from "mustache"
 
 const _renderIndexHtmlAs = (source, dest, pkgJson, arreConfig, bundle) => {
-  const title=pkgJson.name
-  const description= pkgJson?.description || ''
-  const keywords= pkgJson?.keywords || ''
-  const author= pkgJson?.author || ''
-  const url= pkgJson?.homepage || ''
-  const logo= arreConfig.logo.dest
-  const favicon_main= arreConfig.favicon.main?.dest
-  const favicon_ico= arreConfig.favicon.ico?.dest
-  const favicon_apple= arreConfig.favicon.apple?.dest
+  const title = pkgJson.name
+  const description = pkgJson?.description || ""
+  const keywords = pkgJson?.keywords || ""
+  const author = pkgJson?.author || ""
+  const url = pkgJson?.homepage || ""
+  const logo = arreConfig.logo.dest
+  const favicon_main = arreConfig.favicon.main?.dest
+  const favicon_ico = arreConfig.favicon.ico?.dest
+  const favicon_apple = arreConfig.favicon.apple?.dest
 
-  const tmpl= fs.readFileSync(source, {encoding:'utf8', flag:'r'})
+  const tmpl = fs.readFileSync(source, { encoding: "utf8", flag: "r" })
 
-  const data= {
+  const data = {
     title,
     description,
     keywords,
@@ -26,20 +25,31 @@ const _renderIndexHtmlAs = (source, dest, pkgJson, arreConfig, bundle) => {
     favicon_ico,
     favicon_apple,
     bundle,
-    bundle_version: `${Math.floor(+new Date() / 1000)}`
+    bundle_version: `${Math.floor(+Date.now() / 1000)}`
   }
   const html = Mustache.render(tmpl, data)
 
-  fs.writeFileSync(dest, html, {encoding:'utf8'})
+  fs.writeFileSync(dest, html, { encoding: "utf8" })
 }
 
-
 const renderIndexHtml = (source, dest, pkgJson, arreConfig) => {
-  _renderIndexHtmlAs(source, dest, pkgJson, arreConfig, 'arredemo_docs.js')
-  _renderIndexHtmlAs(source, dest.replace('index.html', 'docs.html'), pkgJson, arreConfig, 'arredemo_docs.js')
+  _renderIndexHtmlAs(source, dest, pkgJson, arreConfig, "arredemo_docs.js")
+  _renderIndexHtmlAs(
+    source,
+    dest.replace("index.html", "docs.html"),
+    pkgJson,
+    arreConfig,
+    "arredemo_docs.js"
+  )
   if (arreConfig.has_demo) {
-    _renderIndexHtmlAs(source, dest.replace('index.html', 'demo.html'), pkgJson, arreConfig, 'arredemo_demo.js')
+    _renderIndexHtmlAs(
+      source,
+      dest.replace("index.html", "demo.html"),
+      pkgJson,
+      arreConfig,
+      "arredemo_demo.js"
+    )
   }
 }
 
-export {renderIndexHtml}
+export { renderIndexHtml }

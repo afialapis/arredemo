@@ -1,22 +1,22 @@
-import { slugify } from './text.mjs'
+import { slugify } from "./text.mjs"
 
-const options= {
+const options = {
   overrides: {
     section: {
       props: {
-        className: 'doc-section'
-      },
+        className: "doc-section"
+      }
     },
     article: {
       props: {
-        className: 'doc-article'
-      },
+        className: "doc-article"
+      }
     },
     pre: {
       props: {
-        className: 'prettyprint'
-      },
-    },
+        className: "prettyprint"
+      }
+    }
     /*
     h1: {
       component: ObservedHeading,
@@ -40,8 +40,8 @@ const options= {
       }
     }
     */
-  }, 
-  slugify: slugify 
+  },
+  slugify: slugify
 }
 
 export default options

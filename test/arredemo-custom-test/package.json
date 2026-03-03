@@ -17,6 +17,6 @@
     "x-run": "rm -fr arredemo && npx arredemo build"
   },
   "dependencies": {
-    "react-touch-drag-slider": "^2.2.5"
+    "react-touch-drag-slider": "^2.3.1"
   }
 }

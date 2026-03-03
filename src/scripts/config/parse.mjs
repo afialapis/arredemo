@@ -1,71 +1,70 @@
-import path from 'path'
-import { existsSync } from 'fs'
+import { existsSync } from "node:fs"
+import path from "node:path"
 
 const _exists = (p, pkgPath) => {
   try {
     if (existsSync(path.join(pkgPath, p))) {
       return true
     }
-  } catch(_) { }
-  return false  
+  } catch (_) {}
+  return false
 }
 
 const _parseImg = (pkgPath, imgPath, destBasename) => {
-  let parsed = {
+  const parsed = {
     ok: false
   }
 
   if (imgPath && _exists(imgPath, pkgPath)) {
-    parsed.ok  = true
+    parsed.ok = true
     parsed.src = imgPath
-    
-    const imgExt= path.extname(imgPath)
-    parsed.dest= `${destBasename}${imgExt}`
+
+    const imgExt = path.extname(imgPath)
+    parsed.dest = `${destBasename}${imgExt}`
   }
   return parsed
 }
 
 const parseArreConfig = (config, pkgPath) => {
-
   // UI
 
-  const theme = config?.theme || 'default'
-  const company = config?.company || ''
-  const company_url = config?.company_url || ''
-  const url = config?.url || ''
+  const theme = config?.theme || "default"
+  const company = config?.company || ""
+  const company_url = config?.company_url || ""
+  const url = config?.url || ""
 
   // Docs
 
   const doc_versions = config?.doc_versions || []
-  const md= {
+  const md = {
     md_keep_summary_content: config?.md?.keep_summary_content || false,
-    md_strip_details_tag: ! (config?.md?.strip_details_tag===false)
+    md_strip_details_tag: !(config?.md?.strip_details_tag === false)
   }
-  
+
   // Demo
 
-  const demo_entry = config?.demo_entry || ''
-  const has_demo = demo_entry != ''
-  
-  // Logo and favicons
-  const logo = _parseImg(pkgPath, config?.logo, 'logo') 
-  const faviconMain = _parseImg(pkgPath, config?.favicon, 'favicon') 
+  const demo_entry = config?.demo_entry || ""
+  const has_demo = demo_entry !== ""
 
-  let faviconIco= undefined
-  let faviconApple= undefined
+  // Logo and favicons
+  const logo = _parseImg(pkgPath, config?.logo, "logo")
+  const faviconMain = _parseImg(pkgPath, config?.favicon, "favicon")
+
+  let faviconIco
+  let faviconApple
 
   if (faviconMain.ok) {
-    if (path.extname(faviconMain.src)=='.ico') {
-      faviconIco= faviconMain
+    if (path.extname(faviconMain.src) === ".ico") {
+      faviconIco = faviconMain
     } else {
-      const icoBaseName= path.basename(faviconMain.src, path.extname(faviconMain.src)) + '.ico'
-      const icoPath=  faviconMain.src.replace(path.basename(faviconMain.src), icoBaseName)
-      faviconIco= _parseImg(pkgPath, icoPath, 'favicon') 
+      const icoBaseName = path.basename(faviconMain.src, path.extname(faviconMain.src)) + ".ico"
+      const icoPath = faviconMain.src.replace(path.basename(faviconMain.src), icoBaseName)
+      faviconIco = _parseImg(pkgPath, icoPath, "favicon")
     }
 
-    const aplBaseName= path.basename(faviconMain.src, path.extname(faviconMain.src)) + '_apple.png'
-    const aplPath=  faviconMain.src.replace(path.basename(faviconMain.src), aplBaseName)
-    faviconApple= _parseImg(pkgPath, aplPath, 'favicon_apple')
+    const aplBaseName = path.basename(faviconMain.src, path.extname(faviconMain.src)) + "_apple.png"
+    const aplPath = faviconMain.src.replace(path.basename(faviconMain.src), aplBaseName)
+    faviconApple = _parseImg(pkgPath, aplPath, "favicon_apple")
   }
 
   return {
@@ -83,7 +82,7 @@ const parseArreConfig = (config, pkgPath) => {
       ico: faviconIco,
       apple: faviconApple
     }
-  }  
+  }
 }
 
-export {parseArreConfig}
+export { parseArreConfig }

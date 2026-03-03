@@ -1,5 +1,5 @@
-import { rollup } from 'rollup'
-import {red, cyan, green} from 'tinguir'
+import { rollup } from "rollup"
+import { cyan, green, red } from "tinguir"
 
 async function _rollupGenerateOutputs(bundle, outputOptionsList) {
   for (const outputOptions of outputOptionsList) {
@@ -74,18 +74,14 @@ async function rollupBuild(inputOptions, outputOptionsList) {
     await bundle.close()
   }
 
-
   if (buildOk) {
-    console.log(`[arredemo] Bundled ${cyan(outputOptionsList[0].file)} ${green('successfully!')}`)
+    console.log(`[arredemo] Bundled ${cyan(outputOptionsList[0].file)} ${green("successfully!")}`)
   } else {
-    console.log(`[arredemo] ${red('Error')} when bundling ${cyan(outputOptionsList[0].file)}`)
+    console.log(`[arredemo] ${red("Error")} when bundling ${cyan(outputOptionsList[0].file)}`)
     process.exit(1)
-  }  
+  }
 
   return buildOk
 }
 
-
-export {
-  rollupBuild
-}
+export { rollupBuild }

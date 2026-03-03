@@ -1,21 +1,22 @@
-import React, { useCallback, useState } from 'react'
-import Page from 'app/layout/Page.jsx'
+import Page from "app/layout/Page.jsx"
+import { useCallback, useState } from "react"
+
 _DEMO_IMPORT_
-import parseMenu from './parseMenu.mjs'
+
+import parseMenu from "./parseMenu.mjs"
 
 const Demo = () => {
-  const [menu, setMenu]= useState([])
+  const [menu, setMenu] = useState([])
 
-  const demoRef= useCallback((node) => {
-    const nMenu= parseMenu(node)
+  const demoRef = useCallback((node) => {
+    const nMenu = parseMenu(node)
     setMenu(nMenu)
   }, [])
 
   return (
-    <Page menu  = {menu}
-          path = 'demo'> 
+    <Page menu={menu} path="demo">
       <div ref={demoRef}>
-        <TheTestDemo/>
+        <TheTestDemo />
       </div>
     </Page>
   )

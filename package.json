@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
@@ -17,16 +17,16 @@
     ".babelrc.js"
   ],
   "scripts": {
+    "lint": "biome check ./src --reporter=github",
+    "lint:fix": "biome check --write ./src --reporter=github",
     "site-clean": "rm -fr arredemo",
     "site-build": "npm run site-clean && node bin/arre.mjs build",
     "reset": "npm run site-clean && npm cache clean --force && rm -fr package-lock.json && rm -fr node_modules && npm i --ignore-scripts && npm run test-custom-reset && npm run test-noreact-reset ",
-    "lint": "eslint ./src/**.mjs",
     "test-custom-reset": "cd test/arredemo-custom-test && npm run --silent x-reset",
     "test-noreact-reset": "cd test/arredemo-noreact-test  && npm run --silent x-reset",
     "test-custom": "cd test/arredemo-custom-test && npm run x-run",
     "test-noreact": "cd test/arredemo-noreact-test  && npm run x-run",
-    "test": "npm run test-custom && npm run test-noreact",
-    "prepare": "npm run lint && npm run site-build"
+    "test": "npm run test-custom && npm run test-noreact"
   },
   "repository": {
     "type": "git",
@@ -39,40 +39,38 @@
   },
   "homepage": "https://github.com/afialapis/arredemo#readme",
   "dependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/eslint-parser": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-react": "^7.27.1",
-    "@eslint/compat": "^1.4.0",
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.37.0",
-    "@rollup/plugin-alias": "^5.1.1",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
+    "@biomejs/biome": "^2.4.5",
+    "@rollup/plugin-alias": "^6.0.0",
     "@rollup/plugin-babel": "^6.1.0",
-    "@rollup/plugin-commonjs": "^28.0.7",
+    "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "babel-plugin-module-resolver": "^5.0.2",
     "cross-spawn": "^7.0.6",
-    "eslint": "^9.37.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.0",
-    "globals": "^16.4.0",
-    "markdown-to-jsx": "^7.7.15",
+    "markdown-to-jsx": "^9.7.6",
     "mustache": "^4.2.0",
     "node-fetch": "^3.3.2",
     "postcss": "^8.5.6",
     "prompts": "^2.4.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "rollup": "^4.52.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "rollup": "^4.59.0",
     "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-node-externals": "^8.1.2",
     "rollup-plugin-postcss": "^4.0.2",
-    "sass": "^1.93.2",
+    "sass": "^1.97.3",
     "tinguir": "^0.0.7"
   },
+  "peerDependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
   "engines": {
-    "node": ">=21"
-  }  
+    "node": ">=24"
+  }
 }

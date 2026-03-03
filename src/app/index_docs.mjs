@@ -1,10 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import AppDocs from 'app/AppDocs.jsx'
+import AppDocs from "app/AppDocs.jsx"
+import { hydrateRoot } from "react-dom/client"
+import "app/assets/scss/index.scss"
 
-import 'app/assets/scss/index.scss'
-
-const pkgPath = '_PKG_PATH_'
+const pkgPath = "_PKG_PATH_"
 
 const pkgJson = JSON.parse(`
   _PKG_JSON_
@@ -16,28 +14,7 @@ _ARRE_CONFIG_
 
 _READMES_
 
-ReactDOM.render(
-  <AppDocs 
-    pkgPath = {pkgPath}
-    pkgJson = {pkgJson}
-    arreConfig = {arreConfig}
-    readmes = {readmes}      
-  />,
-  document.getElementById('arredemo-app'))
-
-/*
-
-// React 18
-
-ReactDOM.createRoot(document.getElementById("arredemo-app")).render(
-  <React.StrictMode>
-    <AppDocs 
-      pkgPath = {pkgPath}
-      pkgJson = {pkgJson}
-      arreConfig = {arreConfig}
-      readmes = {readmes}      
-    />
-  </React.StrictMode>
-);
-*/
-
+hydrateRoot(
+  document.getElementById("arredemo-app"),
+  <AppDocs pkgPath={pkgPath} pkgJson={pkgJson} arreConfig={arreConfig} readmes={readmes} />
+)

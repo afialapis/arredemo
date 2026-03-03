@@ -1,11 +1,10 @@
-import fetchPkgFile from './fetchPkgFile.mjs'
+import fetchPkgFile from "./fetchPkgFile.mjs"
 
 export default async function fetchMdFiles(pkgName, versions) {
-
-  const mds= {}
+  const mds = {}
   for (const version of versions) {
-    const md= await fetchPkgFile(pkgName, version, 'README.md')
-    mds[version]= md
+    const md = await fetchPkgFile(pkgName, version, "README.md")
+    mds[version] = md
   }
   return mds
 }

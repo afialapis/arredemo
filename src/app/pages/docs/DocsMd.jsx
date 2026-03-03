@@ -1,42 +1,36 @@
-import React from 'react'
-import Markdown from 'markdown-to-jsx'
-import { slugify } from 'app/util/text.mjs'
+import { slugify } from "app/util/text.mjs"
+import Markdown from "markdown-to-jsx"
 
 const WrapperP = (props) => {
-  return (
-    <div {...props}/>
-  )
+  return <div {...props} />
 }
 
-const DocsMd = ({readme}) => {
-  const options= {
+const DocsMd = ({ readme }) => {
+  const options = {
     overrides: {
       section: {
         props: {
-          className: 'doc-section'
-        },
+          className: "doc-section"
+        }
       },
       article: {
         props: {
-          className: 'doc-article'
-        },
+          className: "doc-article"
+        }
       },
       pre: {
         props: {
-          className: 'prettyprint'
-        },
+          className: "prettyprint"
+        }
       },
       p: {
         component: WrapperP
       }
-    }, 
-    slugify: slugify 
+    },
+    slugify: slugify
   }
 
-  
-  return (
-    <Markdown options={options}>{readme}</Markdown>
-  )
+  return <Markdown options={options}>{readme}</Markdown>
 }
 
 export default DocsMd

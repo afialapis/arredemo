@@ -57,17 +57,15 @@
 
 <body class="arredemo">
   <div id="arredemo-app"></div>
-	
-  <script crossorigin src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
-	<script crossorigin src="https://unpkg.com/markdown-to-jsx@7.1.9/dist/index.umd.js"></script>
-	<script crossorigin src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-	
+
 	<script src="{{bundle}}?v={{bundle_version}}"></script>
+	<!--
+	<script crossorigin src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+	-->
 
   <script>
     // Sanity-check the component loaded...
-    setTimeout(function () {
+    setTimeout(() => {
       var content = document.querySelector("#arredemo-app");
       var warning = "If you can see this, something is broken (or JS is not enabled)!";
       if (!content.innerHTML) {

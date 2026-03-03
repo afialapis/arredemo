@@ -1,27 +1,24 @@
 const renderReadmes = (readmes) => {
-
-  const _versionName = (v) => v.replace(/[\.-]/g, '_')
+  const _versionName = (v) => v.replace(/[.-]/g, "_")
   const _versionMdName = (v) => `md_${_versionName(v)}`
-  const _toB64 = (s) => Buffer.from(s).toString('base64')
-  
-  let output= ""
+  const _toB64 = (s) => Buffer.from(s).toString("base64")
 
-  Object.entries(readmes).map(([version, md]) => {
-    const escapedMd= _toB64(md)
-    output+= `const ${_versionMdName(version)} = decodeURIComponent(escape(window.atob(\`${escapedMd}\`)));\n`
+  let output = ""
+
+  Object.entries(readmes).forEach(([version, md]) => {
+    const escapedMd = _toB64(md)
+    output += `const ${_versionMdName(version)} = decodeURIComponent(escape(window.atob(\`${escapedMd}\`)));\n`
   })
 
-  output+= '\n\nconst readmes = {\n'
+  output += "\n\nconst readmes = {\n"
 
-  Object.keys(readmes).map((version) => {
-    output+= `"${version}": ${_versionMdName(version)},\n`
+  Object.keys(readmes).forEach((version) => {
+    output += `"${version}": ${_versionMdName(version)},\n`
   })
 
-  output+= '}\n\n'
-
+  output += "}\n\n"
 
   return output
 }
 
-
-export {renderReadmes}
+export { renderReadmes }

@@ -1,11 +1,10 @@
-import { /*red, green,*/ cyan} from 'tinguir'
+import { /*red, green,*/ cyan } from "tinguir"
 import { loadArreDemoAppData } from "./load.mjs"
-import { renderArreDemoApp, cleanArreDemoApp } from "./render/index.mjs"
-import { rollupArreDemoAppConfig } from "./rollup/prepare.mjs"
+import { cleanArreDemoApp, renderArreDemoApp } from "./render/index.mjs"
 import { rollupBuild } from "./rollup/build.mjs"
+import { rollupArreDemoAppConfig } from "./rollup/prepare.mjs"
 
-async function makeArreDemoBuild (pkgPath, arreConfig) {
-
+async function makeArreDemoBuild(pkgPath, arreConfig) {
   /**
     Structure:
 
@@ -37,25 +36,38 @@ async function makeArreDemoBuild (pkgPath, arreConfig) {
 
 
   */
-  
-  console.log(`[arredemo] ${cyan('Loading data')}...`)
-  const [pkgJson, readmes]= await loadArreDemoAppData(pkgPath, arreConfig)
-  
-  console.log(`[arredemo] ${cyan('Rendering app')}...`)
-  const rendFolder = renderArreDemoApp(pkgPath, pkgJson, arreConfig, readmes) 
-  
-  console.log(`[arredemo] ${cyan('Building docs page')}...`)
-  const [inputOptionsForDocs, outputOptionsListForDocs] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_docs.mjs', 'arredemo_docs.js')
+
+  console.log(`[arredemo] ${cyan("Loading data")}...`)
+  const [pkgJson, readmes] = await loadArreDemoAppData(pkgPath, arreConfig)
+
+  console.log(`[arredemo] ${cyan("Rendering app")}...`)
+  const rendFolder = renderArreDemoApp(pkgPath, pkgJson, arreConfig, readmes)
+
+  console.log(`[arredemo] ${cyan("Building docs page")}...`)
+  const [inputOptionsForDocs, outputOptionsListForDocs] = rollupArreDemoAppConfig(
+    pkgPath,
+    pkgJson,
+    arreConfig,
+    rendFolder,
+    "index_docs.mjs",
+    "arredemo_docs.js"
+  )
   const _buildOkForDocs = await rollupBuild(inputOptionsForDocs, outputOptionsListForDocs)
 
   if (arreConfig.has_demo) {
-    console.log(`[arredemo] ${cyan('Building demo page')}...`)
-    const [inputOptionsForDemo, outputOptionsListForDemo] = rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, 'index_demo.mjs', 'arredemo_demo.js')
-    const _buildOkForDemo = await rollupBuild(inputOptionsForDemo, outputOptionsListForDemo)  
+    console.log(`[arredemo] ${cyan("Building demo page")}...`)
+    const [inputOptionsForDemo, outputOptionsListForDemo] = rollupArreDemoAppConfig(
+      pkgPath,
+      pkgJson,
+      arreConfig,
+      rendFolder,
+      "index_demo.mjs",
+      "arredemo_demo.js"
+    )
+    const _buildOkForDemo = await rollupBuild(inputOptionsForDemo, outputOptionsListForDemo)
   }
 
-  console.log(`[arredemo] ${cyan('Cleaning')}...`)
+  console.log(`[arredemo] ${cyan("Cleaning")}...`)
   cleanArreDemoApp(pkgPath)
-
 }
-export {makeArreDemoBuild}
+export { makeArreDemoBuild }
