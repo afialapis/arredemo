@@ -112,7 +112,6 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
         targets: _imgCopyTargets(arreConfig)
       })
     ],
-    //external: ["react", "react-dom", "markdown-to-jsx"]
   }
 
   const outputs = [
@@ -128,7 +127,7 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       //  "react-dom": "ReactDOM",
       //  "markdown-to-jsx": "MarkdownToJSX"
       //},
-      //plugins: [terser({ ecma: 8, safari10: true })]
+      plugins: [terser({ ecma: 8, safari10: true })]
     }
   ]
 

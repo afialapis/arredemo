@@ -1,5 +1,5 @@
 import AppDemo from "app/AppDemo.jsx"
-import { hydrateRoot } from "react-dom/client"
+import { createRoot } from "react-dom/client"
 
 import "app/assets/scss/index.scss"
 
@@ -13,7 +13,6 @@ const arreConfig = JSON.parse(`
 _ARRE_CONFIG_
 `)
 
-hydrateRoot(
-  document.getElementById("arredemo-app"),
+createRoot(document.getElementById("arredemo-app")).render(
   <AppDemo pkgPath={pkgPath} pkgJson={pkgJson} arreConfig={arreConfig} />
 )
