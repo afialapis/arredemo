@@ -97,9 +97,10 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
         peerDeps: false
       }),
       nodeResolve({
-        rootDir: rendFolder, // pkgPath,
+        rootDir: rendFolder,
         exportConditions: ["node"],
-        dedupe: ["react", "react-dom", "react/jsx-runtime"]
+        dedupe: ["react", "react-dom", "react-dom/client", "react/jsx-runtime"],
+        modulePaths: [path.join(__dirname, "../../../../node_modules")]
       }),
       scss({
         use: {
@@ -122,6 +123,12 @@ function rollupArreDemoAppConfig(pkgPath, pkgJson, arreConfig, rendFolder, input
       exports: "named",
       sourcemap: true,
       name: toTitleCase(pkgJson.name),
+      globals: {
+        react: "React",
+        "react-dom": "ReactDOM",
+        "react/jsx-runtime": "jsxRuntime",
+        "markdown-to-jsx": "MarkdownToJSX"
+      },
       plugins: [terser({ ecma: 8, safari10: true })]
     }
   ]

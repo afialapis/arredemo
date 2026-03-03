@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
@@ -13,7 +13,10 @@
   },
   "files": [
     "bin",
-    "src"
+    "src",
+    "package.json",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "lint": "biome check ./src --reporter=github",
@@ -25,7 +28,8 @@
     "test-noreact-reset": "cd test/arredemo-noreact-test  && npm run --silent x-reset",
     "test-custom": "cd test/arredemo-custom-test && npm run x-run",
     "test-noreact": "cd test/arredemo-noreact-test  && npm run x-run",
-    "test": "npm run test-custom && npm run test-noreact"
+    "test": "npm run test-custom && npm run test-noreact",
+    "prepublishOnly": "npm run lint && npm run site"
   },
   "repository": {
     "type": "git",
@@ -56,6 +60,8 @@
     "node-fetch": "^3.3.2",
     "postcss": "^8.5.8",
     "prompts": "^2.4.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "rollup": "^4.59.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-node-externals": "^8.1.2",
