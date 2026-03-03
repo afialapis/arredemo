@@ -44,7 +44,7 @@ npm i -g arredemo
 This single command will do the magic:
 
 ```sh
-npx arredemo build
+npx arredemo build [init params]
 ```
 
 The first time you launch it, the `arredemo.json` file will be created. You can then tweak it manually for further builds.
@@ -128,6 +128,28 @@ This file will make a `export default` of your React component.
 Yes: in the future this will be done better and non-React stuff will be compatible too.
 
 If `demo_entry: null`, no Demo page will be built.
+
+# Other commands
+
+## Init
+
+```sh
+npx arredemo init [params]
+```
+
+This will generate a `arredemo.json` file with default values.
+
+## Help
+
+```sh
+npx arredemo help
+```
+
+## Version
+
+```sh
+npx arredemo version
+```
 
 # Changelog
 

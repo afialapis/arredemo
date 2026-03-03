@@ -1,6 +1,6 @@
 {
   "name": "arredemo",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Instantly build a static site for your package",
   "type": "module",
   "bin": "bin/arre.mjs",
