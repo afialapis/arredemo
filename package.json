@@ -13,8 +13,7 @@
   },
   "files": [
     "bin",
-    "src",
-    ".babelrc.js"
+    "src"
   ],
   "scripts": {
     "lint": "biome check ./src --reporter=github",

@@ -5,7 +5,7 @@
 
 From `eslint` to `biome`
 Min `node` is `24`
-Upgraded deps
+Upgraded deps, like `react` to `19`
 
 ## 2.0.0
 

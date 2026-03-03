@@ -69,7 +69,7 @@ An `arredemo` folder will be made, containing the static site. You may want your
 
 The docs page will be made from your repo's `README.md` file.
 
-Notice you can include several versions of your package to be documented, not just the current one. 
+Notice you can include several versions of your package to be documented, not just the current one. `arredemo` will read them from `npm` registry.
 
 ## Demo
 
@@ -107,6 +107,7 @@ Shown in the site's Footer.
 Optional array of values of the versions of your package you want to show Docs for.
 
 Current version (repo time, not necessarily published yet) will be taken by default.
+For other versions, `arredemo` will read their `README.md` from `npm` registry.
 
 ### `md.strip_details_tag` and `md.keep_summary_content`
 
